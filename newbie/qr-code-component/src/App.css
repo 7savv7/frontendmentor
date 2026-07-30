@@ -1,0 +1,29 @@
+.card {
+  background-color: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  padding: 16px;
+  text-align: center;
+  width: min(100%, 320px);
+}
+
+img {
+  border-radius: 12px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+h1 {
+  color: var(--slate-900);
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 16px;
+}
+
+p {
+  color: var(--slate-500);
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  padding: 0 10px;
+}
