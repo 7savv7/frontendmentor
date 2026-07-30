@@ -1,7 +1,45 @@
 import "./App.css";
+import Header from "./components/Header";
 
 function App() {
-  return <div>Hello</div>;
+  return (
+    <>
+      <Header />
+    </>
+  );
 }
 
 export default App;
+
+/*   Personal best: <!-- PB --> WPM
+
+  WPM: <!-- WPM -->
+  Accuracy: <!-- Accuracy -->
+  Time: <!-- Time -->
+
+  Difficulty:
+  Easy
+  Medium
+  Hard
+
+  Mode:
+  Timed (60s)
+  Passage
+
+  <!-- Passage -->
+
+  Start Typing Test
+  Or click the text and start typing
+
+  <!-- Test Complete Start -->
+
+  Test Complete!
+  Solid run. Keep pushing to beat your high score.
+
+  WPM: <!-- WPM -->
+  Accuracy: <!-- Accuracy -->
+  Characters: <!-- Correct/Incorrect -->
+
+  Go Again
+  
+  <!-- Test Complete End --> */

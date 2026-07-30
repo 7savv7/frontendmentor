@@ -1,0 +1,27 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mobile {
+  display: none;
+}
+
+.high-score {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+@media (max-width: 600px) {
+  .mobile {
+    display: block;
+  }
+  .desktop {
+    display: none;
+  }
+  .best {
+    text-transform: capitalize;
+  }
+}
