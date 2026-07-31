@@ -1,27 +1,38 @@
 header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
 }
 
-.mobile {
+.desktop {
   display: none;
 }
 
 .high-score {
-    display: flex;
-    align-items: center;
-    gap: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
-@media (max-width: 600px) {
-  .mobile {
+.high-score > p {
+  display: flex;
+  gap: 4px;
+  color: hsl(240, 1%, 59%);
+}
+
+.high-score > p > .wpm {
+  color: hsl(0, 0%, 100%);
+}
+
+@media (min-width: 1024px) {
+  .desktop {
     display: block;
   }
-  .desktop {
+  .mobile {
     display: none;
   }
   .best {
-    text-transform: capitalize;
+    text-transform: lowercase;
   }
 }

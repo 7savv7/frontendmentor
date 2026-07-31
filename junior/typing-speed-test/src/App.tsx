@@ -1,31 +1,19 @@
 import "./App.css";
 import Header from "./components/Header";
+import Options from "./components/Options";
 
 function App() {
   return (
-    <>
+    <div className="wrapper">
       <Header />
-    </>
+      <Options />
+    </div>
   );
 }
 
 export default App;
 
-/*   Personal best: <!-- PB --> WPM
-
-  WPM: <!-- WPM -->
-  Accuracy: <!-- Accuracy -->
-  Time: <!-- Time -->
-
-  Difficulty:
-  Easy
-  Medium
-  Hard
-
-  Mode:
-  Timed (60s)
-  Passage
-
+/*
   <!-- Passage -->
 
   Start Typing Test

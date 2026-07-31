@@ -1,0 +1,32 @@
+@font-face {
+  font-family: Sora;
+  src: url("./../public/fonts/Sora/Sora-VariableFont_wght.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100dvh;
+  width: 100%;
+  padding: 4px;
+  background-color: hsl(0, 0%, 7%);
+  color: white;
+  font-family: Sora;
+  font-size: 16px;
+  user-select: none;
+}
+
+@media (min-width: 1024px) {
+  html,
+  body,
+  #root {
+    height: 100vh;
+    padding: 10px 25px;
+  }
+}
