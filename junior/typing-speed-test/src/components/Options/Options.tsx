@@ -1,17 +1,17 @@
 import { useState } from "react";
 import "./Options.css";
 
-function Options() {
-  const [difficulty, setDifficulty] = useState<string>("Easy");
+interface Props {
+  difficulty: string;
+  setDifficulty: (val: string) => void;
+  mode: string;
+  setMode: (val: string) => void;
+}
+
+function Options({ difficulty, setDifficulty, mode, setMode }: Props) {
   const [diffDrop, setDiffDrop] = useState<boolean>(false);
-  const [mode, setMode] = useState<string>("Timed (60s)");
   const [modeDrop, setModeDrop] = useState<boolean>(false);
   const data = {
-    stats: [
-      { label: "WPM", value: "0" },
-      { label: "Accuracy", value: "100%" },
-      { label: "Time", value: "0:60" },
-    ],
     difficulties: ["Easy", "Medium", "Hard"],
     modes: ["Timed (60s)", "Passage"],
   };
@@ -29,14 +29,17 @@ function Options() {
   return (
     <section>
       <ul className="stats">
-        {data.stats.map((stat, i) => (
-          <>
-            <li key={i}>
-              {stat.label}: <span>{stat.value}</span>
-            </li>
-            {i < data.stats.length - 1 && <div className="separator"></div>}
-          </>
-        ))}
+        <li>
+          WPM: <span>0</span>
+        </li>
+        <div className="separator"></div>
+        <li>
+          Accuracy: <span>100%</span>
+        </li>
+        <div className="separator"></div>
+        <li>
+          Time: <span>0:60</span>
+        </li>
       </ul>
 
       <div className="opts">

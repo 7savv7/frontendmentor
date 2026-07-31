@@ -1,12 +1,23 @@
+import { useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
+import Main from "./components/Main/Main";
 import Options from "./components/Options";
 
 function App() {
+  const [difficulty, setDifficulty] = useState<string>("Easy");
+  const [mode, setMode] = useState<string>("Timed (60s)");
+
   return (
     <div className="wrapper">
       <Header />
-      <Options />
+      <Options
+        difficulty={difficulty}
+        setDifficulty={setDifficulty}
+        mode={mode}
+        setMode={setMode}
+      />
+      <Main difficulty={difficulty} />
     </div>
   );
 }
@@ -15,9 +26,6 @@ export default App;
 
 /*
   <!-- Passage -->
-
-  Start Typing Test
-  Or click the text and start typing
 
   <!-- Test Complete Start -->
 
