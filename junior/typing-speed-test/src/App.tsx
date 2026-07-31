@@ -5,8 +5,12 @@ import Main from "./components/Main/Main";
 import Options from "./components/Options";
 
 function App() {
+  const [start, setStart] = useState<boolean>(false);
+
   const [difficulty, setDifficulty] = useState<string>("Easy");
   const [mode, setMode] = useState<string>("Timed (60s)");
+  const [tries, setTries] = useState<number>(0);
+  const [correct, setCorrect] = useState<number>(0);
 
   return (
     <div className="wrapper">
@@ -16,8 +20,17 @@ function App() {
         setDifficulty={setDifficulty}
         mode={mode}
         setMode={setMode}
+        tries={tries}
+        correct={correct}
+        start={start}
       />
-      <Main difficulty={difficulty} />
+      <Main
+        difficulty={difficulty}
+        setTries={setTries}
+        setCorrect={setCorrect}
+        start={start}
+        setStart={setStart}
+      />
     </div>
   );
 }

@@ -1,6 +1,11 @@
+import { useState } from "react";
 import "./Header.css";
 
 function Header() {
+  const [highScore, setHighScore] = useState<string>(
+    localStorage.getItem("high-score") ?? "0",
+  );
+
   return (
     <header>
       <img className="desktop" src="images/logo-large.svg" alt="logo-desktop" />
@@ -12,9 +17,7 @@ function Header() {
         <p>
           <span className="desktop">Personal</span>{" "}
           <span className="best">Best</span>:{" "}
-          <span className="wpm">
-            <span className="score">0</span> WPM
-          </span>
+          <span className="wpm">{highScore} WPM</span>
         </p>
       </div>
     </header>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Options.css";
 
 interface Props {
@@ -6,11 +6,24 @@ interface Props {
   setDifficulty: (val: string) => void;
   mode: string;
   setMode: (val: string) => void;
+  tries: number;
+  correct: number;
+  start: boolean;
 }
 
-function Options({ difficulty, setDifficulty, mode, setMode }: Props) {
+function Options({
+  difficulty,
+  setDifficulty,
+  mode,
+  setMode,
+  tries,
+  correct,
+  start,
+}: Props) {
   const [diffDrop, setDiffDrop] = useState<boolean>(false);
   const [modeDrop, setModeDrop] = useState<boolean>(false);
+  const [time, setTime] = useState<number>(mode === "Passage" ? 0 : 60);
+  const [wpm, setWpm] = useState<number>(0);
   const data = {
     difficulties: ["Easy", "Medium", "Hard"],
     modes: ["Timed (60s)", "Passage"],
@@ -26,19 +39,53 @@ function Options({ difficulty, setDifficulty, mode, setMode }: Props) {
     setModeDrop(false);
   };
 
+  const formatTime = (seconds: number): string => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+
+    return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+  };
+
+  useEffect(() => {
+    if (!start) return;
+
+    setTime(mode === "Passage" ? 0 : 60);
+
+    const interval = setInterval(() => {
+      setTime((prev) => {
+        if (mode === "Passage") return prev + 1;
+        return prev > 0 ? prev - 1 : 0;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [start, mode]);
+
+  useEffect(() => {
+    if (!start) return;
+
+    if (mode === "Passage") {
+      setWpm(time === 0 ? 0 : Math.floor((correct / 5) * (60 / time)));
+    } else {
+      const elapsed = 60 - time;
+      setWpm(elapsed === 0 ? 0 : Math.floor((correct / 5) * (60 / elapsed)));
+    }
+  }, [time, correct, mode, start]);
+
   return (
     <section>
       <ul className="stats">
         <li>
-          WPM: <span>0</span>
+          WPM: <span>{wpm}</span>
         </li>
         <div className="separator"></div>
         <li>
-          Accuracy: <span>100%</span>
+          Accuracy:{" "}
+          <span>{tries > 0 ? Math.floor((correct / tries) * 100) : 0}%</span>
         </li>
         <div className="separator"></div>
         <li>
-          Time: <span>0:60</span>
+          Time: <span>{formatTime(time)}</span>
         </li>
       </ul>
 

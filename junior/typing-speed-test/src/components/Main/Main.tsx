@@ -1,9 +1,19 @@
-import { useEffect, useRef, useState } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type Dispatch,
+  type SetStateAction,
+} from "react";
 import data from "./../../data.json";
 import "./Main.css";
 
 interface Props {
   difficulty: string;
+  setTries: Dispatch<SetStateAction<number>>;
+  setCorrect: (val: number) => void;
+  start: boolean;
+  setStart: (val: boolean) => void;
 }
 
 interface Data {
@@ -11,8 +21,7 @@ interface Data {
   text: string;
 }
 
-function Main({ difficulty }: Props) {
-  const [start, setStart] = useState<boolean>(false);
+function Main({ difficulty, setTries, setCorrect, start, setStart }: Props) {
   const [challenge, setChallenge] = useState<Data>(data.hard[9]);
   const [typed, setTyped] = useState<string>("");
 
@@ -23,7 +32,25 @@ function Main({ difficulty }: Props) {
     setTyped("");
   };
 
+  const correctLetters = (): number => {
+    let correct: number = 0;
+    for (let i = 0; i < challenge.text.length; i++) {
+      if (challenge.text[i] === typed[i]) correct++;
+    }
+
+    return correct;
+  };
+
   useEffect(() => {
+    if (start) {
+      setTries(0);
+      setCorrect(0);
+    }
+  }, [start]);
+
+  useEffect(() => {
+    if (start) setCorrect(correctLetters());
+
     if (!ref.current) return;
 
     const current = ref.current.querySelector(".current-letter");
@@ -64,6 +91,7 @@ function Main({ difficulty }: Props) {
 
       if (e.key.length === 1) {
         setTyped((prev) => prev + e.key);
+        setTries((prev) => prev + 1);
       }
     };
 
