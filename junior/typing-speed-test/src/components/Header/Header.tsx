@@ -13,7 +13,7 @@ function Header() {
           <span className="desktop">Personal</span>{" "}
           <span className="best">Best</span>:{" "}
           <span className="wpm">
-            <span className="score"></span> WPM
+            <span className="score">0</span> WPM
           </span>
         </p>
       </div>

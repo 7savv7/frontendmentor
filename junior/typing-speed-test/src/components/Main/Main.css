@@ -4,34 +4,51 @@ main {
 }
 
 .modal {
-    width: 100%;
-    height: 80%;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(10px);
-    text-align: center;
+  width: 100%;
+  height: 80%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  text-align: center;
 }
 
 .modal > button {
-    font-family: Sora;
-    background-color: hsl(214, 100%, 55%);
-    padding: 12px;
-    margin-bottom: 10px;
+  font-family: Sora;
+  background-color: hsl(214, 100%, 55%);
+  padding: 12px;
+  margin-bottom: 10px;
 }
 
 .modal > button:hover {
-    background-color: hsl(210, 100%, 65%);
+  background-color: hsl(210, 100%, 65%);
 }
 
 .text {
   padding: 20px 0;
-  height: 670px;
-  overflow: hidden;
+  margin-bottom: 80px;
+  height: calc(100vh - 250px);
+  overflow-x: scroll;
+  scrollbar-width: none;
   font-size: 1.8rem;
   word-spacing: 4px;
+}
+
+.current-letter {
+  background-color: hsl(240, 1%, 59%);
+  padding: 1px 2px;
+  border-radius: 4px;
+}
+
+.correct-letter {
+  color: hsl(140, 63%, 57%);
+}
+
+.wrong-letter {
+  color: hsl(354, 63%, 57%);
+  text-decoration: underline;
 }
 
 .restart {

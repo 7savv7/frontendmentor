@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import data from "./../../data.json";
 import "./Main.css";
 
@@ -6,9 +6,35 @@ interface Props {
   difficulty: string;
 }
 
+interface Data {
+  id: string;
+  text: string;
+}
+
 function Main({ difficulty }: Props) {
   const [start, setStart] = useState<boolean>(false);
-  const [challenge, setChallenge] = useState<{ id: string; text: string }>(data.hard[9]);
+  const [challenge, setChallenge] = useState<Data>(data.hard[9]);
+  const [typed, setTyped] = useState<string>("");
+
+  const ref = useRef<HTMLDivElement>(null);
+
+  const handleRestart = () => {
+    setStart(false);
+    setTyped("");
+  };
+
+  useEffect(() => {
+    if (!ref.current) return;
+
+    const current = ref.current.querySelector(".current-letter");
+    if (!current) return;
+
+    current.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "center",
+    });
+  }, [typed]);
 
   useEffect(() => {
     const random = Math.floor(Math.random() * 10);
@@ -24,22 +50,56 @@ function Main({ difficulty }: Props) {
         setChallenge(data.hard[random]);
         break;
     }
-  }, [difficulty]);
+
+    setTyped("");
+  }, [difficulty, start]);
+
+  useEffect(() => {
+    if (!start) return;
+
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Backspace") {
+        setTyped((prev) => prev.slice(0, -1));
+      }
+
+      if (e.key.length === 1) {
+        setTyped((prev) => prev + e.key);
+      }
+    };
+
+    window.addEventListener("keydown", handler);
+
+    return () => {
+      window.removeEventListener("keydown", handler);
+    };
+  }, [start]);
 
   return (
     <main>
       {!start && (
         <div className="modal">
           <button onClick={() => setStart(true)}>Start Typing Test</button>
-          <p>Or click the text and start typing</p>
+          <p onClick={() => setStart(true)}>
+            Or click the text and start typing
+          </p>
         </div>
       )}
 
-      <div className="text">{challenge.text}</div>
+      <div className="text" ref={ref}>
+        {challenge.text.split("").map((letter, index) => (
+          <span
+            key={index}
+            className={`${index == typed.length && "current-letter"} 
+            ${index < typed.length ? (letter == typed[index] ? "correct-letter" : "wrong-letter") : ""}`}
+          >
+            {letter}
+          </span>
+        ))}
+      </div>
 
       {start && (
         <div className="restart">
-          <button>
+          <button onClick={handleRestart}>
             <p>Restart Test</p>
 
             <img src="images/icon-restart.svg" alt="restart" />
