@@ -29,11 +29,19 @@ main {
 .text {
   padding: 20px 0;
   margin-bottom: 80px;
-  height: calc(100vh - 250px);
+  height: calc(100vh - 280px);
   overflow-x: scroll;
   scrollbar-width: none;
   font-size: 1.8rem;
   word-spacing: 4px;
+}
+
+.input-text {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  pointer-events: none;
 }
 
 .current-letter {

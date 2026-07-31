@@ -36,6 +36,7 @@ function Main({
   const [typed, setTyped] = useState<string>("");
 
   const ref = useRef<HTMLDivElement>(null);
+  const InputRef = useRef<HTMLInputElement>(null);
 
   const handleRestart = () => {
     setStart(false);
@@ -49,6 +50,20 @@ function Main({
     }
 
     return correct;
+  };
+
+  const handleStart = () => {
+    InputRef.current?.focus();
+    setStart(true);
+  };
+
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!start) return;
+    setTyped(e.target.value);
+
+    if (e.target.value.length > typed.length) {
+      setTries((prev) => prev + 1);
+    }
   };
 
   useEffect(() => {
@@ -72,9 +87,16 @@ function Main({
 
     current.scrollIntoView({
       behavior: "smooth",
-      block: "center",
-      inline: "center",
+      block: "nearest",
+      inline: "nearest",
     });
+  }, [typed]);
+
+  useEffect(() => {
+    const input = InputRef.current;
+    if (!input) return;
+    const len = input.value.length;
+    input.setSelectionRange(len, len);
   }, [typed]);
 
   useEffect(() => {
@@ -99,44 +121,32 @@ function Main({
     setChars(challenge.text.length);
   }, [challenge]);
 
-  useEffect(() => {
-    if (!start) return;
-
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === "Backspace") {
-        setTyped((prev) => prev.slice(0, -1));
-      }
-
-      if (e.key.length === 1) {
-        setTyped((prev) => prev + e.key);
-        setTries((prev) => prev + 1);
-      }
-    };
-
-    window.addEventListener("keydown", handler);
-
-    return () => {
-      window.removeEventListener("keydown", handler);
-    };
-  }, [start]);
-
   return (
     <main>
       {!start && (
         <div className="modal">
-          <button onClick={() => setStart(true)}>Start Typing Test</button>
-          <p onClick={() => setStart(true)}>
-            Or click the text and start typing
-          </p>
+          <button onClick={handleStart}>Start Typing Test</button>
+          <p onClick={handleStart}>Or click the text and start typing</p>
         </div>
       )}
 
-      <div className="text" ref={ref}>
+      <div className="text" ref={ref} onClick={() => InputRef.current?.focus()}>
+        <input
+          className="input-text"
+          ref={InputRef}
+          value={typed}
+          onChange={handleInput}
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck={false}
+          inputMode="text"
+          name="typing-test-input"
+        />
         {challenge.text.split("").map((letter, index) => (
           <span
             key={index}
-            className={`${index == typed.length && "current-letter"} 
-            ${index < typed.length ? (letter == typed[index] ? "correct-letter" : "wrong-letter") : ""}`}
+            className={`${index === typed.length && "current-letter"} 
+            ${index < typed.length ? (letter === typed[index] ? "correct-letter" : "wrong-letter") : ""}`}
           >
             {letter}
           </span>

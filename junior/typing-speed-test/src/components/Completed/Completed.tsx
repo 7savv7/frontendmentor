@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import "./Completed.css";
 
@@ -9,6 +9,7 @@ interface Props {
   chars: number;
   setFinished: (val: boolean) => void;
   setHighScore: (val: string) => void;
+  highScore: string;
 }
 
 function Completed({
@@ -18,18 +19,17 @@ function Completed({
   chars,
   setFinished,
   setHighScore,
+  highScore,
 }: Props) {
-  const highScore = Number(localStorage.getItem("high-score")) ?? 0;
-  const isFirstAttempt = !Boolean(localStorage.getItem("isFirstAttempt"));
-  const isNewHighScore = wpm > highScore;
+  const [isFirstAttempt] = useState(() => Number(highScore) === 0);
+  const [isNewHighScore] = useState(() => wpm > Number(highScore));
 
   useEffect(() => {
-    if (isFirstAttempt) localStorage.setItem("isFirstAttempt", "false");
     if (isNewHighScore) {
       localStorage.setItem("high-score", String(wpm));
       setHighScore(String(wpm));
     }
-  }, []);
+  }, [wpm]);
 
   return (
     <main className="finished">
@@ -95,7 +95,7 @@ function Completed({
         </svg>
       </button>
 
-      <Background highScore={isNewHighScore} />
+      <Background highScore={isNewHighScore && !isFirstAttempt} />
     </main>
   );
 }

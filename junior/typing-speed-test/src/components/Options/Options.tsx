@@ -38,11 +38,13 @@ function Options({
 
   const handleDiff = (diff: string) => {
     setDifficulty(diff);
+    setStart(false);
     setDiffDrop(false);
   };
 
   const handleMode = (mode: string) => {
     setMode(mode);
+    setStart(false);
     setModeDrop(false);
   };
 
