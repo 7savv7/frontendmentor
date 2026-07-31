@@ -29,6 +29,14 @@ section {
   padding-top: 5px;
 }
 
+.stats li .red {
+  color: hsl(354, 63%, 57%);
+}
+
+.stats li .yellow {
+  color: hsl(49, 85%, 70%);
+}
+
 .separator {
   width: 1px;
   height: 30px;
@@ -88,6 +96,11 @@ section {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.opt > div:focus-visible {
+  outline: 2px solid hsl(210, 100%, 65%);
+  outline-offset: 3px;
 }
 
 .opt > div:not(.opt > div:last-child) {

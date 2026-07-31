@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type Dispatch, type SetStateAction } from "react";
 import "./Options.css";
 
 interface Props {
@@ -6,9 +6,13 @@ interface Props {
   setDifficulty: (val: string) => void;
   mode: string;
   setMode: (val: string) => void;
-  tries: number;
+  accuracy: number;
   correct: number;
   start: boolean;
+  wpm: number;
+  setWpm: Dispatch<SetStateAction<number>>;
+  setStart: (val: boolean) => void;
+  setFinished: (val: boolean) => void;
 }
 
 function Options({
@@ -16,14 +20,17 @@ function Options({
   setDifficulty,
   mode,
   setMode,
-  tries,
+  accuracy,
   correct,
   start,
+  wpm,
+  setWpm,
+  setStart,
+  setFinished,
 }: Props) {
   const [diffDrop, setDiffDrop] = useState<boolean>(false);
   const [modeDrop, setModeDrop] = useState<boolean>(false);
   const [time, setTime] = useState<number>(mode === "Passage" ? 0 : 60);
-  const [wpm, setWpm] = useState<number>(0);
   const data = {
     difficulties: ["Easy", "Medium", "Hard"],
     modes: ["Timed (60s)", "Passage"],
@@ -72,6 +79,13 @@ function Options({
     }
   }, [time, correct, mode, start]);
 
+  useEffect(() => {
+    if (mode !== "Passage" && time <= 0) {
+      setStart(false);
+      setFinished(true);
+    }
+  }, [time, mode]);
+
   return (
     <section>
       <ul className="stats">
@@ -81,11 +95,12 @@ function Options({
         <div className="separator"></div>
         <li>
           Accuracy:{" "}
-          <span>{tries > 0 ? Math.floor((correct / tries) * 100) : 0}%</span>
+          <span className={`${accuracy > 0 ? "red" : ""}`}>{accuracy}%</span>
         </li>
         <div className="separator"></div>
         <li>
-          Time: <span>{formatTime(time)}</span>
+          Time:{" "}
+          <span className={`${start ? "yellow" : ""}`}>{formatTime(time)}</span>
         </li>
       </ul>
 
@@ -103,6 +118,11 @@ function Options({
                 key={i}
                 className={`diff-desk ${diff === difficulty ? "diff-desk-selected" : ""}`}
                 onClick={() => handleDiff(diff)}
+                tabIndex={0}
+                role="button"
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") handleDiff(diff);
+                }}
               >
                 <div className={`radio ${diff === difficulty ? "filled" : ""}`}>
                   <div className="inner"></div>
@@ -128,6 +148,11 @@ function Options({
                 key={i}
                 className={`mode-desk ${m === mode ? "mode-desk-selected" : ""}`}
                 onClick={() => handleMode(m)}
+                tabIndex={0}
+                role="button"
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") handleMode(m);
+                }}
               >
                 <div className={`radio ${m === mode ? "filled" : ""}`}>
                   <div className="inner"></div>

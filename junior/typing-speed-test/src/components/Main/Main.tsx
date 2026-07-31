@@ -14,6 +14,8 @@ interface Props {
   setCorrect: (val: number) => void;
   start: boolean;
   setStart: (val: boolean) => void;
+  setFinished: (val: boolean) => void;
+  setChars: (val: number) => void;
 }
 
 interface Data {
@@ -21,7 +23,15 @@ interface Data {
   text: string;
 }
 
-function Main({ difficulty, setTries, setCorrect, start, setStart }: Props) {
+function Main({
+  difficulty,
+  setTries,
+  setCorrect,
+  start,
+  setStart,
+  setFinished,
+  setChars,
+}: Props) {
   const [challenge, setChallenge] = useState<Data>(data.hard[9]);
   const [typed, setTyped] = useState<string>("");
 
@@ -50,6 +60,10 @@ function Main({ difficulty, setTries, setCorrect, start, setStart }: Props) {
 
   useEffect(() => {
     if (start) setCorrect(correctLetters());
+    if (typed.length >= challenge.text.length) {
+      setStart(false);
+      setFinished(true);
+    }
 
     if (!ref.current) return;
 
@@ -80,6 +94,10 @@ function Main({ difficulty, setTries, setCorrect, start, setStart }: Props) {
 
     setTyped("");
   }, [difficulty, start]);
+
+  useEffect(() => {
+    setChars(challenge.text.length);
+  }, [challenge]);
 
   useEffect(() => {
     if (!start) return;

@@ -1,11 +1,6 @@
-import { useState } from "react";
 import "./Header.css";
 
-function Header() {
-  const [highScore, setHighScore] = useState<string>(
-    localStorage.getItem("high-score") ?? "0",
-  );
-
+function Header({ highScore }: { highScore: string }) {
   return (
     <header>
       <img className="desktop" src="images/logo-large.svg" alt="logo-desktop" />

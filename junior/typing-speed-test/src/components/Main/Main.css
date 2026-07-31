@@ -80,6 +80,11 @@ main button {
   align-self: center;
 }
 
+main button:focus-visible {
+  outline: 2px solid hsl(210, 100%, 65%);
+  outline-offset: 3px;
+}
+
 main button img {
   width: 14px;
   height: 14px;
