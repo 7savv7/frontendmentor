@@ -1,7 +1,17 @@
+import data from "./data.json";
+import Dessert from "./Dessert";
+
 function App() {
   return (
     <div>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <main>
+        <h1 className="text-3xl font-bold">Desserts</h1>
+        <section>
+          {data.map((dessert) => (
+            <Dessert dessert={dessert} />
+          ))}
+        </section>
+      </main>
     </div>
   );
 }
