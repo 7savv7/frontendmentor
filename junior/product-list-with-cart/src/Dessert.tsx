@@ -41,11 +41,15 @@ function Dessert({ dessert, cart, setCart }: Props) {
   return (
     <div className="flex flex-col w-fit">
       <div className="relative flex flex-col items-center mb-6">
-        <img
-          className={`rounded-2xl outline-3 ${inCart ? "outline-r" : "outline-transparent"}`}
-          src={dessert.image.mobile}
-          alt={`${dessert.name}-image`}
-        />
+        <picture>
+          <source media="(min-width: 1024px)" srcSet={dessert.image.desktop} />
+          <source media="(min-width: 640px)" srcSet={dessert.image.tablet} />
+          <img
+            className={`rounded-2xl outline-3 ${inCart ? "outline-r" : "outline-transparent"}`}
+            src={dessert.image.mobile}
+            alt={`${dessert.name}-image`}
+          />
+        </picture>
 
         <div className="absolute top-[calc(100%-19px)] h-10 w-40">
           {inCart ? (

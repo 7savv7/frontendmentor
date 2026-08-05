@@ -20,7 +20,7 @@ function Cart({ cart, setCart }: Props) {
   };
 
   return (
-    <div className="w-full h-fit bg-white p-5 rounded-xl lg:w-180">
+    <div className="w-full min-w-70 h-fit bg-white p-5 rounded-xl lg:w-180">
       <h3 className="self-start text-r font-bold text-[20px]">
         Your Cart ({totalQuantity})
       </h3>
