@@ -1,10 +1,10 @@
 import { type Dispatch, type SetStateAction } from "react";
-import type { Des } from "./App";
+import type { CartItem, Des } from "./App";
 
 interface Props {
   dessert: Des;
-  cart: (Des & { quantity: number })[];
-  setCart: Dispatch<SetStateAction<(Des & { quantity: number })[]>>;
+  cart: CartItem[];
+  setCart: Dispatch<SetStateAction<CartItem[]>>;
 }
 
 function Dessert({ dessert, cart, setCart }: Props) {
@@ -39,7 +39,7 @@ function Dessert({ dessert, cart, setCart }: Props) {
   };
 
   return (
-    <div className="flex flex-col w-fit mb-5">
+    <div className="flex flex-col w-fit">
       <div className="relative flex flex-col items-center mb-6">
         <img
           className={`rounded-2xl outline-3 ${inCart ? "outline-r" : "outline-transparent"}`}

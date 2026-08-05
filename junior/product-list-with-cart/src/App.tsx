@@ -1,6 +1,7 @@
 import { useState } from "react";
 import data from "./data.json";
 import Dessert from "./Dessert";
+import Cart from "./Cart";
 
 export interface Des {
   image: {
@@ -14,11 +15,15 @@ export interface Des {
   price: number;
 }
 
+export interface CartItem extends Des {
+  quantity: number;
+}
+
 function App() {
-  const [cart, setCart] = useState<(Des & { quantity: number })[]>([]);
+  const [cart, setCart] = useState<CartItem[]>([]);
 
   return (
-    <div>
+    <div className="flex flex-col gap-8 lg:flex-row">
       <main>
         <h1 className="text-3xl font-bold mb-5">Desserts</h1>
 
@@ -33,6 +38,8 @@ function App() {
           ))}
         </section>
       </main>
+
+      <Cart cart={cart} setCart={setCart} />
     </div>
   );
 }
