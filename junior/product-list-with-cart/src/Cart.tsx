@@ -1,5 +1,6 @@
-import type { Dispatch, SetStateAction } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
 import type { CartItem } from "./App";
+import Confirmation from "./Confirmation";
 
 interface Props {
   cart: CartItem[];
@@ -7,7 +8,12 @@ interface Props {
 }
 
 function Cart({ cart, setCart }: Props) {
+  const [confirm, setConfirm] = useState<boolean>(false);
   const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
+  const totalCost = cart.reduce(
+    (total, item) => total + item.quantity * item.price,
+    0,
+  );
 
   const removeCartItem = (name: string) => {
     setCart((prev) => prev.filter((item) => item.name !== name));
@@ -58,6 +64,31 @@ function Cart({ cart, setCart }: Props) {
               </div>
             </div>
           ))}
+
+          <div className="flex items-center justify-between gap-2 py-6">
+            <p className="text-[14px] font-semibold text-rose500">
+              Order Total
+            </p>
+
+            <p className="font-bold text-2xl text-rose900">
+              ${totalCost.toFixed(2)}
+            </p>
+          </div>
+
+          <div className="flex gap-2 justify-center items-center text-center bg-rose50 p-4 w-full rounded-xl">
+            <img src="images/icon-carbon-neutral.svg" alt="carbon-neutral" />
+            <p className="text-rose900">
+              This is a <span className="font-semibold">carbon-neutral</span>{" "}
+              delivery
+            </p>
+          </div>
+
+          <button
+            onClick={() => setConfirm(true)}
+            className="cursor-pointer bg-r rounded-full p-3 text-white mt-5 hover:bg-[hsl(14,86%,32%)]"
+          >
+            Confirm Order
+          </button>
         </div>
       ) : (
         <div className="flex flex-col items-center gap-2 my-5">
@@ -71,6 +102,10 @@ function Cart({ cart, setCart }: Props) {
             Your added items will appear here
           </p>
         </div>
+      )}
+
+      {confirm && (
+        <Confirmation cart={cart} setCart={setCart} setConfirm={setConfirm} />
       )}
     </div>
   );
