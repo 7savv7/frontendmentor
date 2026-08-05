@@ -1,0 +1,47 @@
+[
+    {
+        "title": "qr-code-component",
+        "difficulty": "newbie",
+        "image": "images/qr-code-component.png",
+        "tools": ["react", "css", "typescript"],
+        "frontendmentor": "https://www.frontendmentor.io/solutions/qr-code-component-PHuSvbMY3K",
+        "github": "https://github.com/7savv7/frontendmentor/tree/main/newbie/qr-code-component",
+        "link": "https://qr-code-component-mu-sage.vercel.app/"
+    },
+    {
+        "title": "typing-speed-test",
+        "difficulty": "junior",
+        "image": "images/typing-speed-test.png",
+        "tools": ["react", "css", "typescript"],
+        "frontendmentor": "https://www.frontendmentor.io/solutions/typing-speed-test-HUCBgytqHO",
+        "github": "https://github.com/7savv7/frontendmentor/tree/main/junior/typing-speed-test",
+        "link": "https://typing-speed-test-jade-beta.vercel.app/"
+    },
+    {
+        "title": "blog-preview-card",
+        "difficulty": "newbie",
+        "image": "images/blog-preview-card.png",
+        "tools": ["react", "css", "typescript"],
+        "frontendmentor": "https://www.frontendmentor.io/solutions/blog-preview-card-9mXBJ26Iw4",
+        "github": "https://github.com/7savv7/frontendmentor/tree/main/newbie/blog-preview-card",
+        "link": "https://blog-preview-card-eight-zeta-38.vercel.app/"
+    },
+    {
+        "title": "product-list-with-cart",
+        "difficulty": "junior",
+        "image": "images/product-list-with-cart.png",
+        "tools": ["react", "tailwindcss", "typescript"],
+        "frontendmentor": "https://www.frontendmentor.io/solutions/product-list-with-cart-lS2S_wuXVo",
+        "github": "https://github.com/7savv7/frontendmentor/tree/main/junior/product-list-with-cart",
+        "link": "https://product-list-with-cart-psi-coral.vercel.app/"
+    },
+    {
+        "title": "nft-preview-card-component",
+        "difficulty": "newbie",
+        "image": "images/nft-preview-card-component.png",
+        "tools": ["react", "tailwindcss", "typescript"],
+        "frontendmentor": "https://www.frontendmentor.io/solutions/nft-preview-card-component-OLJ0__WwUB",
+        "github": "https://github.com/7savv7/frontendmentor/tree/main/newbie/nft-preview-card-component",
+        "link": "https://nft-preview-card-component-orpin.vercel.app/"
+    }
+]
