@@ -55,74 +55,40 @@ function App() {
   const [period, setPeriod] = useState<Period>("weekly");
 
   return (
-    <div className="grid grid-cols-4 gap-5 p-10">
-      <div className="row-span-2 border">
-        <p onClick={() => setPeriod("daily")}>daily</p>
-        <p onClick={() => setPeriod("weekly")}>weekly</p>
-        <p onClick={() => setPeriod("monthly")}>monthly</p>
-      </div>
+    <div className="bg-navy950 h-full w-full flex justify-center items-center  p-10">
+      <div className="grid grid-cols-4 content-center items-stretch gap-5 max-w-250 w-full h-full">
+        <div className="bg-navy900 rounded-xl row-span-2">
+          <div className="bg-purple600 h-[70%] rounded-xl p-6">
+            <img className="h-10 w-10" src="/images/image-jeremy.png" alt="image-jeremy" />
+            <p>
+              Report for <span>Jeremy Robson</span>
+            </p>
+          </div>
 
-      {data.map((d) => (
-        <Card data={d} cardData={cardData[d.title as Title]} period={period} />
-      ))}
+          <div className="flex flex-col h-[30%] gap-2 p-6">
+            {["daily", "weekly", "monthly"].map((p) => (
+              <p
+                key={p}
+                className={`cursor-pointer ${period === p ? "text-white" : "text-navy200"} capitalize hover:text-white w-fit`}
+                onClick={() => setPeriod(p as Period)}
+              >
+                {p}
+              </p>
+            ))}
+          </div>
+        </div>
+
+        {data.map((d) => (
+          <Card
+            key={d.title}
+            data={d}
+            cardData={cardData[d.title as Title]}
+            period={period}
+          />
+        ))}
+      </div>
     </div>
   );
 }
 
 export default App;
-
-/*   Report for
-  Jeremy Robson
-
-  Daily
-  Weekly
-  Monthly
-
-  Work
-  5hrs <!-- daily -->
-  Previous - 7hrs <!-- daily -->
-  32hrs <!-- weekly -->
-  Previous - 36hrs <!-- weekly -->
-  103hrs <!-- monthly -->
-  Previous - 128hrs <!-- monthly -->
-
-  Play
-  1hr <!-- daily -->
-  Previous - 2hrs <!-- daily -->
-  10hrs <!-- weekly -->
-  Previous - 8hrs <!-- weekly -->
-  23hrs <!-- monthly -->
-  Previous - 29hrs <!-- monthly -->
-
-  Study
-  0hrs <!-- daily -->
-  Previous - 1hr <!-- daily -->
-  4hrs <!-- weekly -->
-  Previous - 7hrs <!-- weekly -->
-  13hrs <!-- monthly -->
-  Previous - 19hrs <!-- monthly -->
-
-  Exercise
-  1hr <!-- daily -->
-  Previous - 1hr <!-- daily -->
-  4hrs <!-- weekly -->
-  Previous - 5hrs <!-- weekly -->
-  11hrs <!-- monthly -->
-  Previous - 18hrs <!-- monthly -->
-
-  Social
-  1hr <!-- daily -->
-  Previous - 3hrs <!-- daily -->
-  5hrs <!-- weekly -->
-  Previous - 10hrs <!-- weekly -->
-  21hrs <!-- monthly -->
-  Previous - 23hrs <!-- monthly -->
-
-  Self Care
-  0hrs <!-- daily -->
-  Previous - 1hr <!-- daily -->
-  2hrs <!-- weekly -->
-  Previous - 2hrs <!-- weekly -->
-  7hrs <!-- monthly -->
-  Previous - 11hrs <!-- monthly -->
- */

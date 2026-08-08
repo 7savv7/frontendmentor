@@ -14,13 +14,13 @@ interface Props {
 function Card({ data, cardData, period }: Props) {
   return (
     <div
-      className={`${cardData.color} h-50 flex flex-col justify-end rounded-xl 
-      overflow-hidden ${cardData.image} bg-position-[90%_-10%] bg-no-repeat`}
+      className={`${cardData.color} h-50 flex flex-col justify-end rounded-xl rounded-b-3xl 
+      ${cardData.image} bg-position-[90%_-10%] bg-no-repeat`}
     >
-      <div className="h-[80%] bg-purple600 p-6 flex flex-col justify-between rounded-xl">
+      <div className="h-[80%] bg-navy900 p-6 flex flex-col justify-between rounded-xl text-white">
         <div className="flex items-center justify-between">
           <p>{data.title}</p>
-          <img src="images/icon-ellipsis.svg" alt="icon-ellipsis" />
+          <img className="cursor-pointer" src="images/icon-ellipsis.svg" alt="icon-ellipsis" />
         </div>
 
         <div>

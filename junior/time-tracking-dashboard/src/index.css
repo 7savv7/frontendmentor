@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 
 @theme {
   --color-orange: hsl(15, 100%, 70%);
@@ -9,4 +10,26 @@
   --color-yellow: hsl(43, 84%, 65%);
 
   --color-purple600: hsl(246, 80%, 60%);
+  --color-navy950: hsl(226, 43%, 10%);
+  --color-navy900: hsl(235, 46%, 20%);
+  --color-purple500: hsl(235, 45%, 61%);
+  --color-navy200: hsl(236, 100%, 87%);
+}
+
+body,
+#root {
+  width: 100%;
+  height: 100dvh;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Rubik", sans-serif;
+}
+
+@media (min-width: 1024px) {
+  body,
+  #root {
+    height: 100vh;
+  }
 }
