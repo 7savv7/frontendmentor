@@ -43,5 +43,14 @@
         "frontendmentor": "https://www.frontendmentor.io/solutions/nft-preview-card-component-OLJ0__WwUB",
         "github": "https://github.com/7savv7/frontendmentor/tree/main/newbie/nft-preview-card-component",
         "link": "https://nft-preview-card-component-orpin.vercel.app/"
+    },
+    {
+        "title": "time-tracking-dashboard",
+        "difficulty": "junior",
+        "image": "images/time-tracking-dashboard.png",
+        "tools": ["react", "tailwindcss", "typescript"],
+        "frontendmentor": "https://www.frontendmentor.io/solutions/time-tracking-dashboard-w_tey4JEoR",
+        "github": "https://github.com/7savv7/frontendmentor/tree/main/junior/time-tracking-dashboard",
+        "link": "https://time-tracking-dashboard-lovat-phi.vercel.app/"
     }
 ]
