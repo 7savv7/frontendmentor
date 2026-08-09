@@ -1,5 +1,6 @@
 import { useTheme } from "./ThemeContext";
 import Background from "./Background";
+import Todo from "./Todo";
 
 function App() {
   const [theme, toggleTheme] = useTheme();
@@ -8,7 +9,7 @@ function App() {
     <Background>
       <div className="w-full max-w-160 flex flex-col items-center">
         <div className="flex w-full justify-between">
-          <h1 className="uppercase">Todo</h1>
+          <h1 className="uppercase tracking-[0.2em]">Todo</h1>
 
           <button className="cursor-pointer" onClick={toggleTheme}>
             {theme === "dark" ? (
@@ -30,6 +31,8 @@ function App() {
             )}
           </button>
         </div>
+
+        <Todo />
 
         <p>Drag and drop to reorder list</p>
       </div>
