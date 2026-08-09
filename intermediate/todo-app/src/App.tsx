@@ -9,7 +9,9 @@ function App() {
     <Background>
       <div className="w-full max-w-160 flex flex-col items-center">
         <div className="flex w-full items-center justify-between mb-10">
-          <h1 className="uppercase tracking-[0.3em] font-bold text-[2em] text-white">Todo</h1>
+          <h1 className="uppercase tracking-[0.3em] font-bold text-[2em] text-white">
+            Todo
+          </h1>
 
           <button className="cursor-pointer" onClick={toggleTheme}>
             {theme === "dark" ? (
@@ -34,7 +36,9 @@ function App() {
 
         <Todo />
 
-        <p className="mt-25 text-purple600 md:mt-10">Drag and drop to reorder list</p>
+        <p className="mt-25 text-gray600 dark:text-purple600 md:mt-10">
+          Drag and drop to reorder list
+        </p>
       </div>
     </Background>
   );

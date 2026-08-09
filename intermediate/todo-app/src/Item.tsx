@@ -14,7 +14,8 @@ function Item({ todo, index, toggleCompleted, deleteTodo }: Props) {
   return (
     <div
       ref={ref}
-      className="cursor-grab group flex justify-between items-center bg-navy900 p-4 w-full border-b border-purple800"
+      className="cursor-grab group flex justify-between items-center bg-gray50 dark:bg-navy900 
+      p-5 w-full border-b border-gray300 dark:border-purple800"
     >
       <div className="flex items-center">
         <CheckBox
@@ -23,7 +24,7 @@ function Item({ todo, index, toggleCompleted, deleteTodo }: Props) {
         />
 
         <p
-          className={`ml-2 text-[18px] text-purple300 ${todo.completed && "line-through text-purple600"}`}
+          className={`ml-5 text-[18px] text-navy850 dark:text-purple300 ${todo.completed && "line-through text-purple300 dark:text-purple600"}`}
         >
           {todo.task}
         </p>

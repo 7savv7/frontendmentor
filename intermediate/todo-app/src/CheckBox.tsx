@@ -14,7 +14,7 @@ function CheckBox({ completed, toggleCompleted }: Props) {
       />
 
       <span
-        className="flex items-center justify-center w-6 h-6 border border-purple800 rounded-full 
+        className="flex items-center justify-center w-6 h-6 border border-gray300 dark:border-purple800 rounded-full 
           peer-checked:bg-gradient-to-r peer-checked:from-from peer-checked:to-to hover:border-from"
       >
         {completed && (
