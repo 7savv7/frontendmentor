@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-interface Todo {
+export interface Todo {
   task: string;
   completed: boolean;
 }
