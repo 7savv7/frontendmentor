@@ -13,7 +13,12 @@ function App() {
             Todo
           </h1>
 
-          <button className="cursor-pointer" onClick={toggleTheme}>
+          <button
+            type="button"
+            aria-label="Toggle theme"
+            className="cursor-pointer"
+            onClick={toggleTheme}
+          >
             {theme === "dark" ? (
               <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26">
                 <path

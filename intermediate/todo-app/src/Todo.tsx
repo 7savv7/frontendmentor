@@ -61,8 +61,10 @@ function Todo() {
         <div className="flex p-4 justify-between bg-gray50 dark:bg-navy900 text-gray600 dark:text-purple600 font-semibold">
           <p>{todos.length} items left</p>
 
-          <div className="flex gap-4 absolute w-full top-[calc(100%+15px)] left-0 bg-gray50 dark:bg-navy900
-           p-4 justify-center rounded-sm md:relative md:p-0 md:w-fit shadow-lg md:shadow-none">
+          <div
+            className="flex gap-4 absolute w-full top-[calc(100%+15px)] left-0 bg-gray50 dark:bg-navy900
+           p-4 justify-center rounded-sm md:relative md:p-0 md:w-fit shadow-lg md:shadow-none"
+          >
             {["All", "Active", "Completed"].map((option) => (
               <p
                 key={option}
