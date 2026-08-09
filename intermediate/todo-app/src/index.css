@@ -2,6 +2,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 @theme {
   --color-blue500: hsl(220, 98%, 61%);
+  --color-from: hsl(192, 100%, 67%);
+  --color-to: hsl(280, 87%, 65%);
 
   --color-gray50: hsl(0, 0%, 98%);
   --color-purple300: hsl(234, 39%, 85%);
@@ -21,4 +23,5 @@
 
 body {
   font-family: "Josefin Sans", sans-serif;
+  user-select: none;
 }

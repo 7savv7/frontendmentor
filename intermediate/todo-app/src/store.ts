@@ -19,7 +19,7 @@ const useTodo = create<TodoStore>((set) => ({
     set((state) => ({
       todos:
         task.trim() !== ""
-          ? [...state.todos, { task, completed }]
+          ? [{ task, completed }, ...state.todos]
           : state.todos,
     })),
   deleteTodo: (index: number) =>
@@ -29,7 +29,7 @@ const useTodo = create<TodoStore>((set) => ({
   toggleCompleted: (index: number) =>
     set((state) => ({
       todos: state.todos.map((t, i) =>
-        i === index ? { ...t, completed: true } : t,
+        i === index ? { ...t, completed: !t.completed } : t,
       ),
     })),
 }));
