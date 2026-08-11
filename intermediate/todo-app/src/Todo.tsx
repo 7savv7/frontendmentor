@@ -20,6 +20,16 @@ function Todo() {
     }
   };
 
+  const filtered = todos
+    .map((todo, index) => ({ todo, index }))
+    .filter(({ todo }) =>
+      filter === "All"
+        ? true
+        : filter === "Active"
+          ? !todo.completed
+          : todo.completed,
+    );
+
   return (
     <div className="relative w-full flex flex-col">
       <div className="w-full bg-gray50 dark:bg-navy900 pl-5 rounded-sm flex items-center gap-5 shadow-lg md:shadow-none">
@@ -39,27 +49,18 @@ function Todo() {
       </div>
 
       <div className="mt-4 rounded-sm overflow-hidden bg-gray50 dark:bg-navy900 shadow-lg md:shadow-2xl">
-        {todos
-          .map((todo, index) => ({ todo, index }))
-          .filter(({ todo }) =>
-            filter === "All"
-              ? true
-              : filter === "Active"
-                ? !todo.completed
-                : todo.completed,
-          )
-          .map(({ todo, index }) => (
-            <Item
-              key={index}
-              todo={todo}
-              index={index}
-              toggleCompleted={() => toggleCompleted(index)}
-              deleteTodo={() => deleteTodo(index)}
-            />
-          ))}
+        {filtered.map(({ todo, index }) => (
+          <Item
+            key={index}
+            todo={todo}
+            index={index}
+            toggleCompleted={() => toggleCompleted(index)}
+            deleteTodo={() => deleteTodo(index)}
+          />
+        ))}
 
         <div className="flex p-4 justify-between bg-gray50 dark:bg-navy900 text-gray600 dark:text-purple600 font-semibold">
-          <p>{todos.length} items left</p>
+          <p>{filtered.length} items left</p>
 
           <div
             className="flex gap-4 absolute w-full top-[calc(100%+15px)] left-0 bg-gray50 dark:bg-navy900

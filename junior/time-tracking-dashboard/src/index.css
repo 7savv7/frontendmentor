@@ -27,4 +27,5 @@ body,
   align-items: center;
   justify-content: center;
   font-family: "Rubik", sans-serif;
+  background-color: hsl(226, 43%, 10%);
 }

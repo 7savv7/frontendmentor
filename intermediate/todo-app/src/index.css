@@ -23,4 +23,12 @@
 body {
   font-family: "Josefin Sans", sans-serif;
   user-select: none;
+  min-height: 100dvh;
+  @apply bg-gray50 dark:bg-navy950;
+}
+
+@media (min-width: 1024px) {
+  body {
+    min-width: 100vh;
+  }
 }

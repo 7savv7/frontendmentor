@@ -9,7 +9,7 @@ function Background({ children }: Props) {
   const [theme] = useTheme();
 
   return (
-    <div className="relative bg-gray50 dark:bg-navy950 min-h-screen">
+    <div className="relative bg-gray50 dark:bg-navy950 min-h-svh md:min-h-screen">
       <picture key={theme} className="absolute top-0 left-0 w-full">
         <source
           media="(min-width: 1024px)"
@@ -30,7 +30,7 @@ function Background({ children }: Props) {
         />
       </picture>
 
-      <div className="relative z-1 flex justify-center min-h-screen p-5 pt-20">
+      <div className="relative z-1 flex justify-center p-5 pt-20">
         {children}
       </div>
     </div>
