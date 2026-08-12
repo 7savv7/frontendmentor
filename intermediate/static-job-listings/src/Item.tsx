@@ -1,10 +1,18 @@
+import type { Dispatch, SetStateAction } from "react";
 import type { Card } from "./App";
 
 interface Props {
   card: Card;
+  setFilter: Dispatch<SetStateAction<string[]>>;
 }
 
-function Item({ card }: Props) {
+function Item({ card, setFilter }: Props) {
+  const chips = [card.role, card.level, ...card.languages, ...card.tools];
+
+  const addFilter = (chip: string) => {
+    setFilter((prev) => (prev.includes(chip) ? prev : [...prev, chip]));
+  };
+
   return (
     <div
       className={`relative min-w-full rounded-md bg-white flex flex-col p-[20px] pt-[40px] mb-[50px] 
@@ -12,7 +20,7 @@ function Item({ card }: Props) {
         md:flex-row md:items-center md:gap-5 md:pt-[20px] md:mb-[20px]`}
     >
       <img
-        className="absolute h-[60px] w-[60px] bottom-[calc(100%-30px)] md:static md:h-20 md:w-20"
+        className="absolute rounded-full h-[60px] w-[60px] bottom-[calc(100%-30px)] md:static md:h-20 md:w-20"
         src={card.logo}
         alt={`${card.company}-logo`}
       />
@@ -52,26 +60,13 @@ function Item({ card }: Props) {
       </div>
 
       <div className="flex flex-wrap gap-3 mt-4 md:flex-1 md:justify-end">
-        <p className="cursor-pointer bg-green400/10 py-1 px-2 rounded-sm text-green400 font-bold hover:bg-green400 hover:text-white">
-          {card.role}
-        </p>
-        <p className="cursor-pointer bg-green400/10 py-1 px-2 rounded-sm text-green400 font-bold hover:bg-green400 hover:text-white">
-          {card.level}
-        </p>
-        {card.languages.map((l) => (
+        {chips.map((chip) => (
           <p
-            key={l}
+            key={chip}
+            onClick={() => addFilter(chip)}
             className="cursor-pointer bg-green400/10 py-1 px-2 rounded-sm text-green400 font-bold hover:bg-green400 hover:text-white"
           >
-            {l}
-          </p>
-        ))}
-        {card.tools.map((t) => (
-          <p
-            key={t}
-            className="cursor-pointer bg-green400/10 py-1 px-2 rounded-sm text-green400 font-bold hover:bg-green400 hover:text-white"
-          >
-            {t}
+            {chip}
           </p>
         ))}
       </div>
