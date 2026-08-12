@@ -8,6 +8,7 @@
 }
 
 body {
-  background-color: hsl(180, 52%, 96%);
-  font-family: "League Spartan";
+  background-color: var(--color-background);
+  font-family: "League Spartan", sans-serif;
+  user-select: none;
 }

@@ -61,5 +61,14 @@
         "frontendmentor": "https://www.frontendmentor.io/solutions/todo-app-HQHQLSZGtg",
         "github": "https://github.com/7savv7/frontendmentor/tree/main/intermediate/todo-app",
         "link": "https://todo-app-flame-seven-86.vercel.app/"
+    },
+    {
+        "title": "static-job-listings",
+        "difficulty": "intermediate",
+        "image": "images/static-job-listings.png",
+        "tools": ["react", "tailwindcss", "typescript"],
+        "frontendmentor": "https://www.frontendmentor.io/solutions/static-job-listings-sl66e_3KX-",
+        "github": "https://github.com/7savv7/frontendmentor/tree/main/intermediate/static-job-listings",
+        "link": "https://static-job-listings-hazel.vercel.app/"
     }
 ]
