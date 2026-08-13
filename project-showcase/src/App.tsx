@@ -83,7 +83,7 @@ function App() {
         ))}
       </div>
 
-      <div className="flex flex-wrap gap-5">
+      <div className="flex justify-center flex-wrap gap-5">
         {projects.map((project) => (
           <Project
             key={project.title}

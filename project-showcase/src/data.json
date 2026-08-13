@@ -70,5 +70,14 @@
         "frontendmentor": "https://www.frontendmentor.io/solutions/static-job-listings-sl66e_3KX-",
         "github": "https://github.com/7savv7/frontendmentor/tree/main/intermediate/static-job-listings",
         "link": "https://static-job-listings-hazel.vercel.app/"
+    },
+    {
+        "title": "product-preview-card-component",
+        "difficulty": "newbie",
+        "image": "images/product-preview-card-component.png",
+        "tools": ["react", "tailwindcss", "typescript"],
+        "frontendmentor": "https://www.frontendmentor.io/solutions/product-preview-card-component-h0krYtRxbw",
+        "github": "https://github.com/7savv7/frontendmentor/tree/main/newbie/product-preview-card-component",
+        "link": "https://product-preview-card-component-phi-ivory.vercel.app/"
     }
 ]

@@ -29,7 +29,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [here](https://github.com/7savv7/frontendmentor/tree/main/intermediate/static-job-listings)
-- Live Site URL: [here](https://static-job-listings-ifwbi4r8z-7savv7s-projects.vercel.app/)
+- Live Site URL: [here](https://static-job-listings-hazel.vercel.app/)
 
 ## My process
 

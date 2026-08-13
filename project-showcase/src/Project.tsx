@@ -9,7 +9,7 @@ interface Props {
 
 function Project({ project, diffClass, addDifficulty, addTag }: Props) {
   return (
-    <div className=" rounded-lg w-80 overflow-hidden border border-black/20">
+    <div className=" rounded-lg w-80 h-100 overflow-hidden border border-black/20">
       <div className="h-[60%] relative">
         <a target="_blank" href={project.link}>
           <img
@@ -57,12 +57,12 @@ function Project({ project, diffClass, addDifficulty, addTag }: Props) {
           </a>
         </div>
 
-        <div className="flex flex-wrap gap-2">
+        <div className="flex overflow-x-auto overflow-y-hidden scroll-smooth snap-x snap-mandatory whitespace-nowrap gap-2">
           {project.tools.map((tool) => (
             <p
               key={tool}
               onClick={() => addTag(tool)}
-              className="cursor-pointer"
+              className="cursor-pointer snap-start"
             >
               #{tool}
             </p>

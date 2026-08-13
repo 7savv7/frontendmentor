@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+@theme {
+  --color-green500: hsl(158, 36%, 37%);
+  --color-green700: hsl(158, 42%, 18%);
+
+  --color-black: hsl(212, 21%, 14%);
+  --color-grey: hsl(228, 12%, 48%);
+  --color-cream: hsl(30, 38%, 92%);
+  --color-white: hsl(0, 0%, 100%);
+}
+
+body {
+  background-color: var(--color-cream);
+  user-select: none;
+  font-family: Fraunces, sans-serif;
+}
