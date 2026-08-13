@@ -5,11 +5,11 @@ interface Props {
 
 function Tags({ tag, removeTag }: Props) {
   return (
-    <div className="flex gap-2 items-center justifyc-center border rounded-md">
-      <p className="py-1 px-2">{tag}</p>
+    <div className="flex items-center justify-center gap-2 px-1.5 py-1 bg-purple-200  rounded-md">
+      <p className="capitalize">{tag}</p>
 
       <button
-        className="cursor-pointer border-l h-full px-2.5 hover:bg-black/10"
+        className="cursor-pointer bg-white h-full p-2 rounded-sm hover:bg-black/20"
         onClick={() => removeTag(tag)}
       >
         <svg

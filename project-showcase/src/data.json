@@ -79,5 +79,14 @@
         "frontendmentor": "https://www.frontendmentor.io/solutions/product-preview-card-component-h0krYtRxbw",
         "github": "https://github.com/7savv7/frontendmentor/tree/main/newbie/product-preview-card-component",
         "link": "https://product-preview-card-component-phi-ivory.vercel.app/"
+    },
+    {
+        "title": "advice-generator-app",
+        "difficulty": "junior",
+        "image": "images/advice-generator-app.png",
+        "tools": ["react", "tailwindcss", "typescript"],
+        "frontendmentor": "https://www.frontendmentor.io/solutions/advice-generator-app-m0vr6ad7AT",
+        "github": "https://github.com/7savv7/frontendmentor/tree/main/junior/advice-generator-app",
+        "link": "https://advice-generator-app-two-ivory.vercel.app/"
     }
 ]

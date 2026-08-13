@@ -17,15 +17,15 @@ function App() {
         </div>
 
         <div className="flex flex-col gap-4 p-8 md:w-[50%]">
-          <p className="uppercase text-grey font-[500] text-[14px] tracking-[0.3rem] font-[Montserrat]">
+          <p className="uppercase text-grey font-medium text-[14px] tracking-[0.3rem] font-[Montserrat]">
             Perfume
           </p>
 
-          <h1 className="text-black text-[2rem] font-bold leading-[2rem]">
+          <h1 className="text-black text-[2rem] font-bold leading-8">
             Gabrielle Essence Eau De Parfum
           </h1>
 
-          <p className="font-[Montserrat] text-grey font-[500]">
+          <p className="font-[Montserrat] text-grey font-medium">
             A floral, solar and voluptuous interpretation composed by Olivier
             Polge, Perfumer-Creator for the House of CHANEL.
           </p>
