@@ -16,7 +16,7 @@
   --color-sun200: hsl(45, 100%, 74%);
   --color-sun50: hsl(41, 100%, 93%);
 
-  --colro-terracotta700: hsl(15, 69%, 37%);
+  --color-terracotta700: hsl(15, 69%, 37%);
   --color-terracotta600: hsl(15, 74%, 41%);
   --color-terracotta500: hsl(18, 62%, 47%);
   --color-terracotta400: hsl(22, 72%, 56%);
@@ -24,4 +24,9 @@
   --color-blue500: hsl(230, 49%, 56%);
 
   --color-rose500: hsl(340, 48%, 52%);
+}
+
+body {
+  font-family: "DM Sans";
+  user-select: none;
 }

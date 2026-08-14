@@ -2,8 +2,9 @@ import Aside from "./Aside";
 
 function App() {
   return (
-    <div className="min-h-svh md:min-h-screen">
+    <div className="flex flex-col min-h-svh md:min-h-screen md:flex-row">
       <Aside />
+      <div>Hey</div>
     </div>
   );
 }
