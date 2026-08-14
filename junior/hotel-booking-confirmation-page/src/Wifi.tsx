@@ -1,4 +1,15 @@
+import { useState } from "react";
+
 function Wifi() {
+  const [copy, setCopy] = useState<string>("Copy");
+  const handleCopy = () => {
+    setCopy("Copied");
+    navigator.clipboard.writeText("soleil-2026");
+    setTimeout(() => {
+      setCopy("Copy");
+    }, 1000);
+  };
+
   return (
     <div className="flex-1 flex flex-col gap-5 p-4 border border-neutral400 rounded-xl bg-neutral0 shadow-sm">
       <div className="flex items-center justify-between">
@@ -42,11 +53,13 @@ function Wifi() {
               <p className="text-neutral900">soleil-2026</p>
 
               <button
+                type="button"
+                onClick={handleCopy}
                 className="cursor-pointer border rounded-full px-1 uppercase border-neutral600/60 font-[500]
                hover:bg-neutral400/60 text-neutral600/80 text-[12px] 
                focus-visible:outline-terracotta600 focus-visible:bg-neutral200 focus-visible:outline-offset-4"
               >
-                Copy
+                {copy}
               </button>
             </div>
           </div>
