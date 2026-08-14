@@ -1,5 +1,8 @@
+import Arrival from "./Arrival";
 import Aside from "./Aside";
+import Breakfast from "./Breakfast";
 import Header from "./Header";
+import Wifi from "./Wifi";
 
 function App() {
   return (
@@ -8,6 +11,12 @@ function App() {
 
       <main className="w-full bg-neutral100 p-5">
         <Header />
+
+        <div className="flex mt-2 flex-col gap-5 md:flex-row">
+          <Arrival />
+          <Wifi />
+          <Breakfast />
+        </div>
       </main>
     </div>
   );
