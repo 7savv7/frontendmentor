@@ -56,7 +56,7 @@ function Aside() {
       <div
         className={`absolute flex left-0 bottom-0 bg-neutral100 px-4 top-19 md:px-0 md:static 
         overflow-hidden transition-[max-height] duration-500 ease-in-out ${open ? "max-h-full" : "max-h-0"} 
-        flex-col md:flex-1 w-full md:flex md:max-h-full`}
+        flex-col md:flex-1 w-full md:flex md:max-h-full md:overflow-visible`}
       >
         <div className="flex flex-col justify-between flex-1 py-4">
           <nav>
