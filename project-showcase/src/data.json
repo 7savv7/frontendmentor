@@ -88,5 +88,14 @@
         "frontendmentor": "https://www.frontendmentor.io/solutions/advice-generator-app-m0vr6ad7AT",
         "github": "https://github.com/7savv7/frontendmentor/tree/main/junior/advice-generator-app",
         "link": "https://advice-generator-app-two-ivory.vercel.app/"
+    },
+    {
+        "title": "hotel-booking-confirmation-page",
+        "difficulty": "junior",
+        "image": "images/hotel-booking-confirmation-page.png",
+        "tools": ["react", "tailwindcss", "typescript"],
+        "frontendmentor": "https://www.frontendmentor.io/solutions/hotel-booking-confirmation-page-hmKtmzHhZ-",
+        "github": "https://github.com/7savv7/frontendmentor/tree/main/junior/hotel-booking-confirmation-page",
+        "link": "https://hotel-booking-confirmation-page-wine.vercel.app/"
     }
 ]

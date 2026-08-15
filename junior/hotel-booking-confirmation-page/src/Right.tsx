@@ -1,12 +1,12 @@
 function Right() {
   return (
     <div
-      className="rotate-2 from-terracotta600 via-terracotta600 to-terracotta600/80 bg-linear-to-tr 
-    text-neutral400 w-80 rounded-2xl shadow-2xl shadow-terracotta600 p-4"
+      className="flex flex-col justify-between w-full h-100 rotate-2 
+      from-terracotta600 via-terracotta600 to-terracotta600/80 bg-linear-to-tr 
+      text-neutral400 rounded-2xl shadow-2xl shadow-terracotta600 p-5 md:w-100
+      md:translate-x-[-106px] md:rotate-3 group-hover:translate-x-0 group-hover:rotate-[-5deg] transition"
     >
-      <div className="w-full h-[1px] border-t border-neutral400/40 border-dashed" />
-
-      <div className="flex justify-between pt-2 w-full">
+      <div className="flex justify-between border-t border-neutral400/40 border-dashed pt-2 w-full">
         <p className="uppercase text-[12px]">Welcome Card</p>
         <img className="" src="/images/icon-sun.svg" alt="sun" />
       </div>

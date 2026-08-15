@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 
 function Aside() {
-  const [open, setOpen] = useState<boolean>(true);
+  const [open, setOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    if (open) {
+    const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+
+    if (open && !isDesktop) {
       document.body.style.overflow = "hidden";
       document.body.style.height = "100%";
     } else {
@@ -15,7 +17,7 @@ function Aside() {
 
   return (
     <aside
-      className={`w-full bg-neutral100 ${open ? "p-4" : "p-0"} flex flex-col h-full 
+      className={`w-full bg-neutral100 ${open ? "p-4" : "p-0"} flex flex-col h-auto 
       border-r border-neutral400 md:w-[320px] md:static md:min-h-screen md:p-4`}
     >
       <div

@@ -54,6 +54,7 @@ function Wifi() {
 
               <button
                 type="button"
+                disabled={copy === "Copied"}
                 onClick={handleCopy}
                 className="cursor-pointer border rounded-full px-1 uppercase border-neutral600/60 font-[500]
                hover:bg-neutral400/60 text-neutral600/80 text-[12px] 
