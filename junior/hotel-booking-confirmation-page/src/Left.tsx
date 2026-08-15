@@ -1,6 +1,6 @@
 function Left() {
   return (
-    <div className="rotate-[-5deg] translate-x-[110px] bg-neutral0 w-fit rounded-xl p-4 shadow-lg">
+    <div className="rotate-[-2deg] bg-neutral0 w-fit rounded-2xl p-4 shadow-2xl">
       <div className="border-b border-dashed pb-2">
         <div className="flex justify-between">
           <p>Receipt</p>

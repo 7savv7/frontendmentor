@@ -3,10 +3,10 @@ import Right from "./Right";
 
 function Ticket() {
   return (
-    <div className="group flex justify-center gap-5 md:flex-1">
+    <div className="group py-10 flex flex-col-reverse items-center md:flex-row md:justify-center gap-5 md:flex-1">
       <Left />
 
-      <div className="flex flex-col items-center justify-between">
+      <div className="hidden flex-col items-center justify-between md:flex">
         <img className="mt-20" src="/images/illustration-sun.svg" alt="sun" />
 
         <div className="flex items-center gap-2">
