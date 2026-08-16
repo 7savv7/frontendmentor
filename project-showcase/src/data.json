@@ -97,5 +97,14 @@
         "frontendmentor": "https://www.frontendmentor.io/solutions/hotel-booking-confirmation-page-hmKtmzHhZ-",
         "github": "https://github.com/7savv7/frontendmentor/tree/main/junior/hotel-booking-confirmation-page",
         "link": "https://hotel-booking-confirmation-page-wine.vercel.app/"
+    },
+    {
+        "title": "testimonials-grid-section",
+        "difficulty": "junior",
+        "image": "images/testimonials-grid-section.png",
+        "tools": ["react", "tailwindcss", "typescript"],
+        "frontendmentor": "https://www.frontendmentor.io/solutions/testimonials-grid-section-Lrfixh1PEl",
+        "github": "https://github.com/7savv7/frontendmentor/tree/main/junior/testimonials-grid-section",
+        "link": "https://testimonials-grid-section-steel-ten.vercel.app/"
     }
 ]
