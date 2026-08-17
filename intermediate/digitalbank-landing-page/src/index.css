@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+@theme {
+  --color-blue950: hsl(233, 26%, 24%);
+  --color-green500: hsl(136, 64%, 51%);
+  --color-cyan400: hsl(192, 69%, 51%);
+
+  --color-gray600: hsl(233, 8%, 62%);
+  --color-gray100: hsl(220, 16%, 96%);
+  --color-gray50: hsl(0, 0%, 98%);
+  --color-white: hsl(0, 100%, 100%);
+}
+
+body {
+  user-select: none;
+  font-size: 18px;
+  font-family: "Public Sans", sans-serif;
+}
