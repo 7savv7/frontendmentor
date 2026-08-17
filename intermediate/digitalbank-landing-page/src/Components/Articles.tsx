@@ -29,7 +29,7 @@ function Articles() {
   ];
 
   return (
-    <section className="p-10 bg-gray50 md:px-5 lg:px-35 xl:px-50">
+    <section className="p-10 bg-gray50 md:px-5 lg:py-20 lg:px-35 xl:px-50">
       <h2 className="text-center mb-12 text-[2rem] text-blue950 md:text-left">
         Latest Articles
       </h2>

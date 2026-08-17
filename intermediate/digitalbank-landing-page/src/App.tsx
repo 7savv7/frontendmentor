@@ -1,4 +1,5 @@
 import Articles from "./Components/Articles";
+import Footer from "./Components/Footer";
 import Header from "./Components/Header";
 import Intro from "./Components/Intro";
 import Pros from "./Components/Pros";
@@ -13,6 +14,8 @@ function App() {
       <Pros />
 
       <Articles />
+
+      <Footer />
     </div>
   );
 }
