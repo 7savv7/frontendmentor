@@ -1,5 +1,6 @@
 import Header from "./Components/Header";
 import Intro from "./Components/Intro";
+import Pros from "./Components/Pros";
 
 function App() {
   return (
@@ -7,6 +8,8 @@ function App() {
       <Header />
 
       <Intro />
+
+      <Pros />
     </div>
   );
 }
