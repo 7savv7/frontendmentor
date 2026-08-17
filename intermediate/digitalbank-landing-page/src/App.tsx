@@ -1,3 +1,4 @@
+import Articles from "./Components/Articles";
 import Header from "./Components/Header";
 import Intro from "./Components/Intro";
 import Pros from "./Components/Pros";
@@ -10,6 +11,8 @@ function App() {
       <Intro />
 
       <Pros />
+
+      <Articles />
     </div>
   );
 }
