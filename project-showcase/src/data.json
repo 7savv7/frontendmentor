@@ -115,5 +115,14 @@
         "frontendmentor": "https://www.frontendmentor.io/solutions/digitalbank-landing-page-JZaHi71J16",
         "github": "https://github.com/7savv7/frontendmentor/tree/main/intermediate/digitalbank-landing-page",
         "link": "https://digitalbank-landing-page-blush.vercel.app/"
+    },
+    {
+        "title": "interactive-comments-section",
+        "difficulty": "intermediate",
+        "image": "images/interactive-comments-section.png",
+        "tools": ["react", "tailwindcss", "typescript"],
+        "frontendmentor": "https://www.frontendmentor.io/solutions/interactive-comments-section-sgNYDZYvxN",
+        "github": "https://github.com/7savv7/frontendmentor/tree/main/intermediate/interactive-comments-section",
+        "link": "https://interactive-comments-section-red-eight.vercel.app/"
     }
 ]

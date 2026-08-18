@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import data from "./data.json";
 import Comment from "./Comment";
 
@@ -42,7 +42,10 @@ export interface CommentType {
 
 function App() {
   const [user, _] = useState<UserType>(data.currentUser);
-  const [comments, setComments] = useState<CommentType[]>(data.comments);
+  const [comments, setComments] = useState<CommentType[]>(() => {
+    const storage = localStorage.getItem("comments");
+    return storage ? JSON.parse(storage) : data.comments;
+  });
   const [comment, setComment] = useState<string>("");
 
   const handleSubmit = () => {
@@ -113,6 +116,7 @@ function App() {
     };
 
     return function (user: string, text: string) {
+      if (text.trim() === "") return;
       setComments((prev) =>
         prev.map((com) =>
           com.id === id
@@ -134,9 +138,13 @@ function App() {
     };
   };
 
+  useEffect(() => {
+    localStorage.setItem("comments", JSON.stringify(comments));
+  }, [comments]);
+
   return (
-    <div className="p-5 min-h-svh md:min-h-screen">
-      <main className="w-full flex flex-col gap-4">
+    <div className="p-5 min-h-svh flex items-center justify-center md:min-h-screen md:py-15">
+      <main className="w-full flex flex-col gap-4 md:w-[50%]">
         <div className="flex flex-col gap-4">
           {comments.map((comment) => (
             <div key={comment.id} className="flex flex-col gap-4">
@@ -149,8 +157,8 @@ function App() {
               />
 
               {comment.replies.length > 0 && (
-                <div className="flex gap-4">
-                  <div className="w-1 h-auto bg-grey100" />
+                <div className="flex justify-between gap-4">
+                  <div className="w-1 h-auto bg-grey100 md:ml-10 md:mr-6" />
 
                   <div className="flex flex-1 flex-col gap-4">
                     {comment.replies.map((reply) => (
@@ -170,7 +178,7 @@ function App() {
           ))}
         </div>
 
-        <div className="grid grid-cols-2 rounded-md items-start gap-5 p-5 bg-white">
+        <div className="grid grid-cols-2 rounded-md items-start gap-5 p-5 bg-white md:grid-cols-3 md:grid-cols-[auto_1fr_auto]">
           <img
             className="w-10 h-10"
             src={user.image.webp}
@@ -181,14 +189,14 @@ function App() {
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             placeholder="Add a comment..."
-            className="text-grey800 font-[500] row-start-1 col-start-1 col-span-2 min-h-20 align-top flex-1 
-          border outline-none resize-none border-grey100 rounded-md p-2"
+            className="text-grey800 font-[500] row-start-1 col-start-1 col-span-2 min-h-20 align-top 
+          border outline-none resize-none border-grey100 rounded-md p-2 md:col-start-2 md:col-span-1 md:min-h-25 focus:border-grey800"
           />
 
           <button
             onClick={handleSubmit}
             type="button"
-            className="justify-self-end bg-purple600 uppercase text-white rounded-md py-2 px-5 w-fit"
+            className="cursor-pointer justify-self-end bg-purple600 uppercase text-white rounded-md py-2 px-5 w-fit hover:opacity-50"
           >
             Send
           </button>

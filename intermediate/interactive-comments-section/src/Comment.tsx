@@ -31,8 +31,8 @@ function Comment({
 
   return (
     <>
-      <div className="flex flex-col gap-5 bg-white p-5 rounded-md">
-        <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-5 bg-white p-5 rounded-md md:flex-row-reverse md:relative">
+        <div className="flex flex-col gap-4 md:flex-1">
           <div className="flex gap-4 items-center">
             <img
               className="w-10 h-10"
@@ -62,7 +62,7 @@ function Comment({
                 onChange={(e) => setEditText(e.target.value)}
                 placeholder="Add a reply..."
                 className="text-grey800 font-[500] row-start-1 col-start-1 col-span-2 min-h-20 align-top flex-1 
-                border outline-none resize-none border-grey100 rounded-md p-2"
+                border outline-none resize-none border-grey100 rounded-md p-2 w-full"
               />
 
               <button
@@ -71,7 +71,7 @@ function Comment({
                   setEdit(false);
                 }}
                 type="button"
-                className="self-end bg-purple600 uppercase text-white rounded-md py-2 px-5 w-fit"
+                className="cursor-pointer self-end bg-purple600 uppercase text-white rounded-md py-2 px-5 w-fit hover:opacity-50"
               >
                 Update
               </button>
@@ -87,15 +87,19 @@ function Comment({
         </div>
 
         <div className="flex item-center justify-between">
-          <div className="flex items-center justify-between gap-4 bg-grey50 rounded-lg px-4 py-2">
+          <div
+            className="flex items-center justify-between gap-4 bg-grey50 
+            rounded-lg px-4 py-2 md:flex-col md:h-fit md:py-4"
+          >
             <svg
-              onClick={() => setVote((prev) => (prev === -1 ? 0 : 1))}
+              className="group cursor-pointer"
+              onClick={() => setVote((prev) => (Math.abs(prev) === 1 ? 0 : 1))}
               width="11"
               height="11"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                className={`${vote === 1 && "fill-purple600"}`}
+                className={`${vote === 1 && "fill-purple600"} group-hover:fill-purple600`}
                 d="M6.33 10.896c.137 0 .255-.05.354-.149.1-.1.149-.217.149-.354V7.004h3.315c.136 0 .254-.05.354-.149.099-.1.148-.217.148-.354V5.272a.483.483 0 0 0-.148-.354.483.483 0 0 0-.354-.149H6.833V1.4a.483.483 0 0 0-.149-.354.483.483 0 0 0-.354-.149H4.915a.483.483 0 0 0-.354.149c-.1.1-.149.217-.149.354v3.37H1.08a.483.483 0 0 0-.354.15c-.1.099-.149.217-.149.353v1.23c0 .136.05.254.149.353.1.1.217.149.354.149h3.333v3.39c0 .136.05.254.15.353.098.1.216.149.353.149H6.33Z"
                 fill="#C5C6EF"
               />
@@ -106,25 +110,26 @@ function Comment({
             </p>
 
             <svg
-              onClick={() => setVote((prev) => (prev === 1 ? 0 : -1))}
+              className="group cursor-pointer"
+              onClick={() => setVote((prev) => (Math.abs(prev) === 1 ? 0 : -1))}
               width="11"
               height="3"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                className={`${vote === -1 && "fill-purple600"}`}
+                className={`${vote === -1 && "fill-purple600"} group-hover:fill-purple600`}
                 d="M9.256 2.66c.204 0 .38-.056.53-.167.148-.11.222-.243.222-.396V.722c0-.152-.074-.284-.223-.395a.859.859 0 0 0-.53-.167H.76a.859.859 0 0 0-.53.167C.083.437.009.57.009.722v1.375c0 .153.074.285.223.396a.859.859 0 0 0 .53.167h8.495Z"
                 fill="#C5C6EF"
               />
             </svg>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 md:absolute md:top-0 md:right-0 md:pt-5 md:pr-5">
             {user.username === comment.user.username ? (
               <>
                 <div
                   onClick={() => setDel(true)}
-                  className="flex items-center gap-2"
+                  className="cursor-pointer flex items-center gap-2 hover:opacity-50"
                 >
                   <svg
                     width="12"
@@ -140,7 +145,10 @@ function Comment({
                   <p className="text-pink400 font-semibold">Delete</p>
                 </div>
 
-                <div onClick={handleEdit} className="flex items-center gap-2">
+                <div
+                  onClick={handleEdit}
+                  className="cursor-pointer flex items-center gap-2 hover:opacity-50"
+                >
                   <svg
                     width="14"
                     height="14"
@@ -158,7 +166,7 @@ function Comment({
             ) : (
               <div
                 onClick={() => setReply((prev) => !prev)}
-                className="flex items-center gap-2"
+                className="cursor-pointer flex items-center gap-2 hover:opacity-50"
               >
                 <svg width="14" height="13" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -174,7 +182,10 @@ function Comment({
         </div>
       </div>
       {reply && (
-        <div className="grid grid-cols-2 rounded-md items-start gap-5 p-5 bg-white">
+        <div
+          className="grid grid-cols-2 rounded-md items-start gap-5 p-5 
+          bg-white md:grid-cols-3 md:grid-cols-[auto_1fr_auto]"
+        >
           <img
             className="w-10 h-10"
             src={user.image.webp}
@@ -185,8 +196,9 @@ function Comment({
             value={replyText}
             onChange={(e) => setReplyText(e.target.value)}
             placeholder="Add a reply..."
-            className="text-grey800 font-[500] row-start-1 col-start-1 col-span-2 min-h-20 align-top flex-1 
-            border outline-none resize-none border-grey100 rounded-md p-2"
+            className="text-grey800 font-[500] row-start-1 col-start-1 col-span-2 min-h-20 
+            align-top flex-1 border outline-none resize-none border-grey100 rounded-md p-2 
+            md:col-start-2 md:col-span-1 md:min-h-25 focus:border-grey800"
           />
 
           <button
@@ -196,7 +208,8 @@ function Comment({
               setReply(false);
             }}
             type="button"
-            className="justify-self-end bg-purple600 uppercase text-white rounded-md py-2 px-5 w-fit"
+            className="cursor-pointer justify-self-end bg-purple600 uppercase text-white 
+            rounded-md py-2 px-5 w-fit hover:opacity-50"
           >
             Reply
           </button>
@@ -205,7 +218,7 @@ function Comment({
       {del &&
         createPortal(
           <div className="flex justify-center items-center h-full w-full bg-black/50 fixed z-10 top-0 left-0 p-5">
-            <div className="w-full flex flex-col gap-4 bg-white rounded-md p-8">
+            <div className="w-full max-w-100 flex flex-col gap-4 bg-white rounded-md p-8">
               <p className="text-grey800 text-[1.6rem] font-[500]">
                 Delete comment
               </p>
@@ -219,7 +232,7 @@ function Comment({
                 <button
                   onClick={() => setDel(false)}
                   type="button"
-                  className="flex-1 bg-grey500 rounded-md py-2 uppercase"
+                  className="cursor-pointer flex-1 bg-grey500 rounded-md py-2 uppercase hover:opacity-50"
                 >
                   No, Cancel
                 </button>
@@ -227,7 +240,7 @@ function Comment({
                 <button
                   onClick={handleDelete}
                   type="button"
-                  className="flex-1 bg-pink400 rounded-md py-2 uppercase"
+                  className="cursor-pointer flex-1 bg-pink400 rounded-md py-2 uppercase hover:opacity-50"
                 >
                   Yes, Delete
                 </button>
