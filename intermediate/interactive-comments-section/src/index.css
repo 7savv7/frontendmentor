@@ -17,4 +17,5 @@ body {
   user-select: none;
   font-size: 16px;
   font-family: Rubik, sans-serif;
+  background-color: var(--color-grey50);
 }

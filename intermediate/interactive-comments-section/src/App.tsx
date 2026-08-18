@@ -50,18 +50,26 @@ function App() {
 
   return (
     <div className="p-5 min-h-svh md:min-h-screen">
-      <main className="border w-full">
-        {comments.map((comment) => (
-          <div key={comment.id}>
-            <Comment comment={comment} user={user} />
+      <main className="w-full">
+        <div className="flex flex-col gap-4">
+          {comments.map((comment) => (
+            <div key={comment.id} className="flex flex-col gap-4">
+              <Comment comment={comment} user={user} />
 
-            <div>
-              {comment.replies.map((reply) => (
-                <Comment key={reply.id} comment={reply} user={user} />
-              ))}
+              {comment.replies.length > 0 && (
+                <div className="flex gap-4">
+                  <div className="w-3 h-auto bg-grey100" />
+
+                  <div className="flex flex-col gap-4">
+                    {comment.replies.map((reply) => (
+                      <Comment key={reply.id} comment={reply} user={user} />
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </main>
     </div>
   );
