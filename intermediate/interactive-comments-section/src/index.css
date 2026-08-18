@@ -1,1 +1,20 @@
 @import "tailwindcss";
+
+@theme {
+  --color-purple600: hsl(238, 40%, 52%);
+  --color-pink400: hsl(358, 79%, 66%);
+  --color-purple200: hsl(239, 57%, 85%);
+  --color-pink200: hsl(357, 100%, 86%);
+
+  --color-grey800: hsl(212, 24%, 26%);
+  --color-grey500: hsl(211, 10%, 45%);
+  --color-grey100: hsl(223, 19%, 93%);
+  --color-grey50: hsl(228, 33%, 97%);
+  --color-white: hsl(0, 100%, 100%);
+}
+
+body {
+  user-select: none;
+  font-size: 16px;
+  font-family: Rubik, sans-serif;
+}
