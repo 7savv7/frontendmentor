@@ -124,5 +124,14 @@
         "frontendmentor": "https://www.frontendmentor.io/solutions/interactive-comments-section-sgNYDZYvxN",
         "github": "https://github.com/7savv7/frontendmentor/tree/main/intermediate/interactive-comments-section",
         "link": "https://interactive-comments-section-red-eight.vercel.app/"
+    },
+    {
+        "title": "loopstudios-landing-page",
+        "difficulty": "junior",
+        "image": "images/loopstudios-landing-page.png",
+        "tools": ["react", "tailwindcss", "typescript"],
+        "frontendmentor": "https://www.frontendmentor.io/solutions/loopstudios-landing-page-_wdJvN0U_N",
+        "github": "https://github.com/7savv7/frontendmentor/tree/main/junior/loopstudios-landing-page",
+        "link": "https://loopstudios-landing-page-phi-ten.vercel.app/"
     }
 ]

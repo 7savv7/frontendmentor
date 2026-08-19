@@ -1,18 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Header() {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+
+    if (open && !isDesktop) {
+      document.body.style.overflow = "hidden";
+      document.body.style.height = "100%";
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.height = "";
+    }
+  }, [open]);
+
   return (
     <header className="bg-transparent flex justify-between items-center">
       <img
-        className={`${open ? "fixed top-10" : "relative"} z-10 md:static`}
+        className={`${open ? "fixed top-10" : "relative"} z-21 md:static`}
         src="/images/logo.svg"
         alt="logo"
       />
 
       <nav
         className={`
-            text-grey200 text-[2rem] flex items-center overflow-hidden fixed top-0 left-0 bg-black 
+            text-grey200 text-[2rem] flex items-center overflow-hidden fixed z-20 top-0 left-0 bg-black 
             h-full w-full transition-all ${open ? "max-w-full" : "max-w-0"} 
             md:static md:bg-transparent md:max-w-fit md:text-white md:text-[1rem]`}
       >
@@ -31,7 +44,7 @@ function Header() {
       </nav>
 
       <div
-        className={`flex justify-center items-center ${open ? "fixed top-10 right-10" : "relative"} z-10 md:hidden`}
+        className={`flex justify-center items-center ${open ? "fixed top-10 right-10" : "relative"} z-21 md:hidden`}
       >
         {open ? (
           <img
