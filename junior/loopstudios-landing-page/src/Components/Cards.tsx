@@ -45,7 +45,7 @@ function Cards() {
   ];
 
   return (
-    <section className="relative">
+    <section className="relative mb-20 md:mb-0">
       <div className="flex items-center justify-center md:justify-between mb-5 md:mb-10">
         <p className="uppercase text-[3rem] text-black font-[Josefin_Sans] font-[300]">
           Our creations

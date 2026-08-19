@@ -1,4 +1,5 @@
 import Content from "./Components/Content";
+import Footer from "./Components/Footer";
 import Intro from "./Components/Intro";
 
 function App() {
@@ -7,6 +8,8 @@ function App() {
       <Intro />
 
       <Content />
+
+      <Footer />
     </div>
   );
 }
