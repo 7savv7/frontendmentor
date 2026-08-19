@@ -52,7 +52,8 @@ function Cards() {
         </p>
 
         <button
-          className="absolute top-[100%] mt-5 border uppercase tracking-widest py-1 px-4 md:static"
+          className="cursor-pointer absolute top-[100%] mt-5 border uppercase tracking-widest py-1 px-6 font-[300] 
+          md:static hover:bg-black hover:text-white"
           type="button"
         >
           See all

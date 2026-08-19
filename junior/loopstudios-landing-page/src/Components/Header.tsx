@@ -12,11 +12,16 @@ function Header() {
 
       <nav
         className={`
-            text-grey200 flex items-center overflow-hidden fixed top-0 left-0 bg-black 
+            text-grey200 text-[2rem] flex items-center overflow-hidden fixed top-0 left-0 bg-black 
             h-full w-full transition-all ${open ? "max-w-full" : "max-w-0"} 
-            md:static md:bg-transparent md:max-w-fit md:text-white`}
+            md:static md:bg-transparent md:max-w-fit md:text-white md:text-[1rem]`}
       >
-        <ul className="flex flex-col items-start pl-10 uppercase gap-8 md:flex-row md:normal-case md:pl-0">
+        <ul
+          className="flex flex-col items-start pl-10 uppercase gap-8 md:flex-row md:normal-case md:pl-0
+          [&>li]:cursor-pointer [&>li:after]:content-[''] [&>li:after]:h-[2px] [&>li:after]:m-auto 
+          [&>li:after]:bg-white [&>li:after]:block [&>li:after]:max-w-0 [&>li:hover:after]:max-w-[60%] 
+          [&>li:after]:mt-2 [&>li:after]:transition-all"
+        >
           <li>About</li>
           <li>Careers</li>
           <li>Events</li>
