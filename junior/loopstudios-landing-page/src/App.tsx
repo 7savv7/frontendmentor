@@ -1,4 +1,4 @@
-import Info from "./Components/Info";
+import Content from "./Components/Content";
 import Intro from "./Components/Intro";
 
 function App() {
@@ -6,7 +6,7 @@ function App() {
     <div className="min-h-svh md:min-h-screen">
       <Intro />
 
-      <Info></Info>
+      <Content />
     </div>
   );
 }
