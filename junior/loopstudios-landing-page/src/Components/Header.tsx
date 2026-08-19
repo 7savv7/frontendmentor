@@ -5,7 +5,7 @@ function Header() {
   return (
     <header className="bg-transparent flex justify-between items-center">
       <img
-        className="relative z-10 md:static"
+        className={`${open ? "fixed top-10" : "relative"} z-10 md:static`}
         src="/images/logo.svg"
         alt="logo"
       />
@@ -16,7 +16,7 @@ function Header() {
             h-full w-full transition-all ${open ? "max-w-full" : "max-w-0"} 
             md:static md:bg-transparent md:max-w-fit md:text-white`}
       >
-        <ul className="flex flex-col items-start uppercase gap-8 md:flex-row md:normal-case">
+        <ul className="flex flex-col items-start pl-10 uppercase gap-8 md:flex-row md:normal-case md:pl-0">
           <li>About</li>
           <li>Careers</li>
           <li>Events</li>
@@ -25,7 +25,9 @@ function Header() {
         </ul>
       </nav>
 
-      <div className="relative z-10 md:hidden">
+      <div
+        className={`flex justify-center items-center ${open ? "fixed top-10 right-10" : "relative"} z-10 md:hidden`}
+      >
         {open ? (
           <img
             onClick={() => setOpen(false)}
