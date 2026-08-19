@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+@theme {
+  --color-orange500: hsl(25, 97%, 53%);
+
+  --color-white: hsl(0, 100%, 100%);
+  --color-grey500: hsl(217, 12%, 63%);
+  --color-grey900: hsl(213, 19%, 18%);
+  --color-grey950: hsl(216, 12%, 8%);
+}
+
+body {
+  user-select: none;
+  font-size: 15px;
+  font-family: Overpass, sans-serif;
+  background-color: var(--color-grey950);
+}
