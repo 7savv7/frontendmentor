@@ -142,5 +142,14 @@
         "frontendmentor": "https://www.frontendmentor.io/solutions/interactive-rating-component-zWX6uj4fvy",
         "github": "https://github.com/7savv7/frontendmentor/tree/main/newbie/interactive-rating-component",
         "link": "https://interactive-rating-component-bice-three.vercel.app/"
+    },
+    {
+        "title": "order-summary-component",
+        "difficulty": "newbie",
+        "image": "images/order-summary-component.png",
+        "tools": ["react", "tailwindcss", "typescript"],
+        "frontendmentor": "https://www.frontendmentor.io/solutions/order-summary-component-yD6X1ndgWT",
+        "github": "https://github.com/7savv7/frontendmentor/tree/main/newbie/order-summary-component",
+        "link": "https://order-summary-component-phi.vercel.app/"
     }
 ]

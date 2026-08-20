@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+@theme {
+  --color-blue100: hsl(225, 100%, 94%);
+  --color-blue700: hsl(245, 75%, 52%);
+
+  --color-blue50: hsl(225, 100%, 98%);
+  --color-gray600: hsl(224, 23%, 55%);
+  --color-blue950: hsl(223, 47%, 23%);
+}
+
+body {
+  user-select: none;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 16px;
+  background-color: var(--color-blue100);
+}
