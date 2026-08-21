@@ -1,15 +1,41 @@
-function Search() {
+import { useEffect, useState, type Dispatch, type SetStateAction } from "react";
+import type { City } from "../App";
+
+interface Props {
+  setCity: Dispatch<SetStateAction<City>>;
+  cities: City[];
+  setCities: Dispatch<SetStateAction<City[]>>;
+}
+
+function Search({ setCity, cities, setCities }: Props) {
+  const [text, setText] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const getCities = async (city: string) => {
+    if (city.trim() === "") return;
+    setLoading(true);
+    const res = await fetch(
+      `https://geocoding-api.open-meteo.com/v1/search?name=${city}`,
+    );
+    const data = await res.json();
+    setCities(data.results || []);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    getCities("Berlin");
+  }, []);
+
   return (
-    <div className="w-full text-white text-center flex flex-col items-center">
+    <div className="w-full text-white text-center flex flex-col items-center pb-10">
       <h1 className="text-[2.5em] w-[80%] leading-[1.2em] my-10 font-[700]">
         How's the sky looking today?
       </h1>
 
-      <div className="flex flex-col gap-4 w-full md:flex-row md:w-[50%]">
-        <div className="relative w-full">
+      <div className="group flex flex-col gap-4 w-full md:flex-row md:w-[50%] md:max-w-[800px]">
+        <div className=" relative w-full">
           <label
             className="cursor-pointer flex items-center gap-1 bg-neutral800 pl-6 overflow-hidden 
-          w-full rounded-lg hover:bg-neutral700"
+            w-full rounded-lg hover:bg-neutral700"
           >
             <img
               className="w-[21px] h-[21px]"
@@ -20,28 +46,46 @@ function Search() {
             <input
               className="flex-1 p-2 py-3 outline-none"
               type="text"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
               placeholder="Search for a city, e.g., New York"
             />
           </label>
 
-          <div className="absolute flex flex-col gap-2 left-0 top-[100%] mt-2 rounded-lg p-2 w-full bg-neutral800">
-            <p className="bg-neutral700 border border-neutral600 rounded-md p-2 text-left">
-              City Name
-            </p>
-            <p className="bg-neutral700 border border-neutral600 rounded-md p-2 text-left">
-              City Name
-            </p>
-            <p className="bg-neutral700 border border-neutral600 rounded-md p-2 text-left">
-              City Name
-            </p>
-            <p className="bg-neutral700 border border-neutral600 rounded-md p-2 text-left">
-              City Name
-            </p>
-          </div>
+          {(cities.length > 0 || loading) && (
+            <div
+              className={`absolute ${loading ? "flex" : "hidden group-focus-within:flex"} flex-col gap-2 left-0 top-[100%] 
+              mt-2 rounded-lg p-2 w-full bg-neutral800`}
+            >
+              {loading ? (
+                <div className="flex items-center gap-3 p-2">
+                  <img
+                    className="animate-spin"
+                    src="/images/icon-loading.svg"
+                    alt="loading"
+                  />
+
+                  <p>Search in progress</p>
+                </div>
+              ) : (
+                cities.map((city) => (
+                  <p
+                    key={city.id}
+                    onClick={() => setCity(city)}
+                    className="cursor-pointer hover:bg-neutral700 border border-transparent hover:border-neutral600 
+                    rounded-md p-2 text-left"
+                  >
+                    {city.name}, {city.country}
+                  </p>
+                ))
+              )}
+            </div>
+          )}
         </div>
 
         <button
           type="submit"
+          onClick={() => getCities(text)}
           className="cursor-pointer w-full bg-blue500 rounded-lg p-3 px-5 md:w-fit hover:opacity-60"
         >
           Search

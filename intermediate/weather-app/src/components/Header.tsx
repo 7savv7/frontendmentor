@@ -49,7 +49,7 @@ function Header({ unit, setUnit }: Props) {
         </div>
 
         <div
-          className={`${dropdown ? "flex" : "hidden"} flex-col absolute top-[100%] right-0 w-[200%] 
+          className={`${dropdown ? "flex" : "hidden"} flex-col absolute z-10 top-[100%] right-0 w-[200%] 
           mt-3 bg-neutral800 rounded-xl border border-neutral600 p-2`}
         >
           <button
