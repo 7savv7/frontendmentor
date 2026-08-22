@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --color-green: hsl(75, 94%, 57%);
+
+  --coloe-white: hsl(0, 0%, 100%);
+
+  --color-grey700: hsl(0, 0%, 20%);
+  --color-grey800: hsl(0, 0%, 12%);
+  --color-grey900: hsl(0, 0%, 8%);
+}
+
+@font-face {
+  font-family: Inter;
+  src: url("public/fonts/Inter-VariableFont_slnt,wght.ttf");
+}
+
+body {
+  user-select: none;
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+  background-color: var(--color-grey900);
+}
