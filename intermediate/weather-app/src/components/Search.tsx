@@ -5,19 +5,24 @@ interface Props {
   setCity: Dispatch<SetStateAction<City>>;
   cities: City[];
   setCities: Dispatch<SetStateAction<City[]>>;
+  setError: Dispatch<SetStateAction<boolean>>;
 }
 
-function Search({ setCity, cities, setCities }: Props) {
+function Search({ setCity, cities, setCities, setError }: Props) {
   const [text, setText] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const getCities = async (city: string) => {
     if (city.trim() === "") return;
     setLoading(true);
-    const res = await fetch(
-      `https://geocoding-api.open-meteo.com/v1/search?name=${city}`,
-    );
-    const data = await res.json();
-    setCities(data.results || []);
+    try {
+      const res = await fetch(
+        `https://geocoding-api.open-meteo.com/v1/search?name=${city}`,
+      );
+      const data = await res.json();
+      setCities(data.results || []);
+    } catch (error) {
+      setError(true);
+    }
     setLoading(false);
   };
 
@@ -54,8 +59,8 @@ function Search({ setCity, cities, setCities }: Props) {
 
           {(cities.length > 0 || loading) && (
             <div
-              className={`absolute ${loading ? "flex" : "hidden group-focus-within:flex"} flex-col gap-2 left-0 top-[100%] 
-              mt-2 rounded-lg p-2 w-full bg-neutral800`}
+              className={`absolute ${loading ? "flex" : "hidden group-focus-within:flex hover:flex active:flex"} 
+              flex-col gap-2 left-0 top-[100%] mt-2 rounded-lg p-2 w-full bg-neutral800`}
             >
               {loading ? (
                 <div className="flex items-center gap-3 p-2">

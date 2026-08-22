@@ -13,11 +13,22 @@
 
   --color-blue500: hsl(233, 67%, 56%);
   --color-blue700: hsl(248, 70%, 36%);
+
+  --animate-b: b 1s ease-in-out infinite;
+  @keyframes b {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
 }
 
 body {
-    user-select: none;
-    font-size: 18px;
-    font-family: "DM Sans";
-    background-color: var(--color-neutral900);
+  user-select: none;
+  font-size: 18px;
+  font-family: "DM Sans";
+  background-color: var(--color-neutral900);
 }

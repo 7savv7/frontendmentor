@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Search from "./components/Search";
+import CurrentWeather from "./components/CurrentWeather";
 
 export interface City {
   id: number;
@@ -11,6 +12,64 @@ export interface City {
   country_code: string;
   timezone: string;
   country: string;
+}
+
+export interface Weather {
+  latitude: number;
+  longitude: number;
+  generationtime_ms: number;
+  utc_offset_seconds: number;
+  timezone: string;
+  timezone_abbreviation: string;
+  elevation: number;
+
+  current: {
+    time: string;
+    interval: number;
+    temperature_2m: number;
+    apparent_temperature: number;
+    relative_humidity_2m: number;
+    wind_speed_10m: number;
+    precipitation: number;
+    weathercode: number;
+  };
+
+  current_units: {
+    time: string;
+    interval: string;
+    temperature_2m: string;
+    apparent_temperature: string;
+    relative_humidity_2m: string;
+    wind_speed_10m: string;
+    precipitation: string;
+    weathercode: string;
+  };
+
+  hourly: {
+    time: string[];
+    temperature_2m: number[];
+    weathercode: number[];
+  };
+
+  hourly_units: {
+    time: string;
+    temperature_2m: string;
+    weathercode: string;
+  };
+
+  daily: {
+    time: string[];
+    weathercode: number[];
+    temperature_2m_max: number[];
+    temperature_2m_min: number[];
+  };
+
+  daily_units: {
+    time: string;
+    weathercode: string;
+    temperature_2m_max: string;
+    temperature_2m_min: string;
+  };
 }
 
 function App() {
@@ -24,17 +83,81 @@ function App() {
     timezone: "Europe/Berlin",
     country: "Germany",
   };
-  const [unit, setUnit] = useState<"Imperial" | "Metric">("Imperial");
-  const [city, setCity] = useState<City>(Berlin);
+  const [unit, setUnit] = useState<"Imperial" | "Metric">("Metric");
   const [cities, setCities] = useState<City[]>([]);
+  const [city, setCity] = useState<City>(Berlin);
+  const [weather, setWeather] = useState<Weather | null>(null);
+  const [error, setError] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  function getWeatherIcon(code: number): string {
+    if (code <= 2) return "icon-partly-cloudy";
+    if (code === 3) return "icon-overcast";
+
+    if (code === 45 || code === 48) return "icon-fog";
+
+    if (code >= 51 && code <= 57) return "icon-drizzle";
+
+    if (code >= 61 && code <= 67) return "icon-rain";
+
+    if (code >= 71 && code <= 77) return "icon-snow";
+
+    if (code >= 80 && code <= 82) return "icon-rain";
+
+    if (code === 85 || code === 86) return "icon-snow";
+
+    if (code >= 95 && code <= 99) return "icon-storm";
+
+    return "icon-overcast";
+  }
+
+  useEffect(() => {
+    const getWeather = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch(
+          unit === "Metric"
+            ? `https://api.open-meteo.com/v1/forecast?latitude=${city.latitude}&longitude=${city.longitude}&current=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,precipitation,weathercode&hourly=temperature_2m,weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min`
+            : `https://api.open-meteo.com/v1/forecast?latitude=${city.latitude}&longitude=${city.longitude}&current=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,precipitation,weathercode&hourly=temperature_2m,weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch`,
+        );
+
+        const data = await res.json();
+        setWeather(data);
+      } catch (error) {
+        setError(true);
+      }
+      setLoading(false);
+    };
+
+    getWeather();
+  }, [city, unit]);
+
+  useEffect(() => console.log(weather, error), [weather]);
 
   return (
-    <div className="min-h-svh p-5 md:min-h-screen">
+    <div className="min-h-svh text-white p-5 md:min-h-screen">
       <Header unit={unit} setUnit={setUnit} />
 
-      <Search setCity={setCity} cities={cities} setCities={setCities} />
+      <Search
+        setCity={setCity}
+        cities={cities}
+        setCities={setCities}
+        setError={setError}
+      />
 
-      {cities.length === 0 ? <p>No search result found!</p> : <div>Hey</div>}
+      {cities.length === 0 ? (
+        <p className="text-center font-[600]">No search result found!</p>
+      ) : (
+        <main>
+          <CurrentWeather
+            icon={getWeatherIcon}
+            unit={unit}
+            city={city}
+            weather={weather}
+            loading={loading}
+          />
+        </main>
+      )}
     </div>
   );
 }
