@@ -160,5 +160,14 @@
         "frontendmentor": "https://www.frontendmentor.io/solutions/weather-app-jZ6CKty98S",
         "github": "https://github.com/7savv7/frontendmentor/tree/main/intermediate/weather-app",
         "link": "https://weather-app-two-xi-15.vercel.app/"
+    },
+    {
+        "title": "social-links-profile",
+        "difficulty": "newbie",
+        "image": "images/social-links-profile.png",
+        "tools": ["react", "tailwindcss", "typescript"],
+        "frontendmentor": "https://www.frontendmentor.io/solutions/social-links-profile-jd9QmzBhN0",
+        "github": "https://github.com/7savv7/frontendmentor/tree/main/newbie/social-links-profile",
+        "link": "https://social-links-profile-sigma-sepia.vercel.app/"
     }
 ]
