@@ -134,8 +134,6 @@ function App() {
     getWeather();
   }, [city, unit]);
 
-  useEffect(() => console.log(weather, error), [weather]);
-
   return (
     <div className="min-h-svh text-white p-5 md:p-20 md:py-14 max-w-400 m-auto md:min-h-screen">
       <Header unit={unit} setUnit={setUnit} />

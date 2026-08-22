@@ -7,12 +7,14 @@ interface Props {
 }
 
 function DailyWeather({ weather, icon, loading }: Props) {
-  const days = Array.from({ length: 7 }, (_, i) => ({
-    date: weather?.daily.time[i],
-    weatherCode: weather?.daily.weathercode[i],
-    max: weather?.daily.temperature_2m_max[i],
-    min: weather?.daily.temperature_2m_min[i],
-  }));
+  const days = weather
+    ? weather.daily.time.map((date, i) => ({
+        date,
+        weatherCode: weather.daily.weathercode[i],
+        max: weather.daily.temperature_2m_max[i],
+        min: weather.daily.temperature_2m_min[i],
+      }))
+    : [];
 
   function getDay(dateString: string) {
     return new Intl.DateTimeFormat("en-US", {

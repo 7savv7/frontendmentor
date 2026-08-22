@@ -62,7 +62,6 @@ function HourlyWeather({ weather, icon, loading }: Props) {
   useEffect(() => {
     if (weather) {
       setGroup(groupByDay(weather));
-      console.log(group);
     }
   }, [weather]);
 
@@ -150,7 +149,7 @@ function HourlyWeather({ weather, icon, loading }: Props) {
                     <p>{formatHour(hour.time)}</p>
                   </div>
 
-                  <p>{hour.temp}</p>
+                  <p>{hour.temp}°</p>
                 </>
               )}
             </div>
