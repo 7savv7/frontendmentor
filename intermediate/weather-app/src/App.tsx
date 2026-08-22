@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Search from "./components/Search";
 import CurrentWeather from "./components/CurrentWeather";
+import DailyWeather from "./components/DailyWeather";
 
 export interface City {
   id: number;
@@ -148,14 +149,22 @@ function App() {
       {cities.length === 0 ? (
         <p className="text-center font-[600]">No search result found!</p>
       ) : (
-        <main>
-          <CurrentWeather
-            icon={getWeatherIcon}
-            unit={unit}
-            city={city}
-            weather={weather}
-            loading={loading}
-          />
+        <main className="flex flex-col">
+          <div className="flex flex-col gap-8">
+            <CurrentWeather
+              icon={getWeatherIcon}
+              unit={unit}
+              city={city}
+              weather={weather}
+              loading={loading}
+            />
+
+            <DailyWeather
+              weather={weather}
+              icon={getWeatherIcon}
+              loading={loading}
+            />
+          </div>
         </main>
       )}
     </div>

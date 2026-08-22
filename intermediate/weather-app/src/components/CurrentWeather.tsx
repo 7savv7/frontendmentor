@@ -61,7 +61,7 @@ function CurrentWeather({ icon, unit, city, weather, loading }: Props) {
           md:flex-row md:bg-[url(/images/bg-today-large.svg)]"
         >
           <div className="flex flex-col items-center md:items-start">
-            <p className="text-[1.6em] font-[600]">
+            <p className="text-[1.6em] font-[600] text-center">
               {city.name}, {city.country}
             </p>
 
