@@ -1,4 +1,10 @@
-import { useEffect, useState, type Dispatch, type SetStateAction } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type Dispatch,
+  type SetStateAction,
+} from "react";
 import type { City } from "../App";
 
 interface Props {
@@ -11,6 +17,7 @@ interface Props {
 function Search({ setCity, cities, setCities, setError }: Props) {
   const [text, setText] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+  const inputRef = useRef<HTMLInputElement>(null);
   const getCities = async (city: string) => {
     if (city.trim() === "") return;
     setLoading(true);
@@ -36,11 +43,17 @@ function Search({ setCity, cities, setCities, setError }: Props) {
         How's the sky looking today?
       </h1>
 
-      <div className="group flex flex-col gap-4 w-full md:flex-row md:w-[50%] md:max-w-[800px]">
-        <div className=" relative w-full">
+      <div className="flex flex-col gap-4 w-full md:flex-row md:w-[50%] md:max-w-[800px]">
+        <div className="group relative w-full">
           <label
-            className="cursor-pointer flex items-center gap-1 bg-neutral800 pl-6 overflow-hidden 
-            w-full rounded-lg hover:bg-neutral700"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                inputRef.current?.focus();
+              }
+            }}
+            className="cursor-pointer flex items-center gap-1 bg-neutral800 pl-6 overflow-hidden w-full rounded-lg 
+            hover:bg-neutral700 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-white"
           >
             <img
               className="w-[21px] h-[21px]"
@@ -50,6 +63,8 @@ function Search({ setCity, cities, setCities, setError }: Props) {
 
             <input
               className="flex-1 p-2 py-3 outline-none"
+              tabIndex={-1}
+              ref={inputRef}
               type="text"
               value={text}
               onChange={(e) => setText(e.target.value)}
@@ -60,7 +75,7 @@ function Search({ setCity, cities, setCities, setError }: Props) {
           {(cities.length > 0 || loading) && (
             <div
               className={`absolute ${loading ? "flex" : "hidden group-focus-within:flex hover:flex active:flex"} 
-              flex-col gap-2 left-0 top-[100%] mt-2 rounded-lg p-2 w-full bg-neutral800`}
+              flex-col gap-2 left-0 top-[100%] border border-neutral600 mt-2 rounded-lg p-2 w-full bg-neutral800`}
             >
               {loading ? (
                 <div className="flex items-center gap-3 p-2">
@@ -90,8 +105,12 @@ function Search({ setCity, cities, setCities, setError }: Props) {
 
         <button
           type="submit"
-          onClick={() => getCities(text)}
-          className="cursor-pointer w-full bg-blue500 rounded-lg p-3 px-5 md:w-fit hover:opacity-60"
+          onClick={() => {
+            getCities(text);
+            inputRef.current?.focus();
+          }}
+          className="cursor-pointer w-full bg-blue500 rounded-lg p-3 px-5 md:w-fit hover:opacity-60 
+          focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:theme(colors.blue.500)]"
         >
           Search
         </button>

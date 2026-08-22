@@ -27,7 +27,7 @@ function DailyWeather({ weather, icon, loading }: Props) {
       <div className="grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-7">
         {days.map((day) => (
           <div
-            key={day.date}
+            key={getDay(day.date as string)}
             className="flex flex-col justify-between items-center min-h-50 gap-2 bg-neutral800 
             border border-neutral600 rounded-lg p-4"
           >

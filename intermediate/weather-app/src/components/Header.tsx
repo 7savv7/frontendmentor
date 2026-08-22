@@ -33,13 +33,23 @@ function Header({ unit, setUnit }: Props) {
 
   return (
     <header className="flex justify-between items-center text-white">
-      <img className="w-[35%] max-w-[197px]" src="/images/logo.svg" alt="logo" />
+      <img
+        className="w-[35%] max-w-[197px]"
+        src="/images/logo.svg"
+        alt="logo"
+      />
 
       <div className="relative">
         <div
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              setDropdown((prev) => !prev);
+            }
+          }}
           onClick={() => setDropdown((prev) => !prev)}
           className="cursor-pointer flex justify-between items-center gap-2 p-3 py-2 rounded-lg 
-          bg-neutral800 hover:bg-neutral700"
+          bg-neutral800 hover:bg-neutral700 focus-visible:outline-offset-3 focus-visible:outline-2 focus-visible:outline-white"
         >
           <img src="/images/icon-units.svg" alt="units" />
 

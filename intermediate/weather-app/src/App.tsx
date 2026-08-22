@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Search from "./components/Search";
 import CurrentWeather from "./components/CurrentWeather";
 import DailyWeather from "./components/DailyWeather";
+import HourlyWeather from "./components/HourlyWeather";
 
 export interface City {
   id: number;
@@ -136,36 +137,69 @@ function App() {
   useEffect(() => console.log(weather, error), [weather]);
 
   return (
-    <div className="min-h-svh text-white p-5 md:min-h-screen">
+    <div className="min-h-svh text-white p-5 md:p-20 md:py-14 max-w-400 m-auto md:min-h-screen">
       <Header unit={unit} setUnit={setUnit} />
 
-      <Search
-        setCity={setCity}
-        cities={cities}
-        setCities={setCities}
-        setError={setError}
-      />
+      {error ? (
+        <div className="w-full p-6 py-20 flex flex-col gap-4 items-center text-center">
+          <img className="w-10 h-10" src="/images/icon-error.svg" alt="error" />
 
-      {cities.length === 0 ? (
-        <p className="text-center font-[600]">No search result found!</p>
+          <h1 className="text-[2em] font-[700]">Something went wrong</h1>
+
+          <p className="text-neutral200 md:w-[40%]">
+            We couldn't connect to the server (API Error). Please try again in a
+            few moments.
+          </p>
+
+          <button
+            type="button"
+            onClick={() => window.location.reload()}
+            className="cursor-pointer flex items-center gap-2 bg-neutral700 
+            p-2 px-4 rounded-md hover:bg-neutral600"
+          >
+            <img src="/images/icon-retry.svg" alt="retry" />
+            <p>Retry</p>
+          </button>
+        </div>
       ) : (
-        <main className="flex flex-col">
-          <div className="flex flex-col gap-8">
-            <CurrentWeather
-              icon={getWeatherIcon}
-              unit={unit}
-              city={city}
-              weather={weather}
-              loading={loading}
-            />
+        <>
+          <Search
+            setCity={setCity}
+            cities={cities}
+            setCities={setCities}
+            setError={setError}
+          />
 
-            <DailyWeather
-              weather={weather}
-              icon={getWeatherIcon}
-              loading={loading}
-            />
-          </div>
-        </main>
+          {cities.length === 0 ? (
+            <p className="text-center font-[600]">No search result found!</p>
+          ) : (
+            <main className="flex flex-col gap-8 md:flex-row">
+              <div className="flex flex-col flex-1 gap-8">
+                <CurrentWeather
+                  icon={getWeatherIcon}
+                  unit={unit}
+                  city={city}
+                  weather={weather}
+                  loading={loading}
+                />
+
+                <DailyWeather
+                  weather={weather}
+                  icon={getWeatherIcon}
+                  loading={loading}
+                />
+              </div>
+
+              <div className="w-full md:w-[35%] min-h-full">
+                <HourlyWeather
+                  weather={weather}
+                  icon={getWeatherIcon}
+                  loading={loading}
+                />
+              </div>
+            </main>
+          )}
+        </>
       )}
     </div>
   );
