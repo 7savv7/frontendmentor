@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+@theme {
+  --color-orange: hsl(26, 100%, 55%);
+  --color-porange: hsl(25, 100%, 94%);
+
+  --color-vdblue: hsl(220, 13%, 13%);
+  --color-dgblue: hsl(219, 9%, 45%);
+  --color-gblue: hsl(220, 14%, 75%);
+  --color-lgblue: hsl(223, 64%, 98%);
+}
+
+body {
+  user-select: none;
+  font-size: 16px;
+  font-family: "Kumbh Sans", sans-serif;
+}

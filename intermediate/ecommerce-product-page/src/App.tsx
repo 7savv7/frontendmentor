@@ -1,5 +1,11 @@
+import Header from "./components/Header";
+
 function App() {
-  return <div className="font-bold underline">Hey</div>;
+  return (
+    <div className="min-h-svh md:min-h-screen">
+      <Header />
+    </div>
+  );
 }
 
 export default App;
