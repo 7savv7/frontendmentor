@@ -1,11 +1,20 @@
-function Info() {
+import { useState, type Dispatch, type SetStateAction } from "react";
+
+interface Props {
+  setCart: Dispatch<SetStateAction<number>>;
+}
+
+function Info({ setCart }: Props) {
+  const [quantity, setQuantity] = useState<number>(0);
   return (
     <div className="flex flex-col gap-5 p-5 lg:w-1/2 lg:justify-center">
       <p className="font-bold uppercase text-dgblue tracking-widest">
         Sneaker Company
       </p>
 
-      <h1 className="font-bold text-[2em] xl:text-[3em]">Fall Limited Edition Sneakers</h1>
+      <h1 className="font-bold text-[2em] xl:text-[3em]">
+        Fall Limited Edition Sneakers
+      </h1>
 
       <p className="text-dgblue">
         These low-profile sneakers are your perfect casual wear companion.
@@ -29,20 +38,32 @@ function Info() {
 
       <div className="flex flex-col gap-5 lg:flex-row">
         <div className="flex w-full justify-between items-centers p-4 rounded-lg bg-lgblue lg:w-[35%]">
-          <button type="button">
+          <button
+            onClick={() => setQuantity((prev) => (prev <= 0 ? 0 : prev - 1))}
+            type="button"
+            className="cursor-pointer"
+          >
             <img src="images/icon-minus.svg" alt="minus" />
           </button>
 
-          <p className="font-bold text-[1.2em]">0</p>
+          <p className="font-bold text-[1.2em]">{quantity}</p>
 
-          <button type="button">
+          <button
+            onClick={() => setQuantity((prev) => prev + 1)}
+            type="button"
+            className="cursor-pointer"
+          >
             <img src="images/icon-plus.svg" alt="plus" />
           </button>
         </div>
 
         <button
           type="button"
-          className="flex items-center justify-center gap-4 bg-orange rounded-lg p-4 w-full 
+          onClick={() => {
+            setCart((prev) => prev + quantity);
+            setQuantity(0);
+          }}
+          className="cursor-pointer flex items-center justify-center gap-4 bg-orange rounded-lg p-4 w-full 
           shadow-xl shadow-orange/25 lg:flex-1 lg:shadow-none"
         >
           <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
