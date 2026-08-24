@@ -24,7 +24,7 @@ function ImageSlide() {
   }, []);
 
   return (
-    <div className="relative lg:w-150 lg:flex lg:flex-col lg:gap-8">
+    <div className="relative lg:w-1/2 lg:flex lg:flex-col lg:gap-8">
       <div
         onClick={() =>
           setCurrentImage((prev) => (prev === 0 ? images.length - 1 : prev - 1))
