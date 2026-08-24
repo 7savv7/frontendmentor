@@ -41,9 +41,27 @@ function Info({ setCart }: Props) {
           <button
             onClick={() => setQuantity((prev) => (prev <= 0 ? 0 : prev - 1))}
             type="button"
-            className="cursor-pointer"
+            className="group cursor-pointer"
           >
-            <img src="images/icon-minus.svg" alt="minus" />
+            <svg
+              width="12"
+              height="4"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlnsXlink="http://www.w3.org/1999/xlink"
+            >
+              <defs>
+                <path
+                  d="M11.357 3.332A.641.641 0 0 0 12 2.69V.643A.641.641 0 0 0 11.357 0H.643A.641.641 0 0 0 0 .643v2.046c0 .357.287.643.643.643h10.714Z"
+                  id="a"
+                />
+              </defs>
+              <use
+                className="group-hover:fill-orange/50"
+                fill="orange"
+                fillRule="nonzero"
+                xlinkHref="#a"
+              />
+            </svg>
           </button>
 
           <p className="font-bold text-[1.2em]">{quantity}</p>
@@ -51,9 +69,27 @@ function Info({ setCart }: Props) {
           <button
             onClick={() => setQuantity((prev) => prev + 1)}
             type="button"
-            className="cursor-pointer"
+            className="group cursor-pointer"
           >
-            <img src="images/icon-plus.svg" alt="plus" />
+            <svg
+              width="12"
+              height="12"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlnsXlink="http://www.w3.org/1999/xlink"
+            >
+              <defs>
+                <path
+                  d="M12 7.023V4.977a.641.641 0 0 0-.643-.643h-3.69V.643A.641.641 0 0 0 7.022 0H4.977a.641.641 0 0 0-.643.643v3.69H.643A.641.641 0 0 0 0 4.978v2.046c0 .356.287.643.643.643h3.69v3.691c0 .356.288.643.644.643h2.046a.641.641 0 0 0 .643-.643v-3.69h3.691A.641.641 0 0 0 12 7.022Z"
+                  id="b"
+                />
+              </defs>
+              <use
+                className="group-hover:fill-orange/50"
+                fill="orange"
+                fillRule="nonzero"
+                xlinkHref="#b"
+              />
+            </svg>
           </button>
         </div>
 
@@ -64,7 +100,7 @@ function Info({ setCart }: Props) {
             setQuantity(0);
           }}
           className="cursor-pointer flex items-center justify-center gap-4 bg-orange rounded-lg p-4 w-full 
-          shadow-xl shadow-orange/25 lg:flex-1 lg:shadow-none"
+          shadow-xl shadow-orange/25 lg:flex-1 lg:shadow-none hover:bg-orange/50"
         >
           <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
             <path

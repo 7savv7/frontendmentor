@@ -50,9 +50,10 @@ function ImageSlide() {
             className={`cursor-pointer relative rounded-2xl overflow-hidden 
             ${index === currentImage && "outline-3"} outline-orange`}
           >
-            {index === currentImage && (
-              <div className="absolute w-full h-full bg-white/75" />
-            )}
+            <div
+              className={`absolute w-full h-full bg-white/75 
+              ${index === currentImage ? "opacity-100" : "opacity-0 hover:opacity-100"}`}
+            />
             <img src={image} alt="product" />
           </div>
         ))}
@@ -106,10 +107,11 @@ function PopUp({ images, setPopUp, popUpImage, setPopUpImage }: PopUpProps) {
             onClick={() => setPopUp(false)}
             width="14"
             height="15"
-            className="cursor-pointer self-end"
+            className="group cursor-pointer self-end"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
+              className="group-hover:fill-orange"
               d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"
               fill="white"
               fillRule="evenodd"
@@ -123,10 +125,19 @@ function PopUp({ images, setPopUp, popUpImage, setPopUpImage }: PopUpProps) {
                   prev === 0 ? images.length - 1 : prev - 1,
                 )
               }
-              className="cursor-pointer rounded-full flex items-center justify-center pr-1 w-10 h-10 bg-white 
+              className="group cursor-pointer rounded-full flex items-center justify-center pr-1 w-10 h-10 bg-white 
                   absolute left-0 top-1/2 -translate-1/2"
             >
-              <img src="/images/icon-previous.svg" alt="previous" />
+              <svg width="12" height="18" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  className="group-hover:stroke-orange"
+                  d="M11 1 3 9l8 8"
+                  stroke="#1D2026"
+                  stroke-width="3"
+                  fill="none"
+                  fillRule="evenodd"
+                />
+              </svg>
             </div>
 
             <img
@@ -141,10 +152,19 @@ function PopUp({ images, setPopUp, popUpImage, setPopUpImage }: PopUpProps) {
                   prev === images.length - 1 ? 0 : prev + 1,
                 )
               }
-              className="cursor-pointer rounded-full flex items-center justify-center pl-1 w-10 h-10 bg-white 
+              className="group cursor-pointer rounded-full flex items-center justify-center pl-1 w-10 h-10 bg-white 
                   absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2"
             >
-              <img src="/images/icon-next.svg" alt="next" />
+              <svg width="13" height="18" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  className="group-hover:stroke-orange"
+                  d="m2 1 8 8-8 8"
+                  stroke="#1D2026"
+                  stroke-width="3"
+                  fill="none"
+                  fillRule="evenodd"
+                />
+              </svg>
             </div>
           </div>
         </div>
@@ -157,9 +177,10 @@ function PopUp({ images, setPopUp, popUpImage, setPopUpImage }: PopUpProps) {
               className={`cursor-pointer relative rounded-2xl overflow-hidden 
                     ${index === popUpImage && "outline-3"} outline-orange`}
             >
-              {index === popUpImage && (
-                <div className="absolute w-full h-full bg-white/75" />
-              )}
+              <div
+                className={`absolute w-full h-full bg-white/75 
+                  ${index === popUpImage ? "opacity-100" : "opacity-0 hover:opacity-100"}`}
+              />
               <img src={image} alt="product" />
             </div>
           ))}

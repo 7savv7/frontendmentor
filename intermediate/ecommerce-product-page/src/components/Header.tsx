@@ -142,8 +142,9 @@ function Header({ cartQuantity, setCartQuantity }: Props) {
                       </div>
 
                       <button
+                        onClick={() => setCartQuantity(0)}
                         type="button"
-                        className="cursor-pointer w-full bg-orange rounded-lg p-3 font-bold"
+                        className="cursor-pointer w-full bg-orange rounded-lg p-3 font-bold hover:bg-orange/50"
                       >
                         Checkout
                       </button>
