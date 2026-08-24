@@ -1,1 +1,16 @@
 @import "tailwindcss";
+
+@theme {
+  --color-blue600: hsl(185, 75%, 39%);
+  --color-navy950: hsl(229, 23%, 23%);
+  --color-gray500: hsl(227, 10%, 46%);
+
+  --color-gray100: hsl(225, 10%, 92%);
+}
+
+body {
+  user-select: none;
+  font-family: "Kumbh Sans", sans-serif;
+  font-size: 18px;
+  background-color: var(--color-blue600);
+}
