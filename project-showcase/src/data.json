@@ -169,5 +169,14 @@
         "frontendmentor": "https://www.frontendmentor.io/solutions/social-links-profile-jd9QmzBhN0",
         "github": "https://github.com/7savv7/frontendmentor/tree/main/newbie/social-links-profile",
         "link": "https://social-links-profile-sigma-sepia.vercel.app/"
+    },
+    {
+        "title": "ecommerce-product-page",
+        "difficulty": "intermediate",
+        "image": "images/ecommerce-product-page.png",
+        "tools": ["react", "tailwindcss", "typescript"],
+        "frontendmentor": "https://www.frontendmentor.io/solutions/ecommerce-product-page-nXUhZ23fvy",
+        "github": "https://github.com/7savv7/frontendmentor/tree/main/intermediate/ecommerce-product-page",
+        "link": "https://ecommerce-product-page-gold-nine.vercel.app/"
     }
 ]
