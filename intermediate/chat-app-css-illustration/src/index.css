@@ -21,3 +21,82 @@ body {
   font-size: 16px;
   background-color: var(--color-gray100);
 }
+
+@keyframes slide {
+  0% {
+    transform: translateX(-110%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-to-left {
+  0% {
+    transform: translateX(110%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.slide {
+  transform: translateX(-110%);
+  animation: slide 1s ease forwards;
+}
+
+.slide-2 {
+  animation-delay: 250ms;
+}
+
+.slide-3,
+.slide-4 {
+  transform: translateX(110%);
+  animation: slide-to-left 1s ease forwards;
+}
+
+.slide-3 {
+  animation-delay: 1250ms;
+}
+
+.slide-4 {
+  animation-delay: 1.5s;
+}
+
+.slide-5 {
+  animation-delay: 1750ms;
+}
+
+.slide-6 {
+  animation-delay: 2s;
+}
+
+.slide-7 {
+  animation-delay: 2250ms;
+}
+
+.image {
+  opacity: 0;
+  animation: fade-in 1s ease forwards;
+}
+
+.image-1 {
+  animation-delay: 500ms;
+}
+
+.image-2 {
+  animation-delay: 750ms;
+}
+
+.image-3 {
+  animation-delay: 1s;
+}

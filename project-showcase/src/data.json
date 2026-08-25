@@ -187,5 +187,14 @@
         "frontendmentor": "https://www.frontendmentor.io/solutions/profile-card-component-aCjVVjFoMA",
         "github": "https://github.com/7savv7/frontendmentor/tree/main/newbie/profile-card-component",
         "link": "https://profile-card-component-rose-delta.vercel.app/"
+    },
+    {
+        "title": "chat-app-css-illustration",
+        "difficulty": "intermediate",
+        "image": "images/chat-app-css-illustration.png",
+        "tools": ["react", "tailwindcss", "typescript"],
+        "frontendmentor": "https://www.frontendmentor.io/solutions/chat-app-css-illustration-Drz8YvVcRd",
+        "github": "https://github.com/7savv7/frontendmentor/tree/main/intermediate/chat-app-css-illustration",
+        "link": "https://chat-app-css-illustration-blush.vercel.app/"
     }
 ]

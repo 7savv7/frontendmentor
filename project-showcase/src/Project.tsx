@@ -29,7 +29,11 @@ function Project({ project, diffClass, addDifficulty, addTag }: Props) {
       </div>
 
       <div className="p-4 flex flex-col justify-between h-[40%]">
-        <p className="text-lg font-semibold">{project.title}</p>
+        <p className="text-lg font-semibold">
+          {(project.title.charAt(0).toUpperCase() + project.title.slice(1))
+            .split("-")
+            .join(" ")}
+        </p>
 
         <div className="flex gap-2 items-center">
           <a
