@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+@theme {
+  --color-lavender300: hsl(237, 18%, 59%);
+  --color-pink100: hsl(345, 95%, 68%);
+
+  --color-slate700: hsl(236, 21%, 26%);
+  --color-slate800: hsl(235, 16%, 14%);
+  --color-slate900: hsl(234, 17%, 12%);
+}
+
+body {
+  user-select: none;
+  font-size: 14px;
+  font-family: "Red Hat Text", sans-serif;
+  font-weight: 700;
+  background-color: var(--color-slate900);
+  background-image: url(/images/bg-stars.svg);
+}
