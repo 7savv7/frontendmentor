@@ -15,5 +15,5 @@ body {
   font-family: "Red Hat Text", sans-serif;
   font-weight: 700;
   background-color: var(--color-slate900);
-  background-image: url(/images/bg-stars.svg);
+  background-image: url(/images/bg-stars);
 }

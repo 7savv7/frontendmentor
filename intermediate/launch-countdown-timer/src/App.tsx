@@ -1,19 +1,67 @@
+import { useEffect, useState } from "react";
 import Card from "./Card";
 
 function App() {
-  const time = ["Days", "Hours", "Minutes", "Seconds"];
+  const [goal, setGoal] = useState(
+    new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).getTime(),
+  );
+
+  const [countdown, setCountdown] = useState([
+    { time: 14, title: "Days" },
+    { time: 0, title: "Hours" },
+    { time: 0, title: "Minutes" },
+    { time: 0, title: "Seconds" },
+  ]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const now = Date.now();
+      const distance = goal - now;
+
+      if (distance <= 0) {
+        setCountdown([
+          { time: 0, title: "Days" },
+          { time: 0, title: "Hours" },
+          { time: 0, title: "Minutes" },
+          { time: 0, title: "Seconds" },
+        ]);
+
+        setGoal(new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).getTime());
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+      );
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      setCountdown([
+        { time: days, title: "Days" },
+        { time: hours, title: "Hours" },
+        { time: minutes, title: "Minutes" },
+        { time: seconds, title: "Seconds" },
+      ]);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [goal]);
+
   return (
     <div
       className="flex flex-col items-center justify-center min-h-svh bg-[url(/images/pattern-hills.svg)] bg-no-repeat 
-      bg-bottom bg-[100%_auto] p-5 text-center text-white lg:min-h-screen"
+      bg-bottom lg:bg-[100%_auto] p-5 text-center text-white lg:min-h-screen"
     >
-      <div className="flex flex-col items-center justify-between py-15 flex-1">
-        <div className="flex items-center flex-col gap-15 py-15 flex-1">
-          <h1 className="text-[1.4em] uppercase tracking-[0.4em]">We're launching soon</h1>
+      <div className="flex flex-col items-center justify-between w-full gap-10 py-15 flex-1">
+        <div className="flex justify-center items-center flex-col gap-15 flex-1">
+          <h1 className="text-[1.4em] uppercase tracking-[0.4em]">
+            We're launching soon
+          </h1>
 
-          <div className="flex items-center">
-            {time.map((t) => (
-              <Card key={t} time={1} title={t} />
+          <div className="flex w-full mb-30 items-center gap-5">
+            {countdown.map((t) => (
+              <Card key={t.title} time={t.time} title={t.title} />
             ))}
           </div>
         </div>
