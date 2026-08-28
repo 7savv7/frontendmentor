@@ -5,6 +5,7 @@
   --color-pink100: hsl(345, 95%, 68%);
 
   --color-slate700: hsl(236, 21%, 26%);
+  --color-slate750: hsl(236, 20%, 20%);
   --color-slate800: hsl(235, 16%, 14%);
   --color-slate900: hsl(234, 17%, 12%);
 }
@@ -16,4 +17,31 @@ body {
   font-weight: 700;
   background-color: var(--color-slate900);
   background-image: url(/images/bg-stars);
+}
+
+@keyframes flip-top {
+  from {
+    transform: rotateX(0);
+  }
+  to {
+    transform: rotateX(90deg);
+  }
+}
+
+@keyframes flip-bottom {
+  from {
+    transform: rotateX(90deg);
+  }
+  to {
+    transform: rotateX(0);
+  }
+}
+
+.flip-top {
+  animation: flip-top 300ms ease-in both;
+}
+
+.flip-bottom {
+  animation: flip-bottom 300ms ease-out both;
+  animation-delay: 300ms;
 }

@@ -196,5 +196,14 @@
         "frontendmentor": "https://www.frontendmentor.io/solutions/chat-app-css-illustration-Drz8YvVcRd",
         "github": "https://github.com/7savv7/frontendmentor/tree/main/intermediate/chat-app-css-illustration",
         "link": "https://chat-app-css-illustration-blush.vercel.app/"
+    },
+    {
+        "title": "launch-countdown-timer",
+        "difficulty": "intermediate",
+        "image": "images/launch-countdown-timer.png",
+        "tools": ["react", "tailwindcss", "typescript"],
+        "frontendmentor": "https://www.frontendmentor.io/solutions/launch-countdown-timer-cGiyr6fvtT",
+        "github": "https://github.com/7savv7/frontendmentor/tree/main/intermediate/launch-countdown-timer",
+        "link": "https://launch-countdown-timer-one-sable.vercel.app/"
     }
 ]

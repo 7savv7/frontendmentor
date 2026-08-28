@@ -51,7 +51,7 @@ function App() {
   return (
     <div
       className="flex flex-col items-center justify-center min-h-svh bg-[url(/images/pattern-hills.svg)] bg-no-repeat 
-      bg-bottom lg:bg-[100%_auto] p-5 text-center text-white lg:min-h-screen"
+      bg-bottom bg-middle lg:bg-[100%_auto] p-5 text-center text-white lg:min-h-screen"
     >
       <div className="flex flex-col items-center justify-between w-full gap-10 py-15 flex-1">
         <div className="flex justify-center items-center flex-col gap-15 flex-1">
