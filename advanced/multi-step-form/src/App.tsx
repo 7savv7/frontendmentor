@@ -5,14 +5,44 @@ import Step3 from "./components/Step3";
 import Step4 from "./components/Step4";
 import ThankYouPage from "./components/ThankYouPage";
 
-const steps = [
-  { title: "Step 1", info: "Your info", component: <Step1 /> },
-  { title: "Step 2", info: "Select plan", component: <Step2 /> },
-  { title: "Step 3", info: "Add-ons", component: <Step3 /> },
-  { title: "Step 4", info: "Summary", component: <Step4 /> },
-];
+export interface Info {
+  name: string;
+  email: string;
+  phone: string;
+  yearly: boolean;
+  plan: null | { name: string; price: number };
+  adds: { name: string; price: number }[];
+}
 
 function App() {
+  const [info, setInfo] = useState<Info>({
+    name: "",
+    email: "",
+    phone: "",
+    yearly: false,
+    plan: null,
+    adds: [],
+  });
+
+  const steps = [
+    {
+      title: "Step 1",
+      info: "Your info",
+      component: <Step1 info={info} setInfo={setInfo} />,
+    },
+    {
+      title: "Step 2",
+      info: "Select plan",
+      component: <Step2 info={info} setInfo={setInfo} />,
+    },
+    {
+      title: "Step 3",
+      info: "Add-ons",
+      component: <Step3 info={info} setInfo={setInfo} />,
+    },
+    { title: "Step 4", info: "Summary", component: <Step4 /> },
+  ];
+
   const [step, setStep] = useState<number>(1);
   const [confirm, setConfirm] = useState<boolean>(false);
 

@@ -1,4 +1,12 @@
-function Step1() {
+import type { Dispatch, SetStateAction } from "react";
+import type { Info } from "../App";
+
+interface Props {
+  info: Info;
+  setInfo: Dispatch<SetStateAction<Info>>;
+}
+
+function Step1({ info, setInfo }: Props) {
   return (
     <div className="text-blue950">
       <h1 className="text-[1.5em] font-bold">Personal info</h1>
@@ -12,6 +20,10 @@ function Step1() {
           <input
             className="border border-grey500 text-grey500 font-[500] p-2 px-4 rounded-sm outline-none"
             id="name"
+            value={info.name}
+            onChange={(e) =>
+              setInfo((prev) => ({ ...prev, name: e.target.value }))
+            }
             type="text"
             placeholder="e.g. Stephen King"
           />
@@ -22,7 +34,11 @@ function Step1() {
           <input
             className="border border-grey500 text-grey500 font-[500] p-2 px-4 rounded-sm outline-none"
             id="email"
-            type="text"
+            value={info.email}
+            onChange={(e) =>
+              setInfo((prev) => ({ ...prev, email: e.target.value }))
+            }
+            type="email"
             placeholder="e.g. stephenking@lorem.com"
           />
         </div>
@@ -32,7 +48,12 @@ function Step1() {
           <input
             className="border border-grey500 text-grey500 font-[500] p-2 px-4 rounded-sm outline-none"
             id="phone"
-            type="text"
+            value={info.phone}
+            onChange={(e) => {
+              const value = e.target.value.replace(/[^\d+\s()-]/g, "");
+              setInfo((prev) => ({ ...prev, phone: value }));
+            }}
+            type="tel"
             placeholder="e.g. +1 234 567 890"
           />
         </div>
