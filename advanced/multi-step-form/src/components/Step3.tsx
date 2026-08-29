@@ -28,14 +28,17 @@ function Step3({ info, setInfo }: Props) {
         {addOns.map((a) => (
           <div
             key={a.add}
-            className="flex items-center justify-between gap-2 border border-grey500 rounded-lg p-3 py-2"
+            className={`flex items-center justify-between gap-2 border border-grey500 rounded-lg p-3 py-2 
+              ${info.adds.map((ad) => ad.name).includes(a.add) && "border-purple600 bg-blue50"}`}
           >
             <div className="flex items-center gap-2">
               <div
                 onClick={() =>
                   setInfo((prev) => ({
                     ...prev,
-                    adds: [...prev.adds, { name: a.add, price: a.price }],
+                    adds: prev.adds.map((ad) => ad.name).includes(a.add)
+                      ? prev.adds.filter((ad) => ad.name !== a.add)
+                      : [...prev.adds, { name: a.add, price: a.price }],
                   }))
                 }
                 className={`w-5 h-5 mx-1 rounded border border-grey500
@@ -66,7 +69,8 @@ function Step3({ info, setInfo }: Props) {
             </div>
 
             <p className="text-[0.9em] text-purple600">
-              +${info.yearly ? a.price * 10 : a.price}/mo
+              +${info.yearly ? a.price * 10 : a.price}/
+              {info.yearly ? "yr" : "mo"}
             </p>
           </div>
         ))}

@@ -38,7 +38,8 @@ function Step2({ info, setInfo }: Props) {
             <div>
               <p className="font-[500]">{p.plan}</p>
               <p className="text-grey500">
-                ${info.yearly ? p.price * 10 : p.price}/mo
+                ${info.yearly ? p.price * 10 : p.price}/
+                {info.yearly ? "yr" : "mo"}
               </p>
               {info.yearly && <p className="font-[500]">2 months free</p>}
             </div>

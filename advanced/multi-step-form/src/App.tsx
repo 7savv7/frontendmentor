@@ -24,6 +24,26 @@ function App() {
     adds: [],
   });
 
+  const [step, setStep] = useState<number>(1);
+  const [confirm, setConfirm] = useState<boolean>(false);
+
+  const [slideRight, setSlideRight] = useState<boolean>(false);
+  const [slideLeft, setSlideLeft] = useState<boolean>(false);
+
+  const changePlan = () => {
+    setSlideLeft(false);
+
+    requestAnimationFrame(() => {
+      setSlideLeft(true);
+    });
+
+    setStep(2);
+
+    setTimeout(() => {
+      setSlideLeft(false);
+    }, 450);
+  };
+
   const steps = [
     {
       title: "Step 1",
@@ -40,14 +60,12 @@ function App() {
       info: "Add-ons",
       component: <Step3 info={info} setInfo={setInfo} />,
     },
-    { title: "Step 4", info: "Summary", component: <Step4 /> },
+    {
+      title: "Step 4",
+      info: "Summary",
+      component: <Step4 info={info} setStep={changePlan} />,
+    },
   ];
-
-  const [step, setStep] = useState<number>(1);
-  const [confirm, setConfirm] = useState<boolean>(false);
-
-  const [slideRight, setSlideRight] = useState<boolean>(false);
-  const [slideLeft, setSlideLeft] = useState<boolean>(false);
 
   const nextStep = () => {
     setSlideRight(false);
@@ -80,6 +98,14 @@ function App() {
   const confirmation = () => {
     if (step === 4) {
       setConfirm(true);
+      setInfo({
+        name: "",
+        email: "",
+        phone: "",
+        yearly: false,
+        plan: null,
+        adds: [],
+      });
       setSlideRight(true);
       setTimeout(() => {
         setSlideRight(false);
