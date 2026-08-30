@@ -10,7 +10,7 @@ export interface Info {
   email: string;
   phone: string;
   yearly: boolean;
-  plan: null | { name: string; price: number };
+  plan: { name: string; price: number };
   adds: { name: string; price: number }[];
 }
 
@@ -20,12 +20,14 @@ function App() {
     email: "",
     phone: "",
     yearly: false,
-    plan: null,
+    plan: { name: "Arcade", price: 9 },
     adds: [],
   });
 
   const [step, setStep] = useState<number>(1);
   const [confirm, setConfirm] = useState<boolean>(false);
+
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const [slideRight, setSlideRight] = useState<boolean>(false);
   const [slideLeft, setSlideLeft] = useState<boolean>(false);
@@ -48,7 +50,7 @@ function App() {
     {
       title: "Step 1",
       info: "Your info",
-      component: <Step1 info={info} setInfo={setInfo} />,
+      component: <Step1 info={info} setInfo={setInfo} errors={errors} />,
     },
     {
       title: "Step 2",
@@ -68,6 +70,36 @@ function App() {
   ];
 
   const nextStep = () => {
+    if (step === 1) {
+      const newErrors: Record<string, string> = {};
+
+      if (!info.name.trim()) {
+        newErrors.name = "This field is required";
+      } else if (info.name.trim().length < 3) {
+        newErrors.name = "Name must have at least 3 characters";
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!info.email.trim()) {
+        newErrors.email = "This field is required";
+      } else if (!emailRegex.test(info.email.trim())) {
+        newErrors.email = "Invalid email format";
+      }
+
+      const phoneRegex = /^[0-9]+$/;
+      if (!info.phone.trim()) {
+        newErrors.phone = "This field is required";
+      } else if (!phoneRegex.test(info.phone.trim())) {
+        newErrors.phone = "Phone must contain only numbers";
+      } else if (info.phone.trim().length < 10) {
+        newErrors.phone = "Phone must have at least 10 digits";
+      }
+
+      setErrors(newErrors);
+
+      if (Object.keys(newErrors).length > 0) return;
+    }
+
     setSlideRight(false);
 
     requestAnimationFrame(() => {
@@ -103,7 +135,7 @@ function App() {
         email: "",
         phone: "",
         yearly: false,
-        plan: null,
+        plan: { name: "Arcade", price: 9 },
         adds: [],
       });
       setSlideRight(true);

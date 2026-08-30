@@ -11,7 +11,7 @@ function Step4({ info, setStep }: Props) {
       info.adds.length > 0
         ? info.adds.reduce((total, add) => total + add.price, 0)
         : 0;
-    return (info.plan?.price ?? 0) + adds;
+    return info.plan?.price + adds;
   };
 
   return (
@@ -28,7 +28,7 @@ function Step4({ info, setStep }: Props) {
         >
           <div>
             <p className="text-blue950 font-[500]">
-              {info.plan?.name} ({info.yearly ? "Yearly" : "Monthly"})
+              {info.plan.name} ({info.yearly ? "Yearly" : "Monthly"})
             </p>
 
             <button
@@ -41,7 +41,7 @@ function Step4({ info, setStep }: Props) {
           </div>
 
           <p className="text-blue950 font-[700]">
-            ${info.yearly ? info.plan?.price! * 10 : info.plan?.price}/
+            ${info.yearly ? info.plan.price * 10 : info.plan.price}/
             {info.yearly ? "yr" : "mo"}
           </p>
         </div>

@@ -31,7 +31,7 @@ function Step2({ info, setInfo }: Props) {
               }))
             }
             className={`flex items-start gap-3 border rounded-lg p-3
-              ${info.plan?.name === p.plan ? "border-purple600 bg-blue50" : "border-grey500"}`}
+              ${info.plan.name === p.plan ? "border-purple600 bg-blue50" : "border-grey500"}`}
           >
             <img src={`/images/icon-${p.image}.svg`} alt={p.image} />
 
