@@ -55,7 +55,7 @@ function Step2({ info, setInfo }: Props) {
         <button
           type="button"
           onClick={() => setInfo((prev) => ({ ...prev, yearly: false }))}
-          className={`cursor-pointer ${!info.yearly && "text-blue950"} transition-all`}
+          className={`cursor-pointer ${!info.yearly && "text-blue950"} transition-all hover:text-blue950`}
         >
           Monthly
         </button>

@@ -205,5 +205,14 @@
         "frontendmentor": "https://www.frontendmentor.io/solutions/launch-countdown-timer-cGiyr6fvtT",
         "github": "https://github.com/7savv7/frontendmentor/tree/main/intermediate/launch-countdown-timer",
         "link": "https://launch-countdown-timer-one-sable.vercel.app/"
+    },
+    {
+        "title": "multi-step-form",
+        "difficulty": "advanced",
+        "image": "images/multi-step-form.png",
+        "tools": ["react", "tailwindcss", "typescript"],
+        "frontendmentor": "https://www.frontendmentor.io/solutions/multi-step-form-SF0_isXeBI",
+        "github": "https://github.com/7savv7/frontendmentor/tree/main/advanced/multi-step-form",
+        "link": "https://multi-step-form-ruddy-iota.vercel.app/"
     }
 ]
