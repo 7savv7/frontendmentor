@@ -15,7 +15,7 @@ function Step1({ info, setInfo, errors }: Props) {
         Please provide your name, email address, and phone number.
       </p>
 
-      <div className="flex flex-col gap-3 mt-5">
+      <div className="flex flex-col gap-3 mt-5 lg:gap-5 lg:mt-6">
         <div className="flex flex-col item-start">
           <div className="flex items-center justify-between">
             <label htmlFor="name">Name</label>
@@ -28,7 +28,7 @@ function Step1({ info, setInfo, errors }: Props) {
           </div>
 
           <input
-            className={`border ${errors.name ? "border-red500" : "border-grey500"} 
+            className={`border ${errors.name ? "border-red500" : "border-grey500 hover:border-purple600"} 
             text-blue950 font-[500] p-2 px-4 rounded-sm outline-none`}
             id="name"
             value={info.name}
@@ -52,7 +52,7 @@ function Step1({ info, setInfo, errors }: Props) {
           </div>
 
           <input
-            className={`border ${errors.email ? "border-red500" : "border-grey500"} 
+            className={`border ${errors.email ? "border-red500" : "border-grey500 hover:border-purple600"} 
             text-blue950 font-[500] p-2 px-4 rounded-sm outline-none`}
             id="email"
             value={info.email}
@@ -76,7 +76,7 @@ function Step1({ info, setInfo, errors }: Props) {
           </div>
 
           <input
-            className={`border ${errors.phone ? "border-red500" : "border-grey500"} 
+            className={`border ${errors.phone ? "border-red500" : "border-grey500 hover:border-purple600"} 
             text-blue950 font-[500] p-2 px-4 rounded-sm outline-none`}
             id="phone"
             value={info.phone}

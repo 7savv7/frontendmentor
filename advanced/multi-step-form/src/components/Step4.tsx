@@ -21,7 +21,7 @@ function Step4({ info, setStep }: Props) {
         Double-check everything looks OK before confirming.
       </p>
 
-      <div className="bg-blue50 p-4 rounded-lg text-grey500 mt-5">
+      <div className="bg-blue50 p-4 rounded-lg text-grey500 mt-5 lg:mt-6">
         <div
           className={`flex items-center justify-between 
             ${info.adds.length > 0 && "border-b pb-2"} border-grey500/40`}
@@ -34,7 +34,7 @@ function Step4({ info, setStep }: Props) {
             <button
               onClick={setStep}
               type="button"
-              className="font-[500] underline"
+              className="cursor-pointer font-[500] underline hover:text-purple600"
             >
               Change
             </button>

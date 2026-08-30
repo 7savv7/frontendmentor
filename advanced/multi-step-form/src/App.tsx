@@ -146,14 +146,22 @@ function App() {
   };
 
   return (
-    <div className="min-h-svh lg:min-h-screen">
-      <div className="flex flex-col w-full h-full">
+    <div className="flex min-h-svh lg:min-h-screen lg:items-center lg:justify-center">
+      <div
+        className="flex flex-col w-full h-full lg:w-[60%] lg:max-w-[1000px] lg:h-fit
+        lg:flex-row lg:bg-white lg:rounded-xl lg:p-4 lg:shadow-lg"
+      >
         <div
           className="flex items-center justify-center gap-4 w-full h-[172px] pb-22 pt-4 
-          bg-[url(/images/bg-sidebar-mobile.svg)] bg-cover bg-no-repeat"
+          bg-[url(/images/bg-sidebar-mobile.svg)] bg-cover bg-no-repeat 
+          lg:bg-[url(/images/bg-sidebar-desktop.svg)] lg:h-full lg:w-[274px] 
+          lg:p-6 lg:flex-col lg:items-start lg:min-h-[568px] lg:rounded-lg lg:justify-start"
         >
           {steps.map((s, index) => (
-            <div key={s.title} className="text-white">
+            <div
+              key={s.title}
+              className="text-white lg:flex lg:items-center lg:gap-4"
+            >
               <div
                 className={`flex items-center justify-center border border-white rounded-full w-8 h-8 p-2 font-[700]
                 ${index + 1 === step && "text-blue950 border-transparent bg-blue200"} transition-all duration-450`}
@@ -161,29 +169,33 @@ function App() {
                 <p>{index + 1}</p>
               </div>
 
-              <div className="hidden">
-                <p>{s.title}</p>
-                <p>{s.info}</p>
+              <div className="hidden uppercase lg:flex lg:flex-col">
+                <p className="text-blue300 text-[0.8em]">{s.title}</p>
+                <p className="font-[700] text-[0.9em]">{s.info}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="overflow-hidden relative -top-22 w-full p-4">
+        <div
+          className="overflow-hidden relative -top-22 w-full p-4 
+          lg:flex-1 lg:static lg:px-2 xl:px-20 lg:py-0 lg:pt-5 lg:flex lg:flex-col lg:justify-between"
+        >
           <div
             className={`bg-white w-full p-5 rounded-lg shadow-lg 
-              ${slideRight && "animate-slide-left"} ${slideLeft && "animate-slide-right"} `}
+              ${slideRight && "animate-slide-left"} ${slideLeft && "animate-slide-right"} 
+              lg:shadow-none`}
           >
             {confirm ? <ThankYouPage /> : steps[step - 1].component}
           </div>
 
           {!confirm && (
-            <div className="flex items-center justify-between fixed bottom-0 left-0 p-4 w-full bg-white">
+            <div className="flex items-center justify-between fixed bottom-0 left-0 p-4 w-full bg-white lg:static">
               {step > 1 && (
                 <button
                   type="button"
                   onClick={prevStep}
-                  className="text-grey500 font-[500]"
+                  className="cursor-pointer text-grey500 font-[500] hover:text-blue950"
                 >
                   Go Back
                 </button>
@@ -193,7 +205,7 @@ function App() {
                 <button
                   type="button"
                   onClick={nextStep}
-                  className="ml-auto bg-blue950 text-white p-2 px-4 rounded-sm"
+                  className="cursor-pointer ml-auto bg-blue950 text-white p-2 px-4 rounded-sm hover:bg-blue950/80"
                 >
                   Next Step
                 </button>
@@ -201,7 +213,8 @@ function App() {
                 <button
                   type="button"
                   onClick={confirmation}
-                  className="ml-auto bg-purple600 text-white p-2 px-4 rounded-sm"
+                  className="cursor-pointer ml-auto bg-purple600 text-white p-2 px-4 
+                  rounded-sm lg:px-6 transition-all hover:opacity-50"
                 >
                   Confirm
                 </button>

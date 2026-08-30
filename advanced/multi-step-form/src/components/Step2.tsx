@@ -20,7 +20,7 @@ function Step2({ info, setInfo }: Props) {
         You have the option of monthly or yearly billing.
       </p>
 
-      <div className="flex flex-col gap-3 mt-5">
+      <div className="flex flex-col gap-3 mt-5 lg:flex-row lg:mt-6">
         {plans.map((p) => (
           <div
             key={p.plan}
@@ -30,8 +30,9 @@ function Step2({ info, setInfo }: Props) {
                 plan: { name: p.plan, price: p.price },
               }))
             }
-            className={`flex items-start gap-3 border rounded-lg p-3
-              ${info.plan.name === p.plan ? "border-purple600 bg-blue50" : "border-grey500"}`}
+            className={`cursor-pointer flex items-start gap-3 border rounded-lg p-3
+              ${info.plan.name === p.plan ? "border-purple600 bg-blue50" : "border-grey500 hover:border-purple600"}
+              lg:flex-col lg:flex-1 lg:gap-8`}
           >
             <img src={`/images/icon-${p.image}.svg`} alt={p.image} />
 
@@ -47,18 +48,21 @@ function Step2({ info, setInfo }: Props) {
         ))}
       </div>
 
-      <div className="flex items-center justify-center text-grey500 font-[500] gap-5 p-2 px-5 mt-5 bg-blue50 rounded-lg">
+      <div
+        className="flex items-center justify-center text-grey500 font-[500] 
+        gap-5 p-2 px-5 mt-5 bg-blue50 rounded-lg lg:mt-6"
+      >
         <button
           type="button"
           onClick={() => setInfo((prev) => ({ ...prev, yearly: false }))}
-          className={`${!info.yearly && "text-blue950"} transition-all`}
+          className={`cursor-pointer ${!info.yearly && "text-blue950"} transition-all`}
         >
           Monthly
         </button>
 
         <div
           onClick={() => setInfo((prev) => ({ ...prev, yearly: !prev.yearly }))}
-          className="relative bg-blue950 h-5 w-10 rounded-full"
+          className="cursor-pointer relative bg-blue950 h-5 w-10 rounded-full hover:bg-blue950/80"
         >
           <div
             className={`absolute w-[12px] top-[4px] h-[12px] bg-white rounded-full 
@@ -69,7 +73,7 @@ function Step2({ info, setInfo }: Props) {
         <button
           type="button"
           onClick={() => setInfo((prev) => ({ ...prev, yearly: true }))}
-          className={`${info.yearly && "text-blue950"} transition-all`}
+          className={`cursor-pointer ${info.yearly && "text-blue950"} transition-all hover:text-blue950`}
         >
           Yearly
         </button>
