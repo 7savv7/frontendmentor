@@ -7,12 +7,12 @@ import Link from "next/link";
 
 export default function Home() {
   const [drop, setDrop] = useState<boolean>(false);
-  const [region, setRegion] = useState("Filter by region");
+  const [region, setRegion] = useState("");
   const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
 
   return (
-    <main className="p-20 pt-10">
-      <div className="flex items-center justify-between">
+    <main className="p-5 lg:p-20 lg:pt-10">
+      <div className="flex flex-col gap-10 lg:flex-row lg:items-center justify-between">
         <div className="flex items-center gap-5 bg-white shadow-sm rounded-md pl-5">
           <svg
             className="w-5 h-5"
@@ -30,12 +30,12 @@ export default function Home() {
           />
         </div>
 
-        <div className="relative">
+        <div className="relative w-fit font-[600]">
           <div
             onClick={() => setDrop((prev) => !prev)}
             className="cursor-pointer flex items-center justify-between bg-white shadow-sm rounded-md p-4 w-40"
           >
-            <p>{region}</p>
+            <p>{region ? region : "Filter by region"}</p>
 
             <svg
               className="w-4 h-4"
@@ -48,14 +48,15 @@ export default function Home() {
           </div>
 
           {drop && (
-            <div className="flex flex-col gap-2 absolute z-5 p-4 rounded-md shadow-sm top-full left-0 w-full bg-white mt-1">
+            <div className="flex flex-col gap-1 absolute z-5 p-4 rounded-md shadow-sm top-full left-0 w-full bg-white mt-1">
               {regions.map((r) => (
                 <div
                   key={r}
-                  className="cursor-pointer"
-                  onClick={() =>
-                    setRegion((prev) => (prev === r ? "Filter by region" : r))
-                  }
+                  className={`cursor-pointer p-1 ${r === region && "shadow-sm"} hover:shadow-sm`}
+                  onClick={() => {
+                    setRegion((prev) => (prev === r ? "Filter by region" : r));
+                    setDrop(false);
+                  }}
                 >
                   {r}
                 </div>
@@ -65,9 +66,13 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-20 mt-10">
+      <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:gap-20 mt-10">
         {data.map((country) => (
-          <Link href={`/${country.alpha3Code}`} key={country.alpha3Code}>
+          <Link
+            className="m-auto w-full max-w-80 lg:max-w-full"
+            href={`/${country.alpha3Code}`}
+            key={country.alpha3Code}
+          >
             <div
               className="overflow-hidden flex flex-col w-full h-80 bg-white shadow-sm rounded-md 
               transition duration-[400ms] hover:-translate-y-5"
@@ -83,13 +88,21 @@ export default function Home() {
                 />
               </div>
 
-              <div className="h-[80%] p-5 flex flex-col gap-3">
-                <p>{country.name}</p>
+              <div className="h-[80%] p-5 flex flex-col gap-2">
+                <p className="font-[800] text-[1.2em]">{country.name}</p>
 
-                <div>
-                  <p>Population: {country.population}</p>
-                  <p>Region: {country.region}</p>
-                  <p>Capital: {country.capital}</p>
+                <div className="flex flex-col gap-1">
+                  <p>
+                    <span className="font-[600]">Population:</span>{" "}
+                    {country.population.toLocaleString(undefined)}
+                  </p>
+                  <p>
+                    <span className="font-[600]">Region:</span> {country.region}
+                  </p>
+                  <p>
+                    <span className="font-[600]">Capital:</span>{" "}
+                    {country.capital}
+                  </p>
                 </div>
               </div>
             </div>

@@ -17,7 +17,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${nunitoSans.variable} h-full antialiased`}>
       <body className="min-h-svh flex flex-col lg:min-h-screen">
-        <header className="flex items-center justify-between p-5 px-20 shadow-sm">
+        <header className="flex items-center justify-between p-5 lg:px-20 shadow-sm">
           <p className="font-bold">Where in the world?</p>
 
           <div className="flex items-center gap-2">

@@ -22,7 +22,7 @@ async function Country({ params }: Props) {
       <div className="flex items-center gap-20 mt-10">
         <div className="w-1/2">
           <Image
-            className="w-full h-auto"
+            className="w-full h-auto shadow-sm"
             src={country.flag}
             alt={country.name}
             width={100}
