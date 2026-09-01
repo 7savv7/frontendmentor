@@ -3,6 +3,7 @@
 import Image from "next/image";
 import data from "@/app/data.json";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Home() {
   const [drop, setDrop] = useState<boolean>(false);
@@ -66,32 +67,33 @@ export default function Home() {
 
       <div className="grid grid-cols-4 gap-20 mt-10">
         {data.map((country) => (
-          <div
-            key={country.alpha3Code}
-            className="overflow-hidden flex flex-col w-full h-80 bg-white shadow-sm rounded-md 
-            transition duration-[400ms] hover:-translate-y-5"
-          >
-            <div className="relative overflow-hidden h-full">
-              <Image
-                className="object-cover object-center"
-                src={country.flag}
-                alt={`${country.name}-flag`}
-                fill
-                loading="eager"
-                priority
-              />
-            </div>
+          <Link href={`/${country.alpha3Code}`} key={country.alpha3Code}>
+            <div
+              className="overflow-hidden flex flex-col w-full h-80 bg-white shadow-sm rounded-md 
+              transition duration-[400ms] hover:-translate-y-5"
+            >
+              <div className="relative overflow-hidden h-full">
+                <Image
+                  className="object-cover object-center"
+                  src={country.flag}
+                  alt={`${country.name}-flag`}
+                  fill
+                  loading="eager"
+                  priority
+                />
+              </div>
 
-            <div className="h-[80%] p-5 flex flex-col gap-3">
-              <p>{country.name}</p>
+              <div className="h-[80%] p-5 flex flex-col gap-3">
+                <p>{country.name}</p>
 
-              <div>
-                <p>Population: {country.population}</p>
-                <p>Region: {country.region}</p>
-                <p>Capital: {country.capital}</p>
+                <div>
+                  <p>Population: {country.population}</p>
+                  <p>Region: {country.region}</p>
+                  <p>Capital: {country.capital}</p>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </main>
