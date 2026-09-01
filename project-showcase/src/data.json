@@ -214,5 +214,14 @@
         "frontendmentor": "https://www.frontendmentor.io/solutions/multi-step-form-SF0_isXeBI",
         "github": "https://github.com/7savv7/frontendmentor/tree/main/advanced/multi-step-form",
         "link": "https://multi-step-form-ruddy-iota.vercel.app/"
+    },
+    {
+        "title": "rest-countries-api",
+        "difficulty": "advanced",
+        "image": "images/rest-countries-api.png",
+        "tools": ["nextjs", "tailwindcss", "typescript"],
+        "frontendmentor": "https://www.frontendmentor.io/solutions/rest-countries-api-TECsLWhqL1",
+        "github": "https://github.com/7savv7/frontendmentor/tree/main/advanced/rest-countries-api",
+        "link": "https://rest-countries-api-tau-one.vercel.app/"
     }
 ]

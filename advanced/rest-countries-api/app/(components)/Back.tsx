@@ -8,7 +8,7 @@ export default function BackButton() {
   return (
     <button
       type="button"
-      className="group cursor-pointer flex items-center gap-2 shadow-sm bg-white p-2 px-8 rounded-md"
+      className="group cursor-pointer flex items-center gap-2 shadow-sm text-text fill-text bg-elements p-2 px-8 rounded-md"
       onClick={() => router.back()}
     >
       <svg

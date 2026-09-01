@@ -9,7 +9,7 @@ export default function Home() {
   const [search, setSearch] = useState<string>("");
   const [drop, setDrop] = useState<boolean>(false);
   const [region, setRegion] = useState("");
-  const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
+  const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
   return (
     <main className="p-5 text-text lg:p-20 lg:pt-10">
@@ -110,7 +110,7 @@ export default function Home() {
                   <div className="flex flex-col gap-1">
                     <p>
                       <span className="font-[600]">Population:</span>{" "}
-                      {country.population.toLocaleString(undefined)}
+                      {country.population.toLocaleString("en-US")}
                     </p>
                     <p>
                       <span className="font-[600]">Region:</span>{" "}

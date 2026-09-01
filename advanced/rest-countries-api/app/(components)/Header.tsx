@@ -7,7 +7,19 @@ function Header() {
   const [isDark, setIsDark] = useState<boolean>(false);
 
   useEffect(() => {
-    document.body.classList.toggle("dark");
+    const theme = localStorage.getItem("theme");
+
+    if (theme) {
+      setIsDark(theme === "dark");
+    } else {
+      const system = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      setIsDark(system);
+    }
+  }, []);
+
+  useEffect(() => {
+    document.body.classList.toggle("dark", isDark);
+    localStorage.setItem("theme", isDark ? "dark" : "light");
   }, [isDark]);
 
   return (

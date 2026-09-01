@@ -14,15 +14,6 @@
   --color-elements: var(--elements);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: hsl(207, 26%, 17%);
-    --text: hsl(0, 100%, 100%);
-    --elements: hsl(209, 23%, 22%);
-    --input: hsl(0, 100%, 100%);
-  }
-}
-
 .dark {
   --background: hsl(207, 26%, 17%);
   --text: hsl(0, 100%, 100%);
@@ -30,10 +21,23 @@
   --input: hsl(0, 100%, 100%);
 }
 
+@keyframes expand {
+  from {
+    transform: scale(80%);
+  }
+  to {
+    transform: scale(100%);
+  }
+}
+
+.animate-expand {
+  animation: expand 400ms ease-in-out forwards;
+}
+
 body {
   user-select: none;
   background: var(--background);
-  font-family: "Nunito Sans", sans-serif;
+  font-family: var(--font-nunito-sans), sans-serif;
   transition: all 400ms;
   font-size: 14px;
 }
