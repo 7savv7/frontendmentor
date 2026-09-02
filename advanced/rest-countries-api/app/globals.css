@@ -38,6 +38,6 @@ body {
   user-select: none;
   background: var(--background);
   font-family: var(--font-nunito-sans), sans-serif;
-  transition: all 400ms;
+  transition: background 400ms;
   font-size: 14px;
 }

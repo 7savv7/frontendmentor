@@ -4,23 +4,23 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 function Header() {
-  const [isDark, setIsDark] = useState<boolean>(false);
+  const [isDark, setIsDark] = useState(false);
 
-  useEffect(() => {
-    const theme = localStorage.getItem("theme");
+  useEffect(
+    () => setIsDark(document.documentElement.classList.contains("dark")),
+    [],
+  );
 
-    if (theme) {
-      setIsDark(theme === "dark");
-    } else {
-      const system = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      setIsDark(system);
-    }
-  }, []);
+  const switchTheme = () => {
+    setIsDark((prev) => {
+      const next = !prev;
 
-  useEffect(() => {
-    document.body.classList.toggle("dark", isDark);
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-  }, [isDark]);
+      document.documentElement.classList.toggle("dark", next);
+      localStorage.setItem("theme", next ? "dark" : "light");
+
+      return next;
+    });
+  };
 
   return (
     <header className="flex items-center justify-between text-text fill-text bg-elements p-5 lg:px-20 shadow-sm">
@@ -28,12 +28,14 @@ function Header() {
         Where in the world?
       </Link>
 
-      <div
-        onClick={() => setIsDark((prev) => !prev)}
-        className="cursor-pointer flex items-center gap-2 font-[600]"
+      <button
+        type="button"
+        onClick={switchTheme}
+        className="cursor-pointer p-2 flex items-center gap-2 font-[600]"
       >
         {!isDark ? (
           <svg
+            aria-hidden
             className="h-5 -rotate-30"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 640 640"
@@ -43,6 +45,7 @@ function Header() {
           </svg>
         ) : (
           <svg
+            aria-hidden
             className="h-5 -rotate-30"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 640 640"
@@ -53,7 +56,7 @@ function Header() {
         )}
 
         <p>Dark Mode</p>
-      </div>
+      </button>
     </header>
   );
 }

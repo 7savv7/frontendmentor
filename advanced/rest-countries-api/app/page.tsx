@@ -12,8 +12,8 @@ export default function Home() {
   const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
   return (
-    <main className="p-5 text-text lg:p-20 lg:pt-10">
-      <div className="flex flex-col gap-10 lg:flex-row lg:items-center justify-between">
+    <main className="p-5 text-text lg:p-20 lg:pt-15">
+      <div className="flex flex-col gap-5 lg:flex-row lg:items-center justify-between">
         <div className="flex items-center gap-5 bg-elements shadow-sm rounded-md pl-5">
           <svg
             className="w-5 h-5"
@@ -32,12 +32,15 @@ export default function Home() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             type="text"
+            aria-label="Search for a country..."
             placeholder="Search for a country..."
           />
         </div>
 
         <div className="relative w-fit font-[600]">
-          <div
+          <button
+            type="button"
+            aria-expanded={drop}
             onClick={() => setDrop((prev) => !prev)}
             className="cursor-pointer flex items-center justify-between bg-elements shadow-sm rounded-md p-4 w-40"
           >
@@ -54,28 +57,29 @@ export default function Home() {
                 d="M297.4 470.6C309.9 483.1 330.2 483.1 342.7 470.6L534.7 278.6C547.2 266.1 547.2 245.8 534.7 233.3C522.2 220.8 501.9 220.8 489.4 233.3L320 402.7L150.6 233.4C138.1 220.9 117.8 220.9 105.3 233.4C92.8 245.9 92.8 266.2 105.3 278.7L297.3 470.7z"
               />
             </svg>
-          </div>
+          </button>
 
           {drop && (
             <div className="flex flex-col gap-1 absolute z-5 p-4 rounded-md shadow-sm top-full left-0 w-full bg-elements mt-1">
               {regions.map((r) => (
-                <div
+                <button
+                  type="button"
                   key={r}
-                  className={`cursor-pointer p-1 ${r === region && "shadow-sm"} hover:shadow-sm`}
+                  className={`cursor-pointer text-left p-1 ${r === region && "shadow-sm"} hover:shadow-sm`}
                   onClick={() => {
                     setRegion((prev) => (prev === r ? "" : r));
                     setDrop(false);
                   }}
                 >
                   {r}
-                </div>
+                </button>
               ))}
             </div>
           )}
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:gap-20 mt-10">
+      <div className="grid grid-cols-1 gap-10 mt-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:gap-20 lg:mt-15">
         {data
           .filter(
             (country) =>
@@ -97,10 +101,8 @@ export default function Home() {
                   <Image
                     className="object-cover object-center"
                     src={country.flag}
-                    alt={`${country.name}-flag`}
+                    alt=""
                     fill
-                    loading="eager"
-                    priority
                   />
                 </div>
 

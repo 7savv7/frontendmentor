@@ -37,7 +37,7 @@ async function Country({ params }: Props) {
           />
         </div>
 
-        <div className="flex flex-col gap-8 lg:w-1/2 lg:gap-20">
+        <div className="flex flex-col gap-8 select-text lg:w-1/2 lg:gap-20">
           <div className="flex flex-col gap-8">
             <h1 className="text-[1.6em] font-[800]">{country.name}</h1>
 
