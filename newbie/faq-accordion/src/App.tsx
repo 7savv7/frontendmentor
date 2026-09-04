@@ -1,9 +1,15 @@
 function App() {
-  return <div>Hey</div>;
+  return (
+    <div
+      className="min-h-svh bg-purple100 bg-[url(/images/background-pattern-mobile.svg)] bg-no-repeat bg-[100%_auto] 
+      lg:min-h-screen lg:bg-[url(/images/background-pattern-desktop.svg)]"
+    >
+      Hey
+    </div>
+  );
 }
 
 export default App;
-
 
 /*   FAQs
 
