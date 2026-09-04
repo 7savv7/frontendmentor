@@ -223,5 +223,14 @@
         "frontendmentor": "https://www.frontendmentor.io/solutions/rest-countries-api-TECsLWhqL1",
         "github": "https://github.com/7savv7/frontendmentor/tree/main/advanced/rest-countries-api",
         "link": "https://rest-countries-api-tau-one.vercel.app/"
+    },
+    {
+        "title": "faq-accordion",
+        "difficulty": "newbie",
+        "image": "images/faq-accordion.png",
+        "tools": ["react", "tailwindcss", "typescript"],
+        "frontendmentor": "https://www.frontendmentor.io/solutions/rest-countries-api-TECsLWhqL1",
+        "github": "https://github.com/7savv7/frontendmentor/tree/main/newbie/faq-accordion",
+        "link": "https://rest-countries-api-tau-one.vercel.app/"
     }
 ]
