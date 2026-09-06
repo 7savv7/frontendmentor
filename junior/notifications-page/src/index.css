@@ -1,1 +1,24 @@
 @import "tailwindcss";
+
+@theme {
+  --color-red500: hsl(1, 90%, 64%);
+  --color-blue950: hsl(219, 85%, 26%);
+
+  --color-navy50: hsl(210, 60%, 98%);
+  --color-blue100: hsl(211, 68%, 94%);
+  --color-navy100: hsl(205, 33%, 90%);
+  --color-gray500: hsl(219, 14%, 63%);
+  --color-gray600: hsl(219, 12%, 42%);
+  --color-navy950: hsl(224, 21%, 14%);
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/fonts/PlusJakartaSans-VariableFont_wght.ttf");
+}
+
+body {
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}

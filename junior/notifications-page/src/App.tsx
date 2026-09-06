@@ -1,15 +1,26 @@
 function App() {
-  return <div>Hey</div>;
+  return (
+    <div className="min-h-svh bg-navy50 flex justify-center items-center lg:min-h-screen">
+      <div className="w-full h-full min-h-svh p-5 bg-white lg:w-1/2 lg:h-fit lg:rounded-lg lg:min-h-fit">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <p className="font-[800] text-[1.5em] text-navy950">Notifications</p>
+
+            <div className="bg-blue950 pb-[1px] px-3 rounded-md">
+              <p className="text-white font-[800]">3</p>
+            </div>
+          </div>
+
+          <button type="button" className="text-gray600">Mark all as read</button>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default App;
 
-
-
-/*   Notifications 3
-
-  Mark all as read
-
+/*   
   Mark Webber reacted to your recent post My first tournament today!
   1m ago
 
