@@ -26,35 +26,43 @@ function App() {
           </button>
         </div>
 
-        <div className="flex flex-col gap-4 mt-6">
-          <div className="flex gap-4">
+        <div
+          className="flex flex-col gap-2 mt-6 text-gray600 [&>div]:rounded-lg [&>div]:p-5 
+          [&>div>img]:w-10 [&>div>img]:h-10 [&>div>div_span]:text-navy950 [&>div>div_span]:font-[800] 
+          [&>div>div>p:nth-child(2)]:text-gray500"
+        >
+          <div className="flex gap-4 bg-navy50">
             <img src="/images/avatar-mark-webber.webp" alt="mark-webber" />
 
             <div className="flex-1">
               <p>
-                Mark Webber reacted to your recent post My first tournament
-                today!
+                <span>Mark Webber</span> reacted to your recent post My first
+                tournament today!
               </p>
 
               <p>1m ago</p>
             </div>
           </div>
 
-          <div className="flex gap-4">
+          <div className="flex gap-4 bg-navy50">
             <img src="/images/avatar-angela-gray.webp" alt="mark-webber" />
 
             <div className="flex-1">
-              <p>Angela Gray followed you</p>
+              <p>
+                <span>Angela Gray</span> followed you
+              </p>
 
               <p>5m ago</p>
             </div>
           </div>
 
-          <div className="flex gap-4">
+          <div className="flex gap-4 bg-navy50">
             <img src="/images/avatar-jacob-thompson.webp" alt="mark-webber" />
 
             <div className="flex-1">
-              <p>Jacob Thompson has joined your group Chess Club</p>
+              <p>
+                <span>Jacob Thompson</span> has joined your group Chess Club
+              </p>
 
               <p>1 day ago</p>
             </div>
@@ -64,7 +72,9 @@ function App() {
             <img src="/images/avatar-rizky-hasanuddin.webp" alt="mark-webber" />
 
             <div className="flex-1">
-              <p>Rizky Hasanuddin sent you a private message</p>
+              <p>
+                <span>Rizky Hasanuddin</span> sent you a private message
+              </p>
 
               <p>5 days ago</p>
 
@@ -82,7 +92,9 @@ function App() {
             <img src="/images/avatar-kimberly-smith.webp" alt="mark-webber" />
 
             <div className="flex-1">
-              <p>Kimberly Smith commented on your picture</p>
+              <p>
+                <span>Kimberly Smith</span> commented on your picture
+              </p>
 
               <p>1 week ago</p>
             </div>
@@ -93,8 +105,8 @@ function App() {
 
             <div className="flex-1">
               <p>
-                Nathan Peterson reacted to your recent post 5 end-game
-                strategies to increase your win rate
+                <span>Nathan Peterson</span> reacted to your recent post 5
+                end-game strategies to increase your win rate
               </p>
 
               <p>2 weeks ago</p>
@@ -105,7 +117,9 @@ function App() {
             <img src="/images/avatar-anna-kim.webp" alt="mark-webber" />
 
             <div className="flex-1">
-              <p>Anna Kim left the group Chess Club</p>
+              <p>
+                <span>Anna Kim</span> left the group Chess Club
+              </p>
 
               <p>2 weeks ago</p>
             </div>
