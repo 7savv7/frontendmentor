@@ -1,9 +1,9 @@
-import Header from "./components/Header";
+import Intro from "./components/Intro";
 
 function App() {
   return (
-    <div className="min-h-svh lg:min-h-screen bg-orange300">
-      <Header />
+    <div className="min-h-svh lg:min-h-screen">
+      <Intro />
     </div>
   );
 }

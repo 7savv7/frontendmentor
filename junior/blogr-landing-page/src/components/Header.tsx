@@ -39,6 +39,7 @@ function Header() {
                   setSubdrop((prev) => (prev === index ? -1 : index))
                 }
                 type="button"
+                aria-expanded={subDrop === index}
                 className={`cursor-pointer hover:underline hover:text-white flex items-center gap-2 font-medium 
                   ${subDrop === index && "text-gray600 lg:text-white"}`}
               >
@@ -89,10 +90,11 @@ function Header() {
           >
             Login
           </button>
+
           <button
             type="button"
-            className="cursor-pointer bg-linear-to-r from-orange300 to-red550 font-bold rounded-full p-3 px-8 text-white 
-            lg:w-fit lg:bg-none lg:bg-white lg:text-red500 hover:text-white hover:bg-red500/40"
+            className="cursor-pointer bg-linear-to-r from-orange300 to-red550 font-bold rounded-full p-2 px-8 text-white 
+            lg:w-fit lg:bg-none lg:bg-white lg:text-red500 hover:text-white hover:bg-red400/80"
           >
             Sign Up
           </button>
