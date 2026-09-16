@@ -3,7 +3,7 @@ import Header from "./Header";
 function Intro() {
   return (
     <div className="relative overflow-hidden p-5 bg-linear-to-br from-orange300 to-red550 rounded-bl-[80px]">
-      <div className="relative z-1">
+      <div className="relative z-10">
         <Header />
       </div>
 
