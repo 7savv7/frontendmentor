@@ -4,7 +4,7 @@ function Editor() {
       <h2 className="font-medium text-[1.5em] lg:text-[2em]">Designed for the future</h2>
 
       <div className="flex flex-col items-center gap-10 mt-10 lg:flex-row-reverse">
-        <picture className="lg:w-1/2 relative -right-70">
+        <picture className="lg:w-1/2 lg:relative lg:-right-70">
           <source
             media="(min-width: 1024px)"
             srcSet="/images/illustration-editor-desktop.svg"

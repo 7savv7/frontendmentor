@@ -1,5 +1,6 @@
 import Editor from "./components/Editor";
 import Intro from "./components/Intro";
+import Phones from "./components/Phones";
 
 function App() {
   return (
@@ -7,6 +8,8 @@ function App() {
       <Intro />
 
       <Editor />
+
+      <Phones />
     </div>
   );
 }
