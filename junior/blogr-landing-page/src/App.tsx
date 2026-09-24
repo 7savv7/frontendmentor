@@ -1,4 +1,5 @@
 import Editor from "./components/Editor";
+import Footer from "./components/Footer";
 import Intro from "./components/Intro";
 import Laptop from "./components/Laptop";
 import Phones from "./components/Phones";
@@ -13,6 +14,8 @@ function App() {
       <Phones />
 
       <Laptop />
+
+      <Footer />
     </div>
   );
 }
