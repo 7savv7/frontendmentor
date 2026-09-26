@@ -1,6 +1,6 @@
 function Laptop() {
   return (
-    <div className="flex flex-col items-center gap-10 text-center p-10 lg:flex-row lg:py-30">
+    <div className="flex flex-col items-center gap-10 text-center p-10 lg:flex-row lg:p-30">
       <picture className="lg:w-1/2 lg:relative lg:right-50">
         <source
           media="(min-width: 1024px)"
@@ -9,7 +9,7 @@ function Laptop() {
         <img src="/images/illustration-laptop-mobile.svg" alt="laptop" />
       </picture>
 
-      <div className="flex flex-col items-center gap-10 lg:text-left lg:w-1/2 lg:pr-50">
+      <div className="flex flex-col items-center gap-10 lg:text-left lg:w-1/2">
         <div>
           <h2 className="text-[1.4em] font-[600] text-blue900 lg:text-[1.8em]">Free, open, simple</h2>
           <p className="text-gray600 mt-5">

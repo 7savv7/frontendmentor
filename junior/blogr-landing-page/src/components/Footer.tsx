@@ -2,7 +2,7 @@ function Footer() {
   return (
     <footer
       className="bg-gray900 rounded-tr-[80px] flex flex-col items-center gap-10 p-10 text-white text-center
-      lg:flex-row lg:justify-evenly lg:items-start lg:text-left [&_li]:cursor-pointer [&_li]:hover:underline"
+      lg:flex-row lg:justify-evenly lg:items-start lg:text-left [&_li]:cursor-pointer [&_li]:hover:underline lg:px-30"
     >
       <img src="/images/logo.svg" alt="logo" />
 

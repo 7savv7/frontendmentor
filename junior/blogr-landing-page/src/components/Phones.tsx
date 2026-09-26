@@ -5,14 +5,14 @@ function Phones() {
       lg:relative"
     >
       <img
-        className="relative top-50 z-1 lg:-top-[16%] lg:left-10 lg:absolute"
+        className="relative top-50 z-1 lg:-top-[16%] lg:pl-30 lg:absolute"
         src="/images/illustration-phones.svg"
         alt="phones"
       />
 
       <div
         className="overflow-hidden relative bg-linear-to-b from-purple950 to-purple900 pt-50 pb-20 p-10 
-      rounded-tr-[80px] rounded-bl-[80px] lg:pl-[50%] lg:text-left lg:pt-34 lg:pb-34"
+      rounded-tr-[80px] rounded-bl-[80px] lg:pl-[50%] lg:text-left lg:pt-34 lg:pb-34 lg:pr-30"
       >
         <img
           className="absolute bottom-[40%] lg:-left-[18%] lg:bottom-0"
