@@ -7,3 +7,8 @@
   --color-brown-400: hsl(28, 10%, 53%);
   --color-red-100: hsl(26, 66%, 93%);
 }
+
+body {
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+}
