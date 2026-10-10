@@ -1,4 +1,12 @@
+import { useState } from "react";
+
 function App() {
+  const [email, setEmail] = useState<string>("");
+  const [validateEmail, setValidateEmail] = useState<boolean | null>();
+  function isValidEmail() {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    setValidateEmail(regex.test(email));
+  }
   return (
     <div className="min-h-svh flex justify-center items-center bg-blue-700 lg:min-h-screen">
       <div
@@ -30,15 +38,31 @@ function App() {
           </div>
 
           <div className="flex flex-col w-full lg:mt-5">
-            <p className="font-bold">Email address</p>
+            <div className="flex justify-between items-center">
+              <p className="font-bold">Email address</p>
+
+              {validateEmail === false && (
+                <p className="text-red font-bold">Valid email required</p>
+              )}
+            </div>
 
             <input
               type="text"
-              className="border rounded-md p-4 mt-2 outline-none"
-              placeholder="email@company.com "
+              className={`border-2 border-grey/40 focus:border-black focus:text-black rounded-md p-4 mt-2 outline-none 
+                ${validateEmail === false && "border-red text-red bg-red/20"}`}
+              placeholder="email@company.com"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setValidateEmail(null);
+              }}
             />
 
-            <button className="rounded-md p-4 bg-blue-800 text-white mt-5">
+            <button
+              onClick={isValidEmail}
+              className="cursor-pointer rounded-md p-4 bg-blue-800 text-white mt-5 hover:shadow-2xl
+              hover:bg-linear-to-br hover:from-pink-400 hover:to-red"
+            >
               Subscribe to monthly newsletter
             </button>
           </div>
