@@ -84,18 +84,20 @@ function App() {
           </picture>
         </div>
       ) : (
-        <div className="bg-white min-h-svh w-full max-w-150 p-5 lg:min-h-fit flex flex-col lg:w-fit lg:rounded-4xl">
-          <img src="images/icon-success.svg" alt="success" />
+        <div className="bg-white min-h-svh w-full lg:max-w-150 p-5 py-10 lg:min-h-fit flex flex-col lg:w-fit lg:rounded-4xl">
+          <div className="flex-1 flex justify-center flex-col gap-5">
+            <img className="w-16 rounded-full" src="images/icon-success.svg" alt="success" />
 
-          <h1>Thanks for subscribing!</h1>
+            <h1 className="mt-5 text-[3em] leading-14 font-bold">Thanks for subscribing!</h1>
 
-          <p>
-            A confirmation email has been sent to{" "}
-            <strong>ash@loremcompany.com</strong>. Please open it and click the
-            button inside to confirm your subscription.
-          </p>
+            <p>
+              A confirmation email has been sent to{" "}
+              <strong>ash@loremcompany.com</strong>. Please open it and click
+              the button inside to confirm your subscription.
+            </p>
+          </div>
 
-          <button>Dismiss message</button>
+          <button className="cursor-pointer bg-blue-700 text-white rounded-xl p-5">Dismiss message</button>
         </div>
       )}
     </div>
