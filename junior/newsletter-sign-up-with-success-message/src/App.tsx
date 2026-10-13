@@ -84,11 +84,20 @@ function App() {
           </picture>
         </div>
       ) : (
-        <div className="bg-white min-h-svh w-full lg:max-w-150 p-5 py-10 lg:min-h-fit flex flex-col lg:w-fit lg:rounded-4xl">
+        <div
+          className="bg-white min-h-svh w-full lg:max-w-120 p-5 py-10 gap-5 
+          lg:py-12 lg:p-12 lg:min-h-fit flex flex-col lg:w-fit lg:rounded-4xl"
+        >
           <div className="flex-1 flex justify-center flex-col gap-5">
-            <img className="w-16 rounded-full" src="images/icon-success.svg" alt="success" />
+            <img
+              className="w-16 rounded-full"
+              src="images/icon-success.svg"
+              alt="success"
+            />
 
-            <h1 className="mt-5 text-[3em] leading-14 font-bold">Thanks for subscribing!</h1>
+            <h1 className="mt-5 text-[3em] leading-14 font-bold">
+              Thanks for subscribing!
+            </h1>
 
             <p>
               A confirmation email has been sent to{" "}
@@ -97,7 +106,16 @@ function App() {
             </p>
           </div>
 
-          <button className="cursor-pointer bg-blue-700 text-white rounded-xl p-5">Dismiss message</button>
+          <button
+            className="cursor-pointer bg-blue-800 text-white rounded-md p-4 mt-5 hover:shadow-2xl
+            hover:bg-linear-to-br hover:from-pink-400 hover:to-red"
+            onClick={() => {
+              setValidateEmail(null);
+              setEmail("");
+            }}
+          >
+            Dismiss message
+          </button>
         </div>
       )}
     </div>
