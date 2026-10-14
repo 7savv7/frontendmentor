@@ -259,5 +259,14 @@
         "frontendmentor": "https://www.frontendmentor.io/solutions/rest-countries-api-TECsLWhqL1",
         "github": "https://github.com/7savv7/frontendmentor/tree/main/junior/expenses-chart-component",
         "link": "https://rest-countries-api-tau-one.vercel.app/"
+    },
+    {
+        "title": "newsletter-sign-up-with-success-message",
+        "difficulty": "junior",
+        "image": "images/newsletter-sign-up-with-success-message.png",
+        "tools": ["react", "tailwindcss", "typescript"],
+        "frontendmentor": "https://www.frontendmentor.io/solutions/rest-countries-api-TECsLWhqL1",
+        "github": "https://github.com/7savv7/frontendmentor/tree/main/junior/newsletter-sign-up-with-success-message",
+        "link": "https://rest-countries-api-tau-one.vercel.app/"
     }
 ]
