@@ -22,3 +22,7 @@
   --color-light-lavender: hsl(241, 100%, 89%);
   --color-dark-gray-blue: hsl(224, 30%, 27%);
 }
+
+body {
+  font-family: "Hanken Grotesk";
+}
