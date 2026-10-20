@@ -64,14 +64,14 @@ function App() {
         </div>
 
         <div className="p-5">
-          <p>Summary</p>
+          <p className="font-bold text-dark-gray-blue">Summary</p>
 
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-5 mt-5">
             {summary.map((sum) => (
               <div
                 key={sum.title}
                 style={{
-                  backgroundColor: `hsla(${sum.color.hue + "," + sum.color.saturation + "%," + sum.color.lightness}%, 0.1)`,
+                  backgroundColor: `hsla(${sum.color.hue + "," + sum.color.saturation + "%," + sum.color.lightness}%, 0.05)`,
                 }}
                 className="flex justify-between items-center p-4 rounded-xl"
               >
@@ -90,12 +90,19 @@ function App() {
                   </p>
                 </div>
 
-                <p>{sum.percent} / 100</p>
+                <p className="text-dark-gray-blue/70 font-medium">
+                  <span className="font-bold text-dark-gray-blue mr-1">{sum.percent}</span> / 100
+                </p>
               </div>
             ))}
           </div>
 
-          <button type="button">Continue</button>
+          <button
+            type="button"
+            className="mt-5 w-full bg-dark-gray-blue text-white rounded-full p-4 font-medium"
+          >
+            Continue
+          </button>
         </div>
       </div>
     </div>
