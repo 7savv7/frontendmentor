@@ -42,7 +42,7 @@ function App() {
     <div className="min-h-svh lg:min-h-screen bg-pale-blue flex justify-center items-center flex-col">
       <div
         className="w-full h-full flex-1 flex flex-col bg-white 
-        lg:h-fit lg:w-fit lg:max-w-180 lg:flex-none lg:flex-row lg:rounded-3xl"
+        lg:h-fit lg:w-fit lg:max-w-180 lg:flex-none lg:flex-row lg:rounded-3xl lg:shadow-xl"
       >
         <div
           className="text-center text-white rounded-bl-3xl rounded-br-3xl p-8
@@ -50,9 +50,12 @@ function App() {
           bg-linear-to-b from-light-slate-blue to-light-royal-blue
           lg:w-1/2 lg:rounded-3xl lg:justify-between lg:p-10"
         >
-          <p className="text-white/70">Your Result</p>
+          <p className="text-white/70 lg:text-[1.2em]">Your Result</p>
 
-          <div className="bg-linear-to-b from-violet-blue to-persian-blue rounded-full w-35 h-35 p-5">
+          <div
+            className="bg-linear-to-b from-violet-blue to-persian-blue rounded-full
+            flex flex-col items-center justify-center w-35 h-35 p-5 lg:w-45 lg:h-45"
+          >
             <p className="font-bold text-[3em]">76</p>
             <p className="text-white/70">of 100</p>
           </div>
@@ -68,7 +71,9 @@ function App() {
         </div>
 
         <div className="p-5 lg:w-1/2 lg:p-10">
-          <p className="font-bold text-dark-gray-blue">Summary</p>
+          <p className="font-bold text-dark-gray-blue lg:text-[1.2em]">
+            Summary
+          </p>
 
           <div className="flex flex-col gap-5 mt-5">
             {summary.map((sum) => (
@@ -106,7 +111,8 @@ function App() {
 
           <button
             type="button"
-            className="mt-5 w-full bg-dark-gray-blue text-white rounded-full p-4 font-medium"
+            className="cursor-pointer mt-5 w-full bg-dark-gray-blue text-white rounded-full py-3 p-4 font-medium 
+            hover:bg-light-royal-blue"
           >
             Continue
           </button>
