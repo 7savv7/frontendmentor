@@ -268,5 +268,14 @@
         "frontendmentor": "https://www.frontendmentor.io/solutions/rest-countries-api-TECsLWhqL1",
         "github": "https://github.com/7savv7/frontendmentor/tree/main/junior/newsletter-sign-up-with-success-message",
         "link": "https://rest-countries-api-tau-one.vercel.app/"
+    },
+    {
+        "title": "results-summary-component",
+        "difficulty": "newbie",
+        "image": "images/results-summary-component.png",
+        "tools": ["react", "tailwindcss", "typescript"],
+        "frontendmentor": "https://www.frontendmentor.io/solutions/rest-countries-api-TECsLWhqL1",
+        "github": "https://github.com/7savv7/frontendmentor/tree/main/newbie/results-summary-component",
+        "link": "https://rest-countries-api-tau-one.vercel.app/"
     }
 ]
