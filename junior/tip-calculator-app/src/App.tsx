@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 function App() {
+  const [percent, setPercent] = useState<string>("");
+  const [custom, setCustom] = useState<string>("");
   return (
     <div
       className="min-h-svh lg:min-h-screen bg-green-400/20 flex flex-col items-center gap-10 pt-10 
@@ -9,11 +13,13 @@ function App() {
       <div className="bg-white w-full flex-1 rounded-t-3xl p-5 flex flex-col gap-6 lg:flex-none lg:w-fit lg:rounded-3xl">
         <div className="flex flex-col gap-5">
           <div className="flex flex-col">
-            <label htmlFor="bill">Bill</label>
+            <label htmlFor="bill" className="text-grey-500 text-[0.8em]">
+              Bill
+            </label>
             <div className="flex justify-between items-center gap-2 w-full bg-grey-50 p-3 rounded-md mt-2">
               <img src="images/icon-dollar.svg" alt="dollar" className="h-5" />
               <input
-                type="text"
+                type="number"
                 id="bill"
                 className="outline-none text-green-900 text-right w-full"
               />
@@ -21,12 +27,17 @@ function App() {
           </div>
 
           <div>
-            <p>Select Tip %</p>
+            <p className="text-grey-500 text-[0.8em]">Select Tip %</p>
             <div className="flex flex-wrap gap-3 mt-3">
               {["5%", "10%", "15%", "25%", "50%"].map((p) => (
                 <div
                   key={p}
-                  className="text-white bg-green-900 p-3 flex-[1_1_100px] text-center rounded-md"
+                  onClick={() => {
+                    setCustom("");
+                    setPercent(p);
+                  }}
+                  className={`${percent == p ? "text-green-900 bg-green-400" : "text-white bg-green-900"} 
+                  p-3 flex-[1_1_100px] text-center rounded-md`}
                 >
                   {p}
                 </div>
@@ -35,17 +46,24 @@ function App() {
               <input
                 type="text"
                 placeholder="Custom"
-                className="bg-grey-50 outline-none p-3 flex-[1_1_100px] text-center w-0 rounded-md"
+                value={custom}
+                onChange={(e) => {
+                  setCustom(e.target.value);
+                  setPercent("");
+                }}
+                className="bg-grey-50 outline-none p-3 flex-[1_1_100px] text-center w-0 rounded-md text-green-900"
               />
             </div>
           </div>
 
           <div className="flex flex-col">
-            <label htmlFor="people">Number of People</label>
+            <label htmlFor="people" className="text-grey-500 text-[0.8em]">
+              Number of People
+            </label>
             <div className="flex justify-between items-center gap-2 w-full bg-grey-50 p-3 rounded-md mt-2">
               <img src="images/icon-person.svg" alt="person" className="h-5" />
               <input
-                type="text"
+                type="number"
                 id="people"
                 className="outline-none text-green-900 text-right w-full"
               />
@@ -53,7 +71,7 @@ function App() {
           </div>
         </div>
 
-        <div className="bg-green-900 rounded-md p-5">
+        <div className="bg-green-900 rounded-xl p-5">
           <div>
             <div>
               <p>Tip Amount</p>
