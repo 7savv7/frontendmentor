@@ -3,6 +3,10 @@ import { useState } from "react";
 function App() {
   const [percent, setPercent] = useState<string>("");
   const [custom, setCustom] = useState<string>("");
+
+  const [bill, setBill] = useState<number>(0);
+  const [people, setPeople] = useState<number>(0);
+
   return (
     <div
       className="min-h-svh lg:min-h-screen bg-green-400/20 flex flex-col items-center gap-10 pt-10 
@@ -21,6 +25,8 @@ function App() {
               <input
                 type="number"
                 id="bill"
+                value={bill}
+                onChange={(e) => setBill(Number(e.target.value))}
                 className="outline-none text-green-900 text-right w-full"
               />
             </div>
@@ -65,29 +71,47 @@ function App() {
               <input
                 type="number"
                 id="people"
+                value={people}
+                onChange={(e) => setPeople(Number(e.target.value))}
                 className="outline-none text-green-900 text-right w-full"
               />
             </div>
           </div>
         </div>
 
-        <div className="bg-green-900 rounded-xl p-5">
-          <div>
+        <div className="bg-green-900 rounded-xl p-5 flex flex-col gap-5">
+          <div className="flex justify-between items-center">
             <div>
-              <p>Tip Amount</p>
-              <p>/ person</p>
+              <p className="text-white text-[0.7em]">Tip Amount</p>
+
+              <p className="text-grey-400 text-[0.6em]">/ person</p>
             </div>
+
+            <p className="text-green-400 text-[1.2em]">${0}</p>
           </div>
 
-          <div>
+          <div className="flex justify-between items-center">
             <div>
-              <p>Total</p>
+              <p className="text-white text-[0.7em]">Total</p>
 
-              <p>/ person</p>
+              <p className="text-grey-400 text-[0.6em]">/ person</p>
             </div>
+
+            <p className="text-green-400 text-[1.2em]">${0}</p>
           </div>
 
-          <button type="button">Reset</button>
+          <button
+            type="button"
+            className="bg-green-400 w-full rounded-md p-2 uppercase text-green-900"
+            onClick={() => {
+              setBill(0);
+              setPeople(0);
+              setCustom("");
+              setPercent("");
+            }}
+          >
+            Reset
+          </button>
         </div>
       </div>
     </div>
