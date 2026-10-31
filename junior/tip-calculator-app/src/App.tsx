@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 function App() {
-  const [percent, setPercent] = useState<string>("");
-  const [custom, setCustom] = useState<string>("");
+  const [percent, setPercent] = useState<number>(0);
+  const [custom, setCustom] = useState<number>(0);
 
   const [bill, setBill] = useState<number>(0);
   const [people, setPeople] = useState<number>(0);
@@ -35,17 +35,17 @@ function App() {
           <div>
             <p className="text-grey-500 text-[0.8em]">Select Tip %</p>
             <div className="flex flex-wrap gap-3 mt-3">
-              {["5%", "10%", "15%", "25%", "50%"].map((p) => (
+              {[5, 10, 15, 25, 50].map((p) => (
                 <div
                   key={p}
                   onClick={() => {
-                    setCustom("");
+                    setCustom(0);
                     setPercent(p);
                   }}
                   className={`${percent == p ? "text-green-900 bg-green-400" : "text-white bg-green-900"} 
                   p-3 flex-[1_1_100px] text-center rounded-md`}
                 >
-                  {p}
+                  {p}%
                 </div>
               ))}
 
@@ -54,8 +54,8 @@ function App() {
                 placeholder="Custom"
                 value={custom}
                 onChange={(e) => {
-                  setCustom(e.target.value);
-                  setPercent("");
+                  setCustom(Number(e.target.value));
+                  setPercent(0);
                 }}
                 className="bg-grey-50 outline-none p-3 flex-[1_1_100px] text-center w-0 rounded-md text-green-900"
               />
@@ -87,7 +87,12 @@ function App() {
               <p className="text-grey-400 text-[0.6em]">/ person</p>
             </div>
 
-            <p className="text-green-400 text-[1.2em]">${0}</p>
+            <p className="text-green-400 text-[1.2em]">
+              $
+              {people > 0
+                ? ((bill * Math.max(percent, custom)) / 100 / people).toFixed(2)
+                : 0}
+            </p>
           </div>
 
           <div className="flex justify-between items-center">
@@ -97,7 +102,15 @@ function App() {
               <p className="text-grey-400 text-[0.6em]">/ person</p>
             </div>
 
-            <p className="text-green-400 text-[1.2em]">${0}</p>
+            <p className="text-green-400 text-[1.2em]">
+              $
+              {people > 0
+                ? (
+                    (bill + (bill * Math.max(percent, custom)) / 100) /
+                    people
+                  ).toFixed(2)
+                : 0}
+            </p>
           </div>
 
           <button
@@ -106,8 +119,8 @@ function App() {
             onClick={() => {
               setBill(0);
               setPeople(0);
-              setCustom("");
-              setPercent("");
+              setCustom(0);
+              setPercent(0);
             }}
           >
             Reset
