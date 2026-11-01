@@ -14,8 +14,11 @@ function App() {
     >
       <img src="/images/logo.svg" alt="logo" />
 
-      <div className="bg-white w-full flex-1 rounded-t-3xl p-5 flex flex-col gap-6 lg:flex-none lg:w-fit lg:rounded-3xl">
-        <div className="flex flex-col gap-5">
+      <div
+        className="bg-white w-full flex-1 rounded-t-3xl p-5 flex flex-col gap-6 
+        lg:flex-none lg:w-[60%] lg:rounded-3xl lg:flex-row"
+      >
+        <div className="flex flex-col gap-5 lg:w-1/2">
           <div className="flex flex-col">
             <label htmlFor="bill" className="text-grey-500 text-[0.8em]">
               Bill
@@ -79,38 +82,42 @@ function App() {
           </div>
         </div>
 
-        <div className="bg-green-900 rounded-xl p-5 flex flex-col gap-5">
-          <div className="flex justify-between items-center">
-            <div>
-              <p className="text-white text-[0.7em]">Tip Amount</p>
+        <div className="bg-green-900 rounded-xl p-5 flex flex-col justify-between gap-5 lg:w-1/2">
+          <div className="flex flex-col gap-5">
+            <div className="flex justify-between items-center">
+              <div>
+                <p className="text-white text-[0.7em]">Tip Amount</p>
 
-              <p className="text-grey-400 text-[0.6em]">/ person</p>
+                <p className="text-grey-400 text-[0.6em]">/ person</p>
+              </div>
+
+              <p className="text-green-400 text-[1.2em]">
+                $
+                {people > 0
+                  ? ((bill * Math.max(percent, custom)) / 100 / people).toFixed(
+                      2,
+                    )
+                  : 0}
+              </p>
             </div>
 
-            <p className="text-green-400 text-[1.2em]">
-              $
-              {people > 0
-                ? ((bill * Math.max(percent, custom)) / 100 / people).toFixed(2)
-                : 0}
-            </p>
-          </div>
+            <div className="flex justify-between items-center">
+              <div>
+                <p className="text-white text-[0.7em]">Total</p>
 
-          <div className="flex justify-between items-center">
-            <div>
-              <p className="text-white text-[0.7em]">Total</p>
+                <p className="text-grey-400 text-[0.6em]">/ person</p>
+              </div>
 
-              <p className="text-grey-400 text-[0.6em]">/ person</p>
+              <p className="text-green-400 text-[1.2em]">
+                $
+                {people > 0
+                  ? (
+                      (bill + (bill * Math.max(percent, custom)) / 100) /
+                      people
+                    ).toFixed(2)
+                  : 0}
+              </p>
             </div>
-
-            <p className="text-green-400 text-[1.2em]">
-              $
-              {people > 0
-                ? (
-                    (bill + (bill * Math.max(percent, custom)) / 100) /
-                    people
-                  ).toFixed(2)
-                : 0}
-            </p>
           </div>
 
           <button
