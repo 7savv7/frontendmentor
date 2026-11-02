@@ -16,7 +16,7 @@ function App() {
 
       <div
         className="bg-white w-full flex-1 rounded-t-3xl p-5 flex flex-col gap-6 
-        lg:flex-none lg:w-[60%] lg:rounded-3xl lg:flex-row"
+        lg:flex-none lg:w-[60%] lg:rounded-3xl lg:flex-row lg:p-8 lg:gap-8 lg:shadow-2xl"
       >
         <div className="flex flex-col gap-5 lg:w-1/2">
           <div className="flex flex-col">
@@ -45,7 +45,7 @@ function App() {
                     setCustom(0);
                     setPercent(p);
                   }}
-                  className={`${percent == p ? "text-green-900 bg-green-400" : "text-white bg-green-900"} 
+                  className={`cursor-pointer ${percent == p ? "text-green-900 bg-green-400" : "text-white bg-green-900 hover:bg-grey-200 hover:text-green-900"} 
                   p-3 flex-[1_1_100px] text-center rounded-md`}
                 >
                   {p}%
@@ -82,8 +82,8 @@ function App() {
           </div>
         </div>
 
-        <div className="bg-green-900 rounded-xl p-5 flex flex-col justify-between gap-5 lg:w-1/2">
-          <div className="flex flex-col gap-5">
+        <div className="bg-green-900 rounded-xl p-5 flex flex-col justify-between gap-5 lg:w-1/2 lg:p-8">
+          <div className="flex flex-col gap-5 lg:gap-8">
             <div className="flex justify-between items-center">
               <div>
                 <p className="text-white text-[0.7em]">Tip Amount</p>
@@ -122,7 +122,7 @@ function App() {
 
           <button
             type="button"
-            className="bg-green-400 w-full rounded-md p-2 uppercase text-green-900"
+            className="cursor-pointer hover:bg-grey-200 bg-green-400 w-full rounded-md p-2 uppercase text-green-900"
             onClick={() => {
               setBill(0);
               setPeople(0);
