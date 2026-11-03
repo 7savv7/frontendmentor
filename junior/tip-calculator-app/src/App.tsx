@@ -23,12 +23,16 @@ function App() {
             <label htmlFor="bill" className="text-grey-500 text-[0.8em]">
               Bill
             </label>
-            <div className="flex justify-between items-center gap-2 w-full bg-grey-50 p-3 rounded-md mt-2">
+            <div
+              className="flex justify-between items-center gap-2 w-full bg-grey-50 p-3 
+              rounded-md mt-2 border-2 border-transparent hover:border-green-400"
+            >
               <img src="images/icon-dollar.svg" alt="dollar" className="h-5" />
               <input
                 type="number"
                 id="bill"
                 value={bill}
+                min={0}
                 onChange={(e) => setBill(Number(e.target.value))}
                 className="outline-none text-green-900 text-right w-full"
               />
@@ -60,21 +64,31 @@ function App() {
                   setCustom(Number(e.target.value));
                   setPercent(0);
                 }}
-                className="bg-grey-50 outline-none p-3 flex-[1_1_100px] text-center w-0 rounded-md text-green-900"
+                className="bg-grey-50 outline-none p-3 flex-[1_1_100px] text-center w-0 
+                rounded-md text-green-900 border-2 border-transparent hover:border-green-400"
               />
             </div>
           </div>
 
           <div className="flex flex-col">
-            <label htmlFor="people" className="text-grey-500 text-[0.8em]">
-              Number of People
-            </label>
-            <div className="flex justify-between items-center gap-2 w-full bg-grey-50 p-3 rounded-md mt-2">
+            <div className="flex items-center justify-between">
+              <label htmlFor="people" className="text-grey-500 text-[0.8em]">
+                Number of People
+              </label>
+              {people === 0 && bill != 0 && (
+                <p className="text-[0.7em] text-red-400">Can't be zero</p>
+              )}
+            </div>
+            <div
+              className={`${people === 0 && bill != 0 ? "border-red-400" : "border-transparent"} border-2 
+              flex justify-between items-center gap-2 w-full bg-grey-50 p-3 rounded-md mt-2`}
+            >
               <img src="images/icon-person.svg" alt="person" className="h-5" />
               <input
                 type="number"
                 id="people"
                 value={people}
+                min={0}
                 onChange={(e) => setPeople(Number(e.target.value))}
                 className="outline-none text-green-900 text-right w-full"
               />
