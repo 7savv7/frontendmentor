@@ -277,5 +277,14 @@
         "frontendmentor": "https://www.frontendmentor.io/solutions/rest-countries-api-TECsLWhqL1",
         "github": "https://github.com/7savv7/frontendmentor/tree/main/newbie/results-summary-component",
         "link": "https://rest-countries-api-tau-one.vercel.app/"
+    },
+    {
+        "title": "tip-calculator-app",
+        "difficulty": "junior",
+        "image": "images/tip-calculator-app.png",
+        "tools": ["react", "tailwindcss", "typescript"],
+        "frontendmentor": "https://www.frontendmentor.io/solutions/rest-countries-api-TECsLWhqL1",
+        "github": "https://github.com/7savv7/frontendmentor/tree/main/junior/tip-calculator-app",
+        "link": "https://rest-countries-api-tau-one.vercel.app/"
     }
 ]
