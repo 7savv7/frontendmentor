@@ -1,7 +1,11 @@
 function App() {
   return (
     <div className="min-h-svh lg:min-h-screen">
-      <img src="/images/image-omelette.jpeg" alt="omelette" />
+      <img
+        className="w-full"
+        src="/images/image-omelette.jpeg"
+        alt="omelette"
+      />
 
       <div className="p-5 flex flex-col gap-5">
         <h1 className="text-[1.8em]">Simple Omelette Recipe</h1>
@@ -15,17 +19,17 @@ function App() {
         <div className="bg-rose-50 rounded-xl p-5">
           <p>Preparation time</p>
 
-          <ul className="list-disc pl-5">
+          <ul className="list-disc list-inside">
             <li>Total: Approximately 10 minutes</li>
             <li>Preparation: 5 minutes</li>
             <li>Cooking: 5 minutes</li>
           </ul>
         </div>
 
-        <div>
+        <div className="border-b pb-5">
           <p>Ingredients</p>
 
-          <ul>
+          <ul className="list-disc list-inside">
             <li>2-3 large eggs</li>
             <li>Salt, to taste</li>
             <li>Pepper, to taste</li>
@@ -36,10 +40,10 @@ function App() {
           </ul>
         </div>
 
-        <div>
+        <div className="border-b pb-5">
           <p>Instructions</p>
 
-          <ol>
+          <ol className="list-decimal pl-5 [&>li]:pl-2">
             <li>
               Beat the eggs: In a bowl, beat the eggs with a pinch of salt and
               pepper until they are well mixed. You can add a tablespoon of
@@ -71,27 +75,31 @@ function App() {
 
         <div>
           <p>Nutrition</p>
+
           <p>
             The table below shows nutritional values per serving without the
             additional fillings.
           </p>
-          <table>
-            <tr>
-              <td>Calories</td>
-              <td>277kcal</td>
-            </tr>
-            <tr>
-              <td>Carbs</td>
-              <td>0g</td>
-            </tr>
-            <tr>
-              <td>Protein</td>
-              <td>20g</td>
-            </tr>
-            <tr>
-              <td>Fat</td>
-              <td>22g</td>
-            </tr>
+
+          <table className="w-full border-collapse [&_tr:not(:last-child)]:border-b">
+            <tbody>
+              <tr>
+                <td>Calories</td>
+                <td>277kcal</td>
+              </tr>
+              <tr>
+                <td>Carbs</td>
+                <td>0g</td>
+              </tr>
+              <tr>
+                <td>Protein</td>
+                <td>20g</td>
+              </tr>
+              <tr>
+                <td>Fat</td>
+                <td>22g</td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </div>
