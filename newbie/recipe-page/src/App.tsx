@@ -8,7 +8,7 @@ function App() {
       />
 
       <div className="p-5 flex flex-col gap-5">
-        <h1 className="text-[1.8em]">Simple Omelette Recipe</h1>
+        <h1 className="text-[2em] font-[Young_Serif] text-stone-900">Simple Omelette Recipe</h1>
 
         <p>
           An easy and quick dish, perfect for any meal. This classic omelette
@@ -17,9 +17,9 @@ function App() {
         </p>
 
         <div className="bg-rose-50 rounded-xl p-5">
-          <p>Preparation time</p>
+          <p className="text-rose-800">Preparation time</p>
 
-          <ul className="list-disc list-inside">
+          <ul className="list-disc pl-5">
             <li>Total: Approximately 10 minutes</li>
             <li>Preparation: 5 minutes</li>
             <li>Cooking: 5 minutes</li>
@@ -27,9 +27,9 @@ function App() {
         </div>
 
         <div className="border-b pb-5">
-          <p>Ingredients</p>
+          <p className="text-brown-800 font-[Young_Serif]">Ingredients</p>
 
-          <ul className="list-disc list-inside">
+          <ul className="list-disc pl-5">
             <li>2-3 large eggs</li>
             <li>Salt, to taste</li>
             <li>Pepper, to taste</li>
@@ -41,7 +41,7 @@ function App() {
         </div>
 
         <div className="border-b pb-5">
-          <p>Instructions</p>
+          <p className="text-brown-800 font-[Young_Serif]">Instructions</p>
 
           <ol className="list-decimal pl-5 [&>li]:pl-2">
             <li>
@@ -74,7 +74,7 @@ function App() {
         </div>
 
         <div>
-          <p>Nutrition</p>
+          <p className="text-brown-800 font-[Young_Serif]">Nutrition</p>
 
           <p>
             The table below shows nutritional values per serving without the

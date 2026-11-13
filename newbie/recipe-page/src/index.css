@@ -14,5 +14,6 @@
 
 body {
   font-size: 16px;
-  font-family: "Young Serif", sans-serif;
+  font-family: Outfit, sans-serif;
+  color: hsl(30, 10%, 34%);
 }
