@@ -17,19 +17,19 @@ function App() {
         </p>
 
         <div className="bg-rose-50 rounded-xl p-5">
-          <p className="text-rose-800">Preparation time</p>
+          <p className="text-rose-800 font-semibold mb-2">Preparation time</p>
 
-          <ul className="list-disc pl-5">
-            <li>Total: Approximately 10 minutes</li>
-            <li>Preparation: 5 minutes</li>
-            <li>Cooking: 5 minutes</li>
+          <ul className="list-disc pl-5 flex flex-col gap-1">
+            <li><strong>Total</strong>: Approximately 10 minutes</li>
+            <li><strong>Preparation</strong>: 5 minutes</li>
+            <li><strong>Cooking</strong>: 5 minutes</li>
           </ul>
         </div>
 
-        <div className="border-b pb-5">
-          <p className="text-brown-800 font-[Young_Serif]">Ingredients</p>
+        <div className="border-b border-stone-150 pb-5">
+          <p className="text-brown-800 font-[Young_Serif] mb-2">Ingredients</p>
 
-          <ul className="list-disc pl-5">
+          <ul className="list-disc pl-5 flex flex-col gap-1 [&>li::marker]:text-rose-800">
             <li>2-3 large eggs</li>
             <li>Salt, to taste</li>
             <li>Pepper, to taste</li>
