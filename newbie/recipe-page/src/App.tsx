@@ -1,7 +1,7 @@
 function App() {
   return (
     <div className="min-h-svh lg:min-h-screen bg-stone-100 flex justify-center items-center lg:p-20">
-      <div className="lg:p-5 max-w-1/2 bg-white lg:rounded-2xl">
+      <div className="lg:p-6 lg:max-w-1/2 bg-white lg:rounded-2xl">
         <img
           className="w-full lg:rounded-lg lg:mb-5"
           src="/images/image-omelette.jpeg"
@@ -36,7 +36,7 @@ function App() {
           </div>
 
           <div className="border-b border-stone-150 pb-5">
-            <p className="text-brown-800 font-[Young_Serif] mb-2">
+            <p className="text-brown-800 font-[Young_Serif] mb-2 lg:text-[1.4em]">
               Ingredients
             </p>
 
@@ -52,7 +52,7 @@ function App() {
           </div>
 
           <div className="border-b border-stone-150 pb-5">
-            <p className="text-brown-800 font-[Young_Serif] mb-2">
+            <p className="text-brown-800 font-[Young_Serif] mb-2 lg:text-[1.4em]">
               Instructions
             </p>
 
@@ -92,7 +92,7 @@ function App() {
           </div>
 
           <div>
-            <p className="text-brown-800 font-[Young_Serif] mb-2">Nutrition</p>
+            <p className="text-brown-800 font-[Young_Serif] mb-2 lg:text-[1.4em]">Nutrition</p>
 
             <p className="mb-2">
               The table below shows nutritional values per serving without the
