@@ -111,6 +111,17 @@ function App() {
           Repayments
         </button>
       </div>
+
+      <div className="bg-slate-900 flex flex-col items-center gap-5 p-5 text-center text-white">
+        <img src="/images/illustration-empty.svg" alt="empty" />
+
+        <p className="text-[1.4em] font-bold">Results shown here</p>
+
+        <p className="text-slate-300">
+          Complete the form and click “calculate repayments” to see what your
+          monthly repayments would be
+        </p>
+      </div>
     </div>
   );
 }
