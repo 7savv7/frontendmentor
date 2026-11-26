@@ -5,6 +5,7 @@ function App() {
   const [amount, setAmount] = useState<number | null>(null);
   const [term, setTerm] = useState<number | null>(null);
   const [rate, setRate] = useState<number | null>(null);
+  const [results, setResults] = useState<boolean>(false);
   return (
     <div className="min-h-svh lg:min-h-screen text-slate-700">
       <div className="p-5 flex flex-col gap-5">
@@ -18,6 +19,7 @@ function App() {
               setTerm(null);
               setRate(null);
               setType(null);
+              setResults(false);
             }}
             type="button"
             className="underline underline-offset-2"
@@ -105,6 +107,7 @@ function App() {
 
         <button
           type="button"
+          onClick={() => setResults(true)}
           className="cursor-pointer rounded-full bg-lime flex items-center justify-center p-3 font-bold text-slate-900 gap-2"
         >
           <img src="/images/icon-calculator.svg" alt="calculator" /> Calculate
@@ -112,15 +115,45 @@ function App() {
         </button>
       </div>
 
-      <div className="bg-slate-900 flex flex-col items-center gap-5 p-5 text-center text-white">
-        <img src="/images/illustration-empty.svg" alt="empty" />
+      <div className="bg-slate-900/95 p-5 text-white ">
+        {results ? (
+          <div className="flex flex-col gap-5 text-slate-300">
+            <p className="font-bold text-[1.2em] text-white">Your results</p>
 
-        <p className="text-[1.4em] font-bold">Results shown here</p>
+            <p>
+              Your results are shown below based on the information you
+              provided. To adjust the results, edit the form and click
+              “calculate repayments” again.
+            </p>
 
-        <p className="text-slate-300">
-          Complete the form and click “calculate repayments” to see what your
-          monthly repayments would be
-        </p>
+            <div className="bg-slate-900 p-5 border-t-5 border-lime rounded-lg">
+              <div>
+                <p>Your monthly repayments</p>
+                <p className="text-lime font-bold text-[1.6em] border-b border-slate-700 pb-3 mb-3">
+                  £{new Intl.NumberFormat("en-US").format(amount!)}
+                </p>
+              </div>
+
+              <div>
+                <p>Total you'll repay over the term</p>
+                <p className="text-white font-bold text-[1.2em]">
+                  £{new Intl.NumberFormat("en-US").format(amount!)}
+                </p>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="flex flex-col items-center gap-5 text-center">
+            <img src="/images/illustration-empty.svg" alt="empty" />
+
+            <p className="text-[1.4em] font-bold">Results shown here</p>
+
+            <p className="text-slate-300">
+              Complete the form and click “calculate repayments” to see what
+              your monthly repayments would be
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
