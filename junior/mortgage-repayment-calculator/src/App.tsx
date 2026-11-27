@@ -5,7 +5,27 @@ function App() {
   const [amount, setAmount] = useState<number | null>(null);
   const [term, setTerm] = useState<number | null>(null);
   const [rate, setRate] = useState<number | null>(null);
+
   const [results, setResults] = useState<boolean>(false);
+  const [price, setPrice] = useState<[number, number]>([0, 0]);
+
+  const CalculateResults = () => {
+    if (!type || !amount || !term || !rate) return;
+
+    let r = rate / 100 / 12;
+    let n = term * 12;
+
+    if (type === "Repayment") {
+      let repayment = amount * ((r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1));
+      setPrice([repayment, repayment * n]);
+    } else if (type === "Interest Only") {
+      let intrestOnly = amount * r;
+      setPrice([intrestOnly, intrestOnly * n]);
+    }
+
+    setResults(true);
+  };
+
   return (
     <div className="min-h-svh lg:min-h-screen text-slate-700">
       <div className="p-5 flex flex-col gap-5">
@@ -20,6 +40,7 @@ function App() {
               setRate(null);
               setType(null);
               setResults(false);
+              setPrice([0, 0]);
             }}
             type="button"
             className="underline underline-offset-2"
@@ -107,7 +128,7 @@ function App() {
 
         <button
           type="button"
-          onClick={() => setResults(true)}
+          onClick={CalculateResults}
           className="cursor-pointer rounded-full bg-lime flex items-center justify-center p-3 font-bold text-slate-900 gap-2"
         >
           <img src="/images/icon-calculator.svg" alt="calculator" /> Calculate
@@ -130,14 +151,20 @@ function App() {
               <div>
                 <p>Your monthly repayments</p>
                 <p className="text-lime font-bold text-[1.6em] border-b border-slate-700 pb-3 mb-3">
-                  £{new Intl.NumberFormat("en-US").format(amount!)}
+                  £
+                  {new Intl.NumberFormat("en-US").format(
+                    Number(price[0].toFixed(2)),
+                  )}
                 </p>
               </div>
 
               <div>
                 <p>Total you'll repay over the term</p>
                 <p className="text-white font-bold text-[1.2em]">
-                  £{new Intl.NumberFormat("en-US").format(amount!)}
+                  £
+                  {new Intl.NumberFormat("en-US").format(
+                    Number(price[1].toFixed(2)),
+                  )}
                 </p>
               </div>
             </div>
