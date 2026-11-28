@@ -1,5 +1,12 @@
 import { useState } from "react";
 
+interface Error {
+  errorAmount: string;
+  errorTerm: string;
+  errorRate: string;
+  errorType: string;
+}
+
 function App() {
   const [type, setType] = useState<"Repayment" | "Interest Only" | null>(null);
   const [amount, setAmount] = useState<number | null>(null);
@@ -9,14 +16,46 @@ function App() {
   const [results, setResults] = useState<boolean>(false);
   const [price, setPrice] = useState<[number, number]>([0, 0]);
 
+  const [error, setError] = useState<Error>({
+    errorAmount: "",
+    errorTerm: "",
+    errorRate: "",
+    errorType: "",
+  });
+
   const CalculateResults = () => {
+    if (!amount) {
+      setError((prev) => ({ ...prev, errorAmount: "This field is required" }));
+    } else {
+      setError((prev) => ({ ...prev, errorAmount: "" }));
+    }
+
+    if (!type) {
+      setError((prev) => ({ ...prev, errorType: "This field is required" }));
+    } else {
+      setError((prev) => ({ ...prev, errorType: "" }));
+    }
+
+    if (!term) {
+      setError((prev) => ({ ...prev, errorTerm: "This field is required" }));
+    } else {
+      setError((prev) => ({ ...prev, errorTerm: "" }));
+    }
+
+    if (!rate) {
+      setError((prev) => ({ ...prev, errorRate: "This field is required" }));
+    } else {
+      setError((prev) => ({ ...prev, errorRate: "" }));
+    }
+
     if (!type || !amount || !term || !rate) return;
 
     let r = rate / 100 / 12;
     let n = term * 12;
 
     if (type === "Repayment") {
-      let repayment = amount * ((r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1));
+      let repayment =
+        amount * ((r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1));
       setPrice([repayment, repayment * n]);
     } else if (type === "Interest Only") {
       let intrestOnly = amount * r;
@@ -24,6 +63,21 @@ function App() {
     }
 
     setResults(true);
+  };
+
+  const clear = () => {
+    setAmount(null);
+    setTerm(null);
+    setRate(null);
+    setType(null);
+    setResults(false);
+    setPrice([0, 0]);
+    setError({
+      errorAmount: "",
+      errorTerm: "",
+      errorRate: "",
+      errorType: "",
+    });
   };
 
   return (
@@ -34,14 +88,7 @@ function App() {
             Mortgage Calculator
           </h1>
           <button
-            onClick={() => {
-              setAmount(null);
-              setTerm(null);
-              setRate(null);
-              setType(null);
-              setResults(false);
-              setPrice([0, 0]);
-            }}
+            onClick={clear}
             type="button"
             className="underline underline-offset-2"
           >
@@ -52,8 +99,15 @@ function App() {
         <div>
           <label htmlFor="amount">Mortgage Amount</label>
 
-          <div className="w-full border border-slate-700 rounded-md flex overflow-hidden mt-2">
-            <p className="bg-slate-100 p-2 px-4 font-bold">£</p>
+          <div
+            className={`w-full border rounded-md flex overflow-hidden mt-2 
+            ${error.errorAmount ? "border-red" : "border-slate-700"}`}
+          >
+            <p
+              className={`${error.errorAmount ? "bg-red text-white" : "bg-slate-100"} p-2 px-4 font-bold`}
+            >
+              £
+            </p>
 
             <input
               type="number"
@@ -64,12 +118,17 @@ function App() {
               className="w-full h-full p-2.5 outline-none text-slate-900 font-bold"
             />
           </div>
+
+          <p className="text-red font-medium mt-3">{error.errorAmount}</p>
         </div>
 
         <div>
           <label htmlFor="term">Mortgage Term</label>
 
-          <div className="w-full border border-slate-700 rounded-md flex overflow-hidden mt-2">
+          <div
+            className={`w-full border rounded-md flex overflow-hidden mt-2 
+            ${error.errorTerm ? "border-red" : "border-slate-700"}`}
+          >
             <input
               type="number"
               min={0}
@@ -79,14 +138,23 @@ function App() {
               className="w-full h-full p-2.5 outline-none text-slate-900 font-bold"
             />
 
-            <p className="bg-slate-100 p-2 px-4 font-bold">years</p>
+            <p
+              className={`${error.errorTerm ? "bg-red text-white" : "bg-slate-100"} p-2 px-4 font-bold`}
+            >
+              years
+            </p>
           </div>
+
+          <p className="text-red font-medium mt-3">{error.errorTerm}</p>
         </div>
 
         <div>
           <label htmlFor="rate">Interest Rate</label>
 
-          <div className="w-full border border-slate-700 rounded-md flex overflow-hidden mt-2">
+          <div
+            className={`w-full border rounded-md flex overflow-hidden mt-2 
+            ${error.errorRate ? "border-red" : "border-slate-700"}`}
+          >
             <input
               type="number"
               min={0}
@@ -96,8 +164,14 @@ function App() {
               className="w-full h-full p-2.5 outline-none text-slate-900 font-bold"
             />
 
-            <p className="bg-slate-100 p-2 px-4 font-bold">%</p>
+            <p
+              className={`${error.errorRate ? "bg-red text-white" : "bg-slate-100"} p-2 px-4 font-bold`}
+            >
+              %
+            </p>
           </div>
+
+          <p className="text-red font-medium mt-3">{error.errorRate}</p>
         </div>
 
         <div className="flex flex-col gap-3">
@@ -124,6 +198,8 @@ function App() {
               <p className="text-slate-900 font-bold">{option}</p>
             </div>
           ))}
+
+          <p className="text-red font-medium">{error.errorType}</p>
         </div>
 
         <button
